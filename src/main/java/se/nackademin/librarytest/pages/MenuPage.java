@@ -1,20 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package se.nackademin.librarytest.pages;
 
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
+import java.util.logging.Logger;
 import org.openqa.selenium.support.FindBy;
 
-/**
- *
- * @author testautom-nack
- */
-public class MenuPage {
 
+public class MenuPage extends PageBase{
+
+    private static final Logger Log = Logger.getLogger(MenuPage.class.getName());
+    
     @FindBy(css = "#side-menu-link-add-user")
     SelenideElement addUser;
 
@@ -30,17 +26,20 @@ public class MenuPage {
    
 
     public void navigateToAddUser() {
-        addUser.click();
+  
+        clickButton("Add user", addUser);
     }
 
     public void navigateToSignIn() {
-        signIn.click();
+        
+        clickButton("Sign in", signIn);
     }
 
     public void navigateToMyProfile() {
-        myProfile.click();
+         clickButton("My profile", myProfile);
     }
     public void nabigateToBrowseBooks(){
-        browseboks.click();
+        
+        clickButton("SBrowse Books", browseboks);
     }
 }

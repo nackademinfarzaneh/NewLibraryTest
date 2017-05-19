@@ -5,6 +5,7 @@ package se.nackademin.librarytest;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+import se.nackademin.librarytest.helpers.Table;
 import static com.codeborne.selenide.Selenide.*;
 import io.github.bonigarcia.wdm.ChromeDriverManager;
 import java.util.UUID;
@@ -16,47 +17,52 @@ import org.junit.Test;
 import se.nackademin.librarytest.helpers.BookHelper;
 import se.nackademin.librarytest.helpers.UserHelper;
 import se.nackademin.librarytest.model.Book;
-import se.nackademin.librarytest.pages.AddUserPage;
-import se.nackademin.librarytest.pages.BookPage;
 import se.nackademin.librarytest.pages.BrowseBooksPage;
 import se.nackademin.librarytest.pages.MenuPage;
 import se.nackademin.librarytest.pages.MyProfilePage;
-import se.nackademin.librarytest.pages.SignInPage;
 
 /**
  *
  * @author testautom-nack
  */
-public class SelenideTest {
+public class SelenideTest extends TestBase {
 
     public SelenideTest() {
-        System.setProperty("webdriver.chrome.driver", "/home/testautom-nack/testautom-nack/seleniumdrivers/chromedriver");
-        System.setProperty("selenide.browser", "Chrome");
-        open("http://localhost:8080/librarytest");
+    }
 
+    @Test
+    public void testUsingTable() {
+
+        page(MenuPage.class).nabigateToBrowseBooks();
+        BrowseBooksPage browseBooksPage = page(BrowseBooksPage.class);
+        browseBooksPage.setTitleFiled("G");
+        browseBooksPage.clickSearchBooksButton();
+        Table table = new Table($(".v-grid-tablewrapper"));
+
+        System.out.println(table.getRowCount());
+        System.out.println(table.getColumnCount());
+        System.out.println(table.getCellValue(0, 0));
+        System.out.println(table.getCellValue(1, 1));
+        //  table.clickCell(1, 1);
+        table.searchAndClick("American Gods", 0);
+        sleep(2000);
     }
 
     @Test
     public void testFetchBook() {
-        
-        Book book = BookHelper.fetchBook("Guards!");
-        
-        assertEquals("Title should be, 'Guards! Guards!", "Guards! Guards!", book.getTitle());
 
+        Book book = BookHelper.fetchBook("Guards!");
+        assertEquals("Title should be, 'Guards! Guards!", "Guards! Guards!", book.getTitle());
+        assertEquals("Author should be, 'Terry Pratchett", "Terry Pratchett", book.getAuthor());
         sleep(1000);
     }
 
     @Test
-    
     public void testLogin() {
 
         ChromeDriverManager.getInstance().setup();
 //        WebDriver driver = new ChromeDriver();        
 //        driver.get("http://localhost:8080/librarytest");
-
-//        System.setProperty("webdriver.chrome.driver", "/home/testautom-nack/testautom-nack/seleniumdrivers/chromedriver");
-//        System.setProperty("selenide.browser", "Chrome");
-//        open("http://localhost:8080/librarytest");
 
         String uuid = UUID.randomUUID().toString();
 
@@ -69,7 +75,7 @@ public class SelenideTest {
         myProfilePage.getUserName();
 
         Assert.assertEquals("Username should be shown in profile", uuid, myProfilePage.getUserName());
-        sleep(3000);
+        sleep(2000);
 
     }
 }
