@@ -1,6 +1,8 @@
 
 package se.nackademin.librarytest.model;
 
+import java.util.Date;
+
 
 public class Book {
 
@@ -9,7 +11,7 @@ public class Book {
     private String author;
     private String description;
     private String isbn;
-    private String datePublished;
+    private Date datePublished;
     private Integer nbrAvailable;
 
     /**
@@ -85,14 +87,14 @@ public class Book {
     /**
      * @return the datePublished
      */
-    public String getDatePublished() {
+    public Date getDatePublished() {
         return datePublished;
     }
 
     /**
      * @param datePublished the datePublished to set
      */
-    public void setDatePublished(String datePublished) {
+    public void setDatePublished(Date datePublished) {
         this.datePublished = datePublished;
     }
 

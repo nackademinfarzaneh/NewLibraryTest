@@ -8,10 +8,14 @@ package se.nackademin.librarytest;
 import se.nackademin.librarytest.helpers.Table;
 import static com.codeborne.selenide.Selenide.*;
 import io.github.bonigarcia.wdm.ChromeDriverManager;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.UUID;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.junit.Assert;
 import static org.junit.Assert.assertEquals;
-import org.junit.Ignore;
 
 import org.junit.Test;
 import se.nackademin.librarytest.helpers.AuthorHelper;
@@ -20,9 +24,8 @@ import se.nackademin.librarytest.helpers.MyProfileHelper;
 import se.nackademin.librarytest.helpers.UserHelper;
 import se.nackademin.librarytest.model.Author;
 import se.nackademin.librarytest.model.Book;
-import se.nackademin.librarytest.pages.AddAuthorPage;
-import se.nackademin.librarytest.pages.AddUserPage;
 import se.nackademin.librarytest.pages.AuthorPage;
+import se.nackademin.librarytest.pages.BookPage;
 import se.nackademin.librarytest.pages.BrowseAuthorsPage;
 import se.nackademin.librarytest.pages.BrowseBooksPage;
 import se.nackademin.librarytest.pages.MenuPage;
@@ -53,13 +56,12 @@ public class SelenideTest extends TestBase {
     }
 
     @Test
-    @Ignore
     public void testFetchBook() {
 
         Book book = BookHelper.fetchBook("Guards!");
         assertEquals("Title should be, 'Guards! Guards!", "Guards! Guards!", book.getTitle());
         assertEquals("Author should be, 'Terry Pratchett", "Terry Pratchett", book.getAuthor());
-        sleep(1000);
+        sleep(2000);
     }
 
     @Test
@@ -118,40 +120,68 @@ public class SelenideTest extends TestBase {
         author.setCountry("Sverige");
         author.setBiography("Jag lerver i Sverige");
 
+        BrowseAuthorsPage browseAuthorsPage = page(BrowseAuthorsPage.class);
+
         AuthorHelper.createNewAuthor(author);
+        menuPage.navigateToMyProfile();
+        AuthorPage authorPage = page(AuthorPage.class);
 
         AuthorHelper.fetchAuthor(author.getFirstName());
 
-        //      Assert.assertEquals("AuthorsName should be shown", "test", authorPage.getName());
+        Assert.assertEquals("AuthorsName should be shown", "test", author.getFirstName());
         sleep(2000);
     }
 
     @Test
     public void testFetchAuthor() {
 
-        MenuPage menuPage = page(MenuPage.class);
+        Author author = AuthorHelper.fetchAuthor("Test");
+        assertEquals("Title should be, 'Test", "test Test", author.getFirstName());
 
-        page(MenuPage.class).navigateToAddAuthor();
-        BrowseAuthorsPage browseAuthorsPage = page(BrowseAuthorsPage.class);
-
-        browseAuthorsPage.setNameFiled("test");
-        browseAuthorsPage.clickSearchAuthorsButton();
-
-        Table table = new Table($(".v-grid-tablewrapper"));
-
-        System.out.println(table.getRowCount());
-        System.out.println(table.getColumnCount());
-        System.out.println(table.getCellValue(0, 0));
-        
         sleep(2000);
+    }
+
+    @Test
+    public void testChangePublishDateBook() {
+
+        MenuPage menuPage = page(MenuPage.class);
+        UserHelper.logInAsUser("admin", "1234567890");
+
+        //       Book book = BookHelper.fetchBook("Good Omens");
+        //      assertEquals("Title should be, 'Good Omens'", "Good Omens", book.getTitle());
+        BookHelper.changePublishDateBook("Good Omens");
+
+        Book book = BookHelper.fetchBook("Good Omens");
+
+        BookPage bookPage = page(BookPage.class);
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            Date convertedCurrentDate = sdf.parse("2017-05-21");
+
+            System.out.println(book.getDatePublished());
+            System.out.print(bookPage.getPublishDate());
+
+            assertEquals("Published date should be, '2017-05-21'", convertedCurrentDate, book.getDatePublished());
+
+        } catch (ParseException ex) {
+
+            Logger.getLogger(SelenideTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+    @Test
+    public void testBorrowBook() {
+      
+        MenuPage menuPage = page(MenuPage.class);
         
-        table.searchAndClick("test", 0);
-        table.getCellValue(0, 0);
-
-        sleep(5000);
-
-        //   assertEquals("Authors name should be, 'Sheri", "Sheri", author.getFirstName());
+        UserHelper.createNewUser("hasan","hasan" );
+        UserHelper.logInAsUser("hasan", "hasan");
        
+        Book book = BookHelper.fetchBook("Good Omens!");
+        
+          BookHelper.borrowBook("Gook Omens");
     }
 
 }

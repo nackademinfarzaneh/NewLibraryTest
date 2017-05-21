@@ -8,6 +8,7 @@ package se.nackademin.librarytest.helpers;
 import static com.codeborne.selenide.Selenide.page;
 import static se.nackademin.librarytest.helpers.UserHelper.menuPage;
 import se.nackademin.librarytest.model.Author;
+import se.nackademin.librarytest.model.Book;
 import se.nackademin.librarytest.pages.AddAuthorPage;
 import se.nackademin.librarytest.pages.AddUserPage;
 import se.nackademin.librarytest.pages.AuthorPage;
@@ -24,8 +25,6 @@ import se.nackademin.librarytest.pages.MenuPage;
 public class AuthorHelper {
 
     public static void createNewAuthor(Author author) {
-        
-        
 
         AddAuthorPage addAuthorPage = page(AddAuthorPage.class);
 
@@ -43,19 +42,25 @@ public class AuthorHelper {
     }
 
     public static Author fetchAuthor(String searchQuery) {
-        // public static Author fetchAuthor() {
 
         MenuPage menuPage = page(MenuPage.class);
         menuPage.navigateToBrowseAuthors();
-        BrowseAuthorsPage browseAuthorsPage = page(BrowseAuthorsPage.class);
-        //      browseAuthorsPage.setNameFiled("sheri");
-        browseAuthorsPage.clickSearchAuthorsButton();
 
+        BrowseAuthorsPage browseAuthorsPage = page(BrowseAuthorsPage.class);
         AuthorPage authorPage = page(AuthorPage.class);
+
         Author author = new Author();
+        
+//        author.setFirstName(searchQuery);
+//        author.setCountry(authorPage.getCountry());
+//        author.setBiography(authorPage.getBiography());
+
+        browseAuthorsPage.setNameFiled(searchQuery);
+
+        browseAuthorsPage.clickSearchAuthorsButton();
+        browseAuthorsPage.clickFirstResultTitle();
+
         author.setFirstName(authorPage.getName());
-        author.setCountry(authorPage.getCountry());
-        author.setBiography(authorPage.getBiography());
 
         return author;
     }

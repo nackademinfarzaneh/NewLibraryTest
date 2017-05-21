@@ -12,25 +12,23 @@ import org.openqa.selenium.support.FindBy;
  *
  * @author testautom-nack
  */
-public class EditUserPage extends MenuPage{
+public class EditUserPage extends MenuPage {
 
     @FindBy(css = "#gwt-uid-13")
     SelenideElement emailFiled;
-    
-    @FindBy (css = "#save-user-button")
+
+    @FindBy(css = "#save-user-button")
     SelenideElement saveUserButton;
 
     public void setEmailFiled(String email) {
-        
+
         emailFiled.clear();
         emailFiled.sendKeys(email);
-
     }
-    
+
     public void clickSaveUserButton() {
 
         clickButton("Edit user button", saveUserButton);
     }
-    
 
 }

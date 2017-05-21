@@ -6,9 +6,15 @@
 package se.nackademin.librarytest.helpers;
 
 import static com.codeborne.selenide.Selenide.page;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import se.nackademin.librarytest.model.Book;
 import se.nackademin.librarytest.pages.BookPage;
 import se.nackademin.librarytest.pages.BrowseBooksPage;
+import se.nackademin.librarytest.pages.EditBookPage;
 import se.nackademin.librarytest.pages.MenuPage;
 
 /**
@@ -18,7 +24,6 @@ import se.nackademin.librarytest.pages.MenuPage;
 public class BookHelper {
 
     public static void addNewBook(Book book) {
-
     }
 
     public static Book fetchBook(String searchQuery) {
@@ -26,7 +31,7 @@ public class BookHelper {
         MenuPage menuPage = page(MenuPage.class);
         menuPage.navigateToBrowseBooks();
         BrowseBooksPage browseBooksPage = page(BrowseBooksPage.class);
-        browseBooksPage.setTitleFiled("Guards!");
+        browseBooksPage.setTitleFiled(searchQuery);   //"Guards!"
         browseBooksPage.clickSearchBooksButton();
         browseBooksPage.clickFirstResultTitle();
 
@@ -34,8 +39,47 @@ public class BookHelper {
         Book book = new Book();
         book.setTitle(bookPage.getTitle());
         book.setAuthor(bookPage.getAuthor());
-        book.setDatePublished(bookPage.getDescription());
+        book.setDatePublished(bookPage.getPublishDate());
 
         return book;
+    }
+
+    public static void changePublishDateBook(String searchQuery) {
+
+        Book book = fetchBook(searchQuery);
+        book.getTitle();
+        book.getDatePublished();
+
+        BookPage bookPage = page(BookPage.class);
+
+        Date dateBefor = bookPage.getPublishDate();
+
+        bookPage.clickEditBookButton();
+        EditBookPage editBookPage = page(EditBookPage.class);
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            Date convertedCurrentDate = sdf.parse("2017-05-21");
+            editBookPage.setPublishedDateFiled(convertedCurrentDate);
+
+            //         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+            editBookPage.clickSaveBookButton();
+
+        } catch (ParseException ex) {
+
+            Logger.getLogger(BookHelper.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+    public static void borrowBook(String searchQuery) {
+        BookPage bookPage = page(BookPage.class);
+
+        Book book = fetchBook(searchQuery);
+        bookPage.getAvailebleNbrOfCopies();
+        bookPage.getTotNbrOfCopies();
+        bookPage.clickBorrowBookButton();
+        bookPage.clickConfirmDialogOKButton();
+
     }
 }
