@@ -24,7 +24,7 @@ public class BookHelper {
     public static Book fetchBook(String searchQuery) {
 
         MenuPage menuPage = page(MenuPage.class);
-        menuPage.nabigateToBrowseBooks();
+        menuPage.navigateToBrowseBooks();
         BrowseBooksPage browseBooksPage = page(BrowseBooksPage.class);
         browseBooksPage.setTitleFiled("Guards!");
         browseBooksPage.clickSearchBooksButton();

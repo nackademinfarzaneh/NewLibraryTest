@@ -20,17 +20,27 @@ public class AddUserPage extends MenuPage {
     @FindBy(css = "#gwt-uid-5")
     SelenideElement passWordFiled;
 
+    @FindBy(css = "#gwt-uid-13")
+    SelenideElement emailFiled;
+
     @FindBy(css = "#add-user-button")
     SelenideElement addUserButton;
 
     public void setUserName(String userName) {
-
+        
+        userNameFiled.clear();
         setTextFieldValue("User name filed", userName, userNameFiled);
+    }
+
+    public void setEmail(String email) {
+
+        emailFiled.clear();
+        setTextFieldValue("User name filed", email, emailFiled);
     }
 
     public void setPassWordFiled(String passWord) {
         passWordFiled.clear();
-        passWordFiled.sendKeys(passWord);
+       // passWordFiled.sendKeys(passWord);
         setTextFieldValue("Password filed", passWord, passWordFiled);
     }
 

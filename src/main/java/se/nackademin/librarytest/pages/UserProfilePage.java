@@ -12,13 +12,28 @@ import org.openqa.selenium.support.FindBy;
  *
  * @author testautom-nack
  */
-public class MyProfilePage extends MenuPage {
+public class UserProfilePage extends MenuPage {
 
     @FindBy(css = "#gwt-uid-5")
     SelenideElement userNameFiled;
 
+    @FindBy(css = "#gwt-uid-13")
+    SelenideElement emailFiled;
+
+    @FindBy(css = "#edit-user")
+    SelenideElement editUserButton;
+
     public String getUserName() {
         return userNameFiled.getText();
+    }
+
+    public String getEmailFiled() {
+        return emailFiled.getText();
+    }
+
+    public void clickEditUserButton() {
+
+        clickButton("Edit user button", editUserButton);
     }
 
 }
