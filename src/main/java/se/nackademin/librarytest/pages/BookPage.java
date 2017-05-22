@@ -20,7 +20,7 @@ import org.openqa.selenium.support.FindBy;
  *
  * @author testautom-nack
  */
-public class BookPage {
+public class BookPage extends MenuPage{
 
     @FindBy(css = "#gwt-uid-3")
     SelenideElement titleField;
@@ -45,9 +45,6 @@ public class BookPage {
 
     @FindBy(css = "#borrow-book-button")
     SelenideElement borrowBookButton;
-
-    @FindBy(css = "#confirmdialog-ok-button")
-    SelenideElement confirmDialogOKButton;
 
     @FindBy(css = "#return-book-button")
     SelenideElement returnBookButton;
@@ -77,12 +74,12 @@ public class BookPage {
         return null;
     }
 
-    public Integer getTotNbrOfCopies() {
+    public Integer getTotNbrOfBooks() {
         return Integer.parseInt(totNbrOfBooksFiled.getText());
     }
 
-    public Integer getAvailebleNbrOfCopies() {
-        return Integer.parseInt(availebleNbrOfBooksFiled.getText()) ;
+    public Integer getAvailebleNbrOfBooks() {
+        return Integer.parseInt(availebleNbrOfBooksFiled.getText());
     }
 
     public void clickEditBookButton() {
@@ -92,11 +89,6 @@ public class BookPage {
     public void clickBorrowBookButton() {
 
         borrowBookButton.click();
-    }
-
-    public void clickConfirmDialogOKButton() {
-
-        confirmDialogOKButton.click();
     }
 
     public void clickReturnBookButtonButton() {

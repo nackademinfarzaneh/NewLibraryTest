@@ -12,7 +12,7 @@ import org.openqa.selenium.support.FindBy;
  *
  * @author testautom-nack
  */
-public class AuthorPage {
+public class AuthorPage extends MenuPage{
 
     @FindBy(css = "#gwt-uid-3")
     SelenideElement nameField;

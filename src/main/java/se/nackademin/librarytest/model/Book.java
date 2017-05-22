@@ -6,40 +6,40 @@ import java.util.Date;
 
 public class Book {
 
-    private Integer id;
-    private String title;
+    private Integer idBook;
+    private String titleBook;
     private String author;
-    private String description;
+    private String descriptionBook;
     private String isbn;
-    private Date datePublished;
-    private Integer nbrAvailable;
+    private Date datePublishedBook;
+    private Integer nbrAvailableBook;
 
     /**
      * @return the id
      */
-    public Integer getId() {
-        return id;
+    public Integer getIdBook() {
+        return idBook;
     }
 
     /**
-     * @param id the id to set
+     * @param idBook the id to set
      */
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdBook(Integer idBook) {
+        this.idBook = idBook;
     }
 
     /**
      * @return the title
      */
-    public String getTitle() {
-        return title;
+    public String getTitleBook() {
+        return titleBook;
     }
 
     /**
-     * @param title the title to set
+     * @param titleBook the title to set
      */
-    public void setTitle(String title) {
-        this.title = title;
+    public void setTitleBook(String titleBook) {
+        this.titleBook = titleBook;
     }
 
     /**
@@ -59,15 +59,15 @@ public class Book {
     /**
      * @return the description
      */
-    public String getDescription() {
-        return description;
+    public String getDescriptionBook() {
+        return descriptionBook;
     }
 
     /**
-     * @param description the description to set
+     * @param descriptionBook the description to set
      */
-    public void setDescription(String description) {
-        this.description = description;
+    public void setDescriptionBook(String descriptionBook) {
+        this.descriptionBook = descriptionBook;
     }
 
     /**
@@ -87,29 +87,29 @@ public class Book {
     /**
      * @return the datePublished
      */
-    public Date getDatePublished() {
-        return datePublished;
+    public Date getDatePublishedBook() {
+        return datePublishedBook;
     }
 
     /**
-     * @param datePublished the datePublished to set
+     * @param datePublishedBook the datePublished to set
      */
-    public void setDatePublished(Date datePublished) {
-        this.datePublished = datePublished;
+    public void setDatePublishedBook(Date datePublishedBook) {
+        this.datePublishedBook = datePublishedBook;
     }
 
     /**
      * @return the nbrAvailable
      */
-    public Integer getNbrAvailable() {
-        return nbrAvailable;
+    public Integer getNbrAvailableBook() {
+        return nbrAvailableBook;
     }
 
     /**
-     * @param nbrAvailable the nbrAvailable to set
+     * @param nbrAvailableBook the nbrAvailable to set
      */
-    public void setNbrAvailable(Integer nbrAvailable) {
-        this.nbrAvailable = nbrAvailable;
+    public void setNbrAvailableBook(Integer nbrAvailableBook) {
+        this.nbrAvailableBook = nbrAvailableBook;
     }
 
 }

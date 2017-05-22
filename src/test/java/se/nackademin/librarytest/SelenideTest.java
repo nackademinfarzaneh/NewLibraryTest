@@ -59,7 +59,7 @@ public class SelenideTest extends TestBase {
     public void testFetchBook() {
 
         Book book = BookHelper.fetchBook("Guards!");
-        assertEquals("Title should be, 'Guards! Guards!", "Guards! Guards!", book.getTitle());
+        assertEquals("Title should be, 'Guards! Guards!", "Guards! Guards!", book.getTitleBook());
         assertEquals("Author should be, 'Terry Pratchett", "Terry Pratchett", book.getAuthor());
         sleep(2000);
     }
@@ -89,14 +89,14 @@ public class SelenideTest extends TestBase {
     public void testChangeEmailFromMyProfile() {
         MenuPage menuPage = page(MenuPage.class);
 
-        UserHelper.createNewUser("Testnr7", "Testnr7", "testEmail1@test.se");
-        UserHelper.logInAsUser("Testnr7", "Testnr7");
+        UserHelper.createNewUser("Testnr8", "Testnr7", "testEmail1@test.se");
+        UserHelper.logInAsUser("Testnr8", "Testnr7");
 
         menuPage.navigateToMyProfile();
         UserProfilePage userProfilePage = page(UserProfilePage.class);
         userProfilePage.getUserName();
 
-        Assert.assertEquals("Testnr7", userProfilePage.getUserName());
+        Assert.assertEquals("Testnr8", userProfilePage.getUserName());
         Assert.assertEquals("testEmail1@test.se", userProfilePage.getEmailFiled());
 
         MyProfileHelper.changeEmail();
@@ -159,29 +159,33 @@ public class SelenideTest extends TestBase {
         try {
             Date convertedCurrentDate = sdf.parse("2017-05-21");
 
-            System.out.println(book.getDatePublished());
+            System.out.println(book.getDatePublishedBook());
             System.out.print(bookPage.getPublishDate());
 
-            assertEquals("Published date should be, '2017-05-21'", convertedCurrentDate, book.getDatePublished());
+            assertEquals("Published date should be, '2017-05-21'", convertedCurrentDate, book.getDatePublishedBook());
 
         } catch (ParseException ex) {
 
             Logger.getLogger(SelenideTest.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
 
     @Test
     public void testBorrowBook() {
-      
+
         MenuPage menuPage = page(MenuPage.class);
-        
-        UserHelper.createNewUser("hasan","hasan" );
+        BookPage bookPage = page(BookPage.class);
+
+        UserHelper.createNewUser("hasan", "hasan");
         UserHelper.logInAsUser("hasan", "hasan");
-       
-        Book book = BookHelper.fetchBook("Good Omens!");
-        
-          BookHelper.borrowBook("Gook Omens");
+
+        BookHelper.borrowBook("Good Omens");
+    //    int nbrAvilableBookAfter = book.getNbrAvailableBook();
+
+       int avbook=  bookPage.getAvailebleNbrOfBooks();
+
+        assertEquals("Nr off available book after borrowBook", "3", bookPage.getAvailebleNbrOfBooks());
+        // assertEquals("Nr off available book after total books", "", bookPage.getTotNbrOfBooks());
     }
 
 }

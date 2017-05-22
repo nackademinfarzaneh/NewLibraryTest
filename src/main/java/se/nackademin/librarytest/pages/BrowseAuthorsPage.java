@@ -21,7 +21,9 @@ public class BrowseAuthorsPage {
     SelenideElement searchAuthorsButton;
    
     @FindBy (css = "td.v-grid-cell:nth-child(1) > a:nth-child(1)")       
-    SelenideElement firstResultTitle;      
+    SelenideElement firstResultTitle; 
+    
+  
 
     public void clickFirstResultTitle() {
         firstResultTitle.click();

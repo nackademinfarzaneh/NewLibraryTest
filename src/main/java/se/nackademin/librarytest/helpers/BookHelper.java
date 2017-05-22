@@ -13,6 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import se.nackademin.librarytest.model.Book;
 import se.nackademin.librarytest.pages.BookPage;
+import se.nackademin.librarytest.pages.BorrowBooksConfirmPage;
 import se.nackademin.librarytest.pages.BrowseBooksPage;
 import se.nackademin.librarytest.pages.EditBookPage;
 import se.nackademin.librarytest.pages.MenuPage;
@@ -31,15 +32,19 @@ public class BookHelper {
         MenuPage menuPage = page(MenuPage.class);
         menuPage.navigateToBrowseBooks();
         BrowseBooksPage browseBooksPage = page(BrowseBooksPage.class);
+
         browseBooksPage.setTitleFiled(searchQuery);   //"Guards!"
         browseBooksPage.clickSearchBooksButton();
         browseBooksPage.clickFirstResultTitle();
 
         BookPage bookPage = page(BookPage.class);
         Book book = new Book();
-        book.setTitle(bookPage.getTitle());
+
+        book.setTitleBook(bookPage.getTitle());
         book.setAuthor(bookPage.getAuthor());
-        book.setDatePublished(bookPage.getPublishDate());
+        book.setDatePublishedBook(bookPage.getPublishDate());
+        book.setNbrAvailableBook(bookPage.getAvailebleNbrOfBooks());
+        book.setDescriptionBook(bookPage.getDescription());
 
         return book;
     }
@@ -47,8 +52,8 @@ public class BookHelper {
     public static void changePublishDateBook(String searchQuery) {
 
         Book book = fetchBook(searchQuery);
-        book.getTitle();
-        book.getDatePublished();
+        book.getTitleBook();
+        book.getDatePublishedBook();
 
         BookPage bookPage = page(BookPage.class);
 
@@ -62,24 +67,35 @@ public class BookHelper {
             Date convertedCurrentDate = sdf.parse("2017-05-21");
             editBookPage.setPublishedDateFiled(convertedCurrentDate);
 
-            //         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
             editBookPage.clickSaveBookButton();
 
         } catch (ParseException ex) {
 
             Logger.getLogger(BookHelper.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
 
-    public static void borrowBook(String searchQuery) {
-        BookPage bookPage = page(BookPage.class);
+    public static Book borrowBook(String searchQuery) {
 
         Book book = fetchBook(searchQuery);
-        bookPage.getAvailebleNbrOfCopies();
-        bookPage.getTotNbrOfCopies();
-        bookPage.clickBorrowBookButton();
-        bookPage.clickConfirmDialogOKButton();
 
+       int b=  book.getNbrAvailableBook();
+       
+        BrowseBooksPage browseBooksPage = page(BrowseBooksPage.class);
+        BookPage bookPage = page(BookPage.class); 
+        
+        bookPage.getTitle();
+        bookPage.getAuthor();
+       bookPage.getAvailebleNbrOfBooks();
+       bookPage.getDescription();       
+       
+        bookPage.clickBorrowBookButton();       
+
+        BorrowBooksConfirmPage borrowBooksConfirmPage = page(BorrowBooksConfirmPage.class);
+        borrowBooksConfirmPage.clickConfirmDialogOKButton();
+
+        book.setNbrAvailableBook(bookPage.getAvailebleNbrOfBooks());
+
+        return book;
     }
 }
