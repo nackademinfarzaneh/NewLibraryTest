@@ -1,11 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package se.nackademin.librarytest.helpers;
 
+import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.Selenide.sleep;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -13,15 +10,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import se.nackademin.librarytest.model.Book;
 import se.nackademin.librarytest.pages.BookPage;
-import se.nackademin.librarytest.pages.BorrowBooksConfirmPage;
+import se.nackademin.librarytest.pages.ConfirmDialogPage;
 import se.nackademin.librarytest.pages.BrowseBooksPage;
 import se.nackademin.librarytest.pages.EditBookPage;
 import se.nackademin.librarytest.pages.MenuPage;
+import se.nackademin.librarytest.pages.UserProfilePage;
 
-/**
- *
- * @author testautom-nack
- */
 public class BookHelper {
 
     public static void addNewBook(Book book) {
@@ -77,25 +71,85 @@ public class BookHelper {
 
     public static Book borrowBook(String searchQuery) {
 
-        Book book = fetchBook(searchQuery);
+        Book book = new Book();
 
-       int b=  book.getNbrAvailableBook();
-       
+        book.getNbrAvailableBook();
+
         BrowseBooksPage browseBooksPage = page(BrowseBooksPage.class);
-        BookPage bookPage = page(BookPage.class); 
-        
+        BookPage bookPage = page(BookPage.class);
+
         bookPage.getTitle();
         bookPage.getAuthor();
-       bookPage.getAvailebleNbrOfBooks();
-       bookPage.getDescription();       
-       
-        bookPage.clickBorrowBookButton();       
+        bookPage.getAvailebleNbrOfBooks();
+        bookPage.getDescription();
 
-        BorrowBooksConfirmPage borrowBooksConfirmPage = page(BorrowBooksConfirmPage.class);
+        bookPage.clickBorrowBookButton();
+
+        ConfirmDialogPage borrowBooksConfirmPage = page(ConfirmDialogPage.class);
         borrowBooksConfirmPage.clickConfirmDialogOKButton();
 
-        book.setNbrAvailableBook(bookPage.getAvailebleNbrOfBooks());
+        MenuPage menuPage = page(MenuPage.class);
+        UserProfilePage userProfilePage = page(UserProfilePage.class);
+        menuPage.navigateToMyProfile();
 
+//        String s = bookPage.getAvailebleNbrOfBooks().toString();
+//
+//        book.setNbrAvailableBook(bookPage.getAvailebleNbrOfBooks());
         return book;
     }
+
+    public static Book returnBook(String searchQuery) {
+
+        Book book = fetchBook(searchQuery);
+
+        book.getNbrAvailableBook();
+
+        BrowseBooksPage browseBooksPage = page(BrowseBooksPage.class);
+        BookPage bookPage = page(BookPage.class);
+
+        bookPage.getTitle();
+        bookPage.getAuthor();
+        bookPage.getAvailebleNbrOfBooks();
+        bookPage.getDescription();
+
+        bookPage.clickReturnBookButton();
+
+        //  book.setNbrAvailableBook(bookPage.getAvailebleNbrOfBooks());
+        return book;
+    }
+
+    public static Book borrowBook(Book book) {
+
+        book.getNbrAvailableBook();
+
+        BrowseBooksPage browseBooksPage = page(BrowseBooksPage.class);
+        BookPage bookPage = page(BookPage.class);
+
+        bookPage.clickBorrowBookButton();
+
+        ConfirmDialogPage confirmDialogPage = page(ConfirmDialogPage.class);
+        confirmDialogPage.clickConfirmDialogOKButton();
+
+        String s = bookPage.getAvailebleNbrOfBooks().toString();
+
+        book.setNbrAvailableBook(bookPage.getAvailebleNbrOfBooks());
+        return book;
+    }
+
+    public static Book returnBook(Book book) {
+
+        book.getNbrAvailableBook();
+
+        BrowseBooksPage browseBooksPage = page(BrowseBooksPage.class);
+        BookPage bookPage = page(BookPage.class);
+
+        bookPage.clickReturnBookButton();
+
+        ConfirmDialogPage confirmDialogPage = page(ConfirmDialogPage.class);
+        confirmDialogPage.clickConfirmDialogOKButton();
+
+        //   book.setNbrAvailableBook(bookPage.getAvailebleNbrOfBooks());
+        return book;
+    }
+
 }

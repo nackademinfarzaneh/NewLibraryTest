@@ -1,25 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package se.nackademin.librarytest.pages;
 
 import com.codeborne.selenide.SelenideElement;
-import static java.lang.String.format;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import org.openqa.selenium.support.FindBy;
 
-/**
- *
- * @author testautom-nack
- */
 public class BookPage extends MenuPage{
 
     @FindBy(css = "#gwt-uid-3")
@@ -46,7 +35,7 @@ public class BookPage extends MenuPage{
     @FindBy(css = "#borrow-book-button")
     SelenideElement borrowBookButton;
 
-    @FindBy(css = "#return-book-button")
+    @FindBy(css = "#return-book-button") 
     SelenideElement returnBookButton;
 
     public String getTitle() {
@@ -79,20 +68,21 @@ public class BookPage extends MenuPage{
     }
 
     public Integer getAvailebleNbrOfBooks() {
-        return Integer.parseInt(availebleNbrOfBooksFiled.getText());
+       return Integer.parseInt(availebleNbrOfBooksFiled.getText());        
     }
 
     public void clickEditBookButton() {
-        editBookButton.click();
+        
+        clickButton("edit book button", editBookButton);
     }
 
     public void clickBorrowBookButton() {
 
-        borrowBookButton.click();
+       clickButton("Borrow book button", borrowBookButton);       
     }
 
-    public void clickReturnBookButtonButton() {
-
-        returnBookButton.click();
+    public void clickReturnBookButton() {
+        
+        clickButton("return book button", returnBookButton);
     }
 }

@@ -31,8 +31,6 @@ public class UserHelper {
 
         addUserPage.clickAddUserButton();
     }
- 
-
     public static void logInAsUser(String username, String password) {
 
         SignInPage signInpage = page(SignInPage.class);

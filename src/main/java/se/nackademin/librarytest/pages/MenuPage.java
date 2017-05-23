@@ -1,6 +1,5 @@
 package se.nackademin.librarytest.pages;
 
-import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import java.util.logging.Logger;
 import org.openqa.selenium.support.FindBy;

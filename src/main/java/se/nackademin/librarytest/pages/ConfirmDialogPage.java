@@ -12,7 +12,7 @@ import org.openqa.selenium.support.FindBy;
  *
  * @author testautom-nack
  */
-public class BorrowBooksConfirmPage {
+public class ConfirmDialogPage extends MenuPage {
 
     @FindBy(css = "#confirmdialog-ok-button")
     SelenideElement confirmDialogOKButton;
@@ -25,14 +25,15 @@ public class BorrowBooksConfirmPage {
 
     public String getConfirmDialogMessage() {
         return confirmDialog_messField.getText();
+
     }
 
     public void clickConfirmDialogOKButton() {
 
-        confirmDialogOKButton.click();
+        clickButton("confirm Dialog OK Button", confirmDialogOKButton);
     }
-    
-        public void clickConfirmDialogCancelButtonButton() {
+
+    public void clickConfirmDialogCancelButtonButton() {
 
         confirmDialogCancelButton.click();
     }
