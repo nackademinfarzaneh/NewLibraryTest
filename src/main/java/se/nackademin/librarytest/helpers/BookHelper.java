@@ -2,7 +2,6 @@ package se.nackademin.librarytest.helpers;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.page;
-import static com.codeborne.selenide.Selenide.sleep;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -29,11 +28,12 @@ public class BookHelper {
 
         browseBooksPage.setTitleFiled(searchQuery);   //"Guards!"
         browseBooksPage.clickSearchBooksButton();
+    
         browseBooksPage.clickFirstResultTitle();
 
         BookPage bookPage = page(BookPage.class);
         Book book = new Book();
-
+        
         book.setTitleBook(bookPage.getTitle());
         book.setAuthor(bookPage.getAuthor());
         book.setDatePublishedBook(bookPage.getPublishDate());
@@ -69,55 +69,6 @@ public class BookHelper {
         }
     }
 
-    public static Book borrowBook(String searchQuery) {
-
-        Book book = new Book();
-
-        book.getNbrAvailableBook();
-
-        BrowseBooksPage browseBooksPage = page(BrowseBooksPage.class);
-        BookPage bookPage = page(BookPage.class);
-
-        bookPage.getTitle();
-        bookPage.getAuthor();
-        bookPage.getAvailebleNbrOfBooks();
-        bookPage.getDescription();
-
-        bookPage.clickBorrowBookButton();
-
-        ConfirmDialogPage borrowBooksConfirmPage = page(ConfirmDialogPage.class);
-        borrowBooksConfirmPage.clickConfirmDialogOKButton();
-
-        MenuPage menuPage = page(MenuPage.class);
-        UserProfilePage userProfilePage = page(UserProfilePage.class);
-        menuPage.navigateToMyProfile();
-
-//        String s = bookPage.getAvailebleNbrOfBooks().toString();
-//
-//        book.setNbrAvailableBook(bookPage.getAvailebleNbrOfBooks());
-        return book;
-    }
-
-    public static Book returnBook(String searchQuery) {
-
-        Book book = fetchBook(searchQuery);
-
-        book.getNbrAvailableBook();
-
-        BrowseBooksPage browseBooksPage = page(BrowseBooksPage.class);
-        BookPage bookPage = page(BookPage.class);
-
-        bookPage.getTitle();
-        bookPage.getAuthor();
-        bookPage.getAvailebleNbrOfBooks();
-        bookPage.getDescription();
-
-        bookPage.clickReturnBookButton();
-
-        //  book.setNbrAvailableBook(bookPage.getAvailebleNbrOfBooks());
-        return book;
-    }
-
     public static Book borrowBook(Book book) {
 
         book.getNbrAvailableBook();
@@ -128,9 +79,18 @@ public class BookHelper {
         bookPage.clickBorrowBookButton();
 
         ConfirmDialogPage confirmDialogPage = page(ConfirmDialogPage.class);
-        confirmDialogPage.clickConfirmDialogOKButton();
-
-        String s = bookPage.getAvailebleNbrOfBooks().toString();
+        confirmDialogPage.clickConfirmDialogOKButton();        
+        
+        String s = bookPage.getAvailebleNbrOfBooks().toString();  
+        
+//        MenuPage menuPage = page(MenuPage.class);
+//        menuPage.navigateToMyProfile();
+//        UserProfilePage userProfilePage = page(UserProfilePage.class);
+//        Table table = new Table($(".v-grid-tablewrapper"));
+//        
+//        table.searchAndClick(book.getTitleBook(), 1);
+//        table.searchAndClick(book.getDateBorrow().toString(), 2);
+//        table.searchAndClick(book.getDateDUE().toString(), 3);
 
         book.setNbrAvailableBook(bookPage.getAvailebleNbrOfBooks());
         return book;
@@ -138,7 +98,7 @@ public class BookHelper {
 
     public static Book returnBook(Book book) {
 
-        book.getNbrAvailableBook();
+      int nrofbook =  book.getNbrAvailableBook();
 
         BrowseBooksPage browseBooksPage = page(BrowseBooksPage.class);
         BookPage bookPage = page(BookPage.class);
@@ -147,8 +107,10 @@ public class BookHelper {
 
         ConfirmDialogPage confirmDialogPage = page(ConfirmDialogPage.class);
         confirmDialogPage.clickConfirmDialogOKButton();
+        
+        nrofbook =  book.getNbrAvailableBook();
 
-        //   book.setNbrAvailableBook(bookPage.getAvailebleNbrOfBooks());
+          book.setNbrAvailableBook(book.getNbrAvailableBook());
         return book;
     }
 

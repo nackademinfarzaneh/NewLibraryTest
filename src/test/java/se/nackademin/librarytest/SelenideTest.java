@@ -44,20 +44,45 @@ public class SelenideTest extends TestBase {
         page(MenuPage.class).navigateToBrowseBooks();
         BrowseBooksPage browseBooksPage = page(BrowseBooksPage.class);
         browseBooksPage.setTitleFiled("G");
-
         browseBooksPage.clickSearchBooksButton();
-        Table table = new Table($(".v-grid-tablewrapper"));
-        sleep(5000);
-        System.out.println(table.getRowCount());
-        System.out.println(table.getColumnCount());
-        System.out.println(table.getCellValue(0, 0));
 
+        Table table = new Table($(".v-grid-tablewrapper"));
+
+//        System.out.println(table.getRowCount());
+//        System.out.println(table.getColumnCount());
+//        System.out.println(table.getCellValue(0, 0));
         //  table.clickCell(1, 1);
         table.searchAndClick("American Gods", 0);
-        sleep(2000);
+
+        sleep(5000);
     }
 
     @Test
+    public void tesTable() {
+
+       String uuid = UUID.randomUUID().toString();
+
+        MenuPage menuPage = page(MenuPage.class);
+        UserHelper.createNewUser(uuid, uuid);
+        UserHelper.logInAsUser(uuid, uuid);
+
+        menuPage.navigateToMyProfile();
+        UserProfilePage userProfilePage = page(UserProfilePage.class);
+       
+        
+        Table table = new Table($(".v-grid-tablewrapper"));
+//        table.searchAndClick(userProfilePage.getBookTitle(), 0);
+//        table.searchAndClick(userProfilePage.getDateAvBookDue(), 1);
+//        table.searchAndClick(userProfilePage.getDateAvBookBorrow(), 2);
+
+        table.searchAndClick("book title", 0);
+        table.searchAndClick("date av due", 1);
+        table.searchAndClick("date av borrow", 2);
+
+    }
+
+    @Test
+    @Ignore
     public void testFetchBook() {
 
         Book book = BookHelper.fetchBook("Guards!");
@@ -67,6 +92,7 @@ public class SelenideTest extends TestBase {
     }
 
     @Test
+    @Ignore
     public void testLogin() {
 
         ChromeDriverManager.getInstance().setup();
@@ -88,6 +114,7 @@ public class SelenideTest extends TestBase {
     }
 
     @Test
+    @Ignore
     public void testChangeEmailFromMyProfile() {
         MenuPage menuPage = page(MenuPage.class);
 
@@ -197,15 +224,25 @@ public class SelenideTest extends TestBase {
 
         System.out.print("available book after borrow book");
         System.out.println(book.getNbrAvailableBook().toString());
-   //     assertEquals("Nr off available book after borrow book", "7", book.getNbrAvailableBook().toString());
+
+        assertEquals("Nr off available book after borrow book", "4", book.getNbrAvailableBook().toString());
 
         book = BookHelper.returnBook(book);
-
+        
         System.out.print("available book after retunr book");
         System.out.println(book.getNbrAvailableBook().toString());
-     //   assertEquals("Nr off available book after return book", "8", book.getNbrAvailableBook().toString());
-     
-     
+
+        assertEquals("Nr off available book after return book", "5", book.getNbrAvailableBook().toString());
+
+        UserProfilePage userProfilePage = page(UserProfilePage.class);
+        menuPage.navigateToMyProfile();
+
+        System.out.println("hhhhhhhhhhhhhh");
+        userProfilePage.getBookLoanFiled();
+        System.out.println("hhhhhhhhhhhhhh");
+        userProfilePage.getDateAvBookBorrow();
+
+        sleep(3000);
     }
 
     @Test

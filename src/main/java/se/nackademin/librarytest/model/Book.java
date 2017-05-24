@@ -13,6 +13,8 @@ public class Book {
     private String isbn;
     private Date datePublishedBook;
     private Integer nbrAvailableBook;
+    private Date dateBorrow;
+    private Date dateDUE;
 
     /**
      * @return the id
@@ -110,6 +112,34 @@ public class Book {
      */
     public void setNbrAvailableBook(Integer nbrAvailableBook) {
         this.nbrAvailableBook = nbrAvailableBook;
+    }
+
+    /**
+     * @return the dateBorrow
+     */
+    public Date getDateBorrow() {
+        return dateBorrow;
+    }
+
+    /**
+     * @param dateBorrow the dateBorrow to set
+     */
+    public void setDateBorrow(Date dateBorrow) {
+        this.dateBorrow = dateBorrow;
+    }
+
+    /**
+     * @return the dateDUE
+     */
+    public Date getDateDUE() {
+        return dateDUE;
+    }
+
+    /**
+     * @param dateDUE the dateDUE to set
+     */
+    public void setDateDUE(Date dateDUE) {
+        this.dateDUE = dateDUE;
     }
 
 }

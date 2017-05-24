@@ -59,7 +59,6 @@ public class MyProfileHelper {
         MenuPage menuPage = page(MenuPage.class);
 
         UserProfilePage userProfilePage = page(UserProfilePage.class);
-
         menuPage.navigateToMyProfile();
     }
 

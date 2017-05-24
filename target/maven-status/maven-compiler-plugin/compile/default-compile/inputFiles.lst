@@ -1,14 +1,15 @@
 /home/testautom-nack/NetBeansProjects/selenidetest/src/main/java/se/nackademin/librarytest/pages/AuthorPage.java
+/home/testautom-nack/NetBeansProjects/selenidetest/src/main/java/se/nackademin/librarytest/model/User.java
 /home/testautom-nack/NetBeansProjects/selenidetest/src/main/java/se/nackademin/librarytest/helpers/MyProfileHelper.java
 /home/testautom-nack/NetBeansProjects/selenidetest/src/main/java/se/nackademin/librarytest/pages/BrowseAuthorsPage.java
 /home/testautom-nack/NetBeansProjects/selenidetest/src/main/java/se/nackademin/librarytest/pages/PageBase.java
 /home/testautom-nack/NetBeansProjects/selenidetest/src/main/java/se/nackademin/librarytest/pages/AddUserPage.java
 /home/testautom-nack/NetBeansProjects/selenidetest/src/main/java/se/nackademin/librarytest/pages/AddAuthorPage.java
+/home/testautom-nack/NetBeansProjects/selenidetest/src/main/java/se/nackademin/librarytest/pages/ConfirmDialogPage.java
 /home/testautom-nack/NetBeansProjects/selenidetest/src/main/java/se/nackademin/librarytest/helpers/Table.java
 /home/testautom-nack/NetBeansProjects/selenidetest/src/main/java/se/nackademin/librarytest/pages/SignInPage.java
 /home/testautom-nack/NetBeansProjects/selenidetest/src/main/java/se/nackademin/librarytest/pages/UserProfilePage.java
 /home/testautom-nack/NetBeansProjects/selenidetest/src/main/java/se/nackademin/librarytest/helpers/AuthorHelper.java
-/home/testautom-nack/NetBeansProjects/selenidetest/src/main/java/se/nackademin/librarytest/pages/BorrowBooksConfirmPage.java
 /home/testautom-nack/NetBeansProjects/selenidetest/src/main/java/se/nackademin/librarytest/pages/BookPage.java
 /home/testautom-nack/NetBeansProjects/selenidetest/src/main/java/se/nackademin/librarytest/model/Author.java
 /home/testautom-nack/NetBeansProjects/selenidetest/src/main/java/se/nackademin/librarytest/helpers/BookHelper.java

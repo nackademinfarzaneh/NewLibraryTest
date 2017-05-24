@@ -16,13 +16,13 @@ public class UserProfilePage extends MenuPage {
 
     @FindBy(css = "#gwt-uid-5")
     SelenideElement userNameFiled;
-    
+
     @FindBy(css = "#gwt-uid-7")
     SelenideElement userFirstNameFiled;
 
     @FindBy(css = "#gwt-uid-9")
     SelenideElement userLastNameFiled;
-    
+
     @FindBy(css = "#gwt-uid-13")
     SelenideElement emailFiled;
 
@@ -35,10 +35,11 @@ public class UserProfilePage extends MenuPage {
     @FindBy(css = "#delete-user-button")
     SelenideElement deleateUserButton;
 
-    @FindBy(css = "td.v-grid-cell:nth-child(1) > a:nth-child(1)")
+    // @FindBy(css = "td.v-grid-cell:nth-child(1) > a:nth-child(1)")
+    @FindBy(css = "td.v-grid-cell:nth-child(1)")
     SelenideElement bookTitleField;
 
-    @FindBy(css = "td.v-grid-cell:nth-child(2)")
+    @FindBy(css = "td.v-grid-cell:nth-child(2)") 
     SelenideElement dateAvBorrowField;
 
     @FindBy(css = "td.v-grid-cell:nth-child(3)")
@@ -47,10 +48,12 @@ public class UserProfilePage extends MenuPage {
     public String getUserName() {
         return userNameFiled.getText();
     }
-      public String getUserFirstName() {
+
+    public String getUserFirstName() {
         return userFirstNameFiled.getText();
     }
-        public String getUserLastName() {
+
+    public String getUserLastName() {
         return userLastNameFiled.getText();
     }
 
