@@ -11,7 +11,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class BookPage extends MenuPage{
 
-    @FindBy(css = "#gwt-uid-3")
+    @FindBy(css = "#gwt-uid-3") 
     SelenideElement titleField;
 
     @FindBy(css = "#gwt-uid-5")

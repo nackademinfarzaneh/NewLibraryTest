@@ -60,7 +60,7 @@ public class SelenideTest extends TestBase {
     @Test
     public void tesTable() {
 
-       String uuid = UUID.randomUUID().toString();
+        String uuid = UUID.randomUUID().toString();
 
         MenuPage menuPage = page(MenuPage.class);
         UserHelper.createNewUser(uuid, uuid);
@@ -68,8 +68,7 @@ public class SelenideTest extends TestBase {
 
         menuPage.navigateToMyProfile();
         UserProfilePage userProfilePage = page(UserProfilePage.class);
-       
-        
+
         Table table = new Table($(".v-grid-tablewrapper"));
 //        table.searchAndClick(userProfilePage.getBookTitle(), 0);
 //        table.searchAndClick(userProfilePage.getDateAvBookDue(), 1);
@@ -79,6 +78,16 @@ public class SelenideTest extends TestBase {
         table.searchAndClick("date av due", 1);
         table.searchAndClick("date av borrow", 2);
 
+    }
+    
+    @Test
+    public void testAddNewBook(){
+        
+        MenuPage menuPage = page(MenuPage.class);
+        Book book = new Book();
+        
+        UserHelper.logInAsUser("admin", "1234567890");
+        BookHelper.addNewBook(book);
     }
 
     @Test
@@ -177,7 +186,6 @@ public class SelenideTest extends TestBase {
     }
 
     @Test
-    @Ignore
     public void testChangePublishDateBook() {
 
         MenuPage menuPage = page(MenuPage.class);
@@ -199,7 +207,7 @@ public class SelenideTest extends TestBase {
             System.out.print(bookPage.getPublishDate());
 
             assertEquals("Published date should be, '2017-05-21'", convertedCurrentDate, book.getDatePublishedBook());
-
+                                                                                        
         } catch (ParseException ex) {
 
             Logger.getLogger(SelenideTest.class.getName()).log(Level.SEVERE, null, ex);
@@ -228,7 +236,7 @@ public class SelenideTest extends TestBase {
         assertEquals("Nr off available book after borrow book", "4", book.getNbrAvailableBook().toString());
 
         book = BookHelper.returnBook(book);
-        
+
         System.out.print("available book after retunr book");
         System.out.println(book.getNbrAvailableBook().toString());
 

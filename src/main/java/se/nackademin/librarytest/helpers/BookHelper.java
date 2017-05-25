@@ -18,6 +18,10 @@ import se.nackademin.librarytest.pages.UserProfilePage;
 public class BookHelper {
 
     public static void addNewBook(Book book) {
+        
+        MenuPage menuPage = page(MenuPage.class);
+        menuPage.navigateToAddBook();
+        
     }
 
     public static Book fetchBook(String searchQuery) {
@@ -42,6 +46,11 @@ public class BookHelper {
 
         return book;
     }
+    
+    public static void convertDate(Date date){
+        
+        String newDate = date.toString();
+    }
 
     public static void changePublishDateBook(String searchQuery) {
 
@@ -54,11 +63,23 @@ public class BookHelper {
         Date dateBefor = bookPage.getPublishDate();
 
         bookPage.clickEditBookButton();
+        
         EditBookPage editBookPage = page(EditBookPage.class);
+        editBookPage.setPublishedDateFiled(bookPage.getPublishDate());
+        
+        String bookPage1 = book.getDatePublishedBook().toString();
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         try {
-            Date convertedCurrentDate = sdf.parse("2017-05-21");
+            //Date convertedCurrentDate = sdf.parse("2017-05-21");
+            
+            //s = Sun Dec 31 00:00:00 CET 1989
+           String s = book.getDatePublishedBook().toString();
+            
+            Date convertedCurrentDate = sdf.parse(book.getDatePublishedBook().toString());  
+            
+            String d = convertedCurrentDate.toString();
+            
             editBookPage.setPublishedDateFiled(convertedCurrentDate);
 
             editBookPage.clickSaveBookButton();
@@ -113,5 +134,7 @@ public class BookHelper {
           book.setNbrAvailableBook(book.getNbrAvailableBook());
         return book;
     }
+
+   
 
 }
