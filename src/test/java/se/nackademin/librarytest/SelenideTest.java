@@ -8,17 +8,10 @@ package se.nackademin.librarytest;
 import se.nackademin.librarytest.helpers.Table;
 import static com.codeborne.selenide.Selenide.*;
 import io.github.bonigarcia.wdm.ChromeDriverManager;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Random;
 import java.util.UUID;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.junit.Assert;
 import static org.junit.Assert.assertEquals;
 import org.junit.Ignore;
-import java.util.GregorianCalendar;
 import static org.junit.Assert.assertNotEquals;
 
 import org.junit.Test;
@@ -51,10 +44,10 @@ public class SelenideTest extends TestBase {
 
         Table table = new Table($(".v-grid-tablewrapper"));
 
-//        System.out.println(table.getRowCount());
-//        System.out.println(table.getColumnCount());
-//        System.out.println(table.getCellValue(0, 0));
-        //  table.clickCell(1, 1);
+        System.out.println(table.getRowCount());
+        System.out.println(table.getColumnCount());
+        System.out.println(table.getCellValue(0, 0));
+        // table.clickCell(1, 1);
         table.searchAndClick("American Gods", 0);
 
         sleep(5000);
@@ -81,16 +74,6 @@ public class SelenideTest extends TestBase {
         table.searchAndClick("date av due", 1);
         table.searchAndClick("date av borrow", 2);
 
-    }
-
-    @Test
-    public void testAddNewBook() {
-
-        MenuPage menuPage = page(MenuPage.class);
-        Book book = new Book();
-
-        UserHelper.logInAsUser("admin", "1234567890");
-        BookHelper.addNewBook(book);
     }
 
     @Test
@@ -179,6 +162,24 @@ public class SelenideTest extends TestBase {
     }
 
     @Test
+    public void testAddNewBook() {
+
+        MenuPage menuPage = page(MenuPage.class);
+        Book book = new Book();
+
+        UserHelper.logInAsUser("admin", "1234567890");
+        book.setTitleBook("Test1");
+        book.setNbrAvailableBook(10);
+        book.setPageNr(200);
+        BookHelper.addNewBook(book);
+        BookHelper.fetchBook(book.getTitleBook());
+
+        Assert.assertEquals("Book should be shown", "Test1", book.getTitleBook());
+        sleep(2000);
+
+    }
+
+    @Test
     @Ignore
     public void testFetchAuthor() {
 
@@ -199,12 +200,12 @@ public class SelenideTest extends TestBase {
 
         String unsectied = book.getDatePublishedBook();
 
-        BookHelper.changePublishDateBook("Good Omens",book);
+        BookHelper.changePublishDateBook("Good Omens", book);
 
         String actual = book.getDatePublishedBook();
 
         assertNotEquals("Published ", unsectied, actual);
-
+        sleep(3000);
     }
 
     @Test
@@ -214,36 +215,38 @@ public class SelenideTest extends TestBase {
         BookPage bookPage = page(BookPage.class);
         Book book = new Book();
 
-        String uuid = UUID.randomUUID().toString();
+        UserHelper.logInAsUser("admin", "1234567890");
+        book.setTitleBook("Test1");
+        book.setNbrAvailableBook(10);
+        book.setPageNr(200);
+        BookHelper.addNewBook(book);
 
-        String date = BookHelper.randomDate();
+        book = BookHelper.fetchBook("Test1");
+        sleep(2000);
 
-        UserHelper.createNewUser(uuid, uuid);
-        UserHelper.logInAsUser(uuid, uuid);
-
-        book = BookHelper.fetchBook("Test");
+        Integer antalBookBeforBorrow = book.getNbrAvailableBook();
 
         book = BookHelper.borrowBook(book);
+
+        book = BookHelper.fetchBook(book.getTitleBook());
+
+        Integer antalBookafterBorrow = book.getNbrAvailableBook();
 
         System.out.print("available book after borrow book");
         System.out.println(book.getNbrAvailableBook().toString());
 
-        assertEquals("Nr off available book after borrow book", "4", book.getNbrAvailableBook().toString());
+        assertEquals("Nr off available book after borrow book", "9", book.getNbrAvailableBook().toString());
 
         book = BookHelper.returnBook(book);
+
+        book = BookHelper.fetchBook(book.getTitleBook());
 
         System.out.print("available book after retunr book");
         System.out.println(book.getNbrAvailableBook().toString());
 
-        assertEquals("Nr off available book after return book", "5", book.getNbrAvailableBook().toString());
+        Integer antalBookafter = book.getNbrAvailableBook();
 
-        UserProfilePage userProfilePage = page(UserProfilePage.class);
-        menuPage.navigateToMyProfile();
-
-        System.out.println("hhhhhhhhhhhhhh");
-        userProfilePage.getBookLoanFiled();
-        System.out.println("hhhhhhhhhhhhhh");
-        userProfilePage.getDateAvBookBorrow();
+        assertEquals("Nr off available book after return book", "10", book.getNbrAvailableBook().toString());
 
         sleep(3000);
     }

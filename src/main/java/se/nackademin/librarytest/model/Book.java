@@ -15,6 +15,7 @@ public class Book {
     private Integer nbrAvailableBook;
     private Date dateBorrow;
     private Date dateDUE;
+    private Integer pageNr;
 
     /**
      * @return the id
@@ -140,6 +141,20 @@ public class Book {
      */
     public void setDateDUE(Date dateDUE) {
         this.dateDUE = dateDUE;
+    }
+
+    /**
+     * @return the pageNr
+     */
+    public Integer getPageNr() {
+        return pageNr;
+    }
+
+    /**
+     * @param pageNr the pageNr to set
+     */
+    public void setPageNr(Integer pageNr) {
+        this.pageNr = pageNr;
     }
 
 }

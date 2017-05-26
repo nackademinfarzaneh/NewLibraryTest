@@ -9,6 +9,7 @@ import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import se.nackademin.librarytest.model.Book;
+import se.nackademin.librarytest.pages.AddBookPage;
 import se.nackademin.librarytest.pages.BookPage;
 import se.nackademin.librarytest.pages.ConfirmDialogPage;
 import se.nackademin.librarytest.pages.BrowseBooksPage;
@@ -47,11 +48,15 @@ public class BookHelper {
         return date;
     }
 
-    public static void addNewBook(Book book) {
+    public static Book addNewBook(Book book) {
 
         MenuPage menuPage = page(MenuPage.class);
-        menuPage.navigateToAddBook();
-
+        AddBookPage addBookPage = page(AddBookPage.class);
+        menuPage.navigateToAddBook();        
+        addBookPage.setBooktitle(book.getTitleBook());
+        
+        addBookPage.clickAddBookButton();
+        return book;
     }
 
     public static Book fetchBook(String searchQuery) {
@@ -108,7 +113,7 @@ public class BookHelper {
 
     public static Book borrowBook(Book book) {
 
-        book.getNbrAvailableBook();
+      //  book.getNbrAvailableBook();
 
         BrowseBooksPage browseBooksPage = page(BrowseBooksPage.class);
         BookPage bookPage = page(BookPage.class);
@@ -118,8 +123,9 @@ public class BookHelper {
         ConfirmDialogPage confirmDialogPage = page(ConfirmDialogPage.class);
         confirmDialogPage.clickConfirmDialogOKButton();
 
-        String s = bookPage.getAvailebleNbrOfBooks().toString();
+      //  fetchBook(book.getTitleBook());
 
+        //    String s = bookPage.getAvailebleNbrOfBooks().toString();
 //        MenuPage menuPage = page(MenuPage.class);
 //        menuPage.navigateToMyProfile();
 //        UserProfilePage userProfilePage = page(UserProfilePage.class);
@@ -128,13 +134,13 @@ public class BookHelper {
 //        table.searchAndClick(book.getTitleBook(), 1);
 //        table.searchAndClick(book.getDateBorrow().toString(), 2);
 //        table.searchAndClick(book.getDateDUE().toString(), 3);
-        book.setNbrAvailableBook(bookPage.getAvailebleNbrOfBooks());
+//        book.setNbrAvailableBook(bookPage.getAvailebleNbrOfBooks());
         return book;
     }
 
     public static Book returnBook(Book book) {
 
-        int nrofbook = book.getNbrAvailableBook();
+        
 
         BrowseBooksPage browseBooksPage = page(BrowseBooksPage.class);
         BookPage bookPage = page(BookPage.class);
@@ -143,10 +149,12 @@ public class BookHelper {
 
         ConfirmDialogPage confirmDialogPage = page(ConfirmDialogPage.class);
         confirmDialogPage.clickConfirmDialogOKButton();
+        
+        book = fetchBook(book.getTitleBook());
 
-        nrofbook = book.getNbrAvailableBook();
-
-        book.setNbrAvailableBook(book.getNbrAvailableBook());
+        int nrofbook = book.getNbrAvailableBook();
+//
+//        book.setNbrAvailableBook(book.getNbrAvailableBook());
         return book;
     }
 

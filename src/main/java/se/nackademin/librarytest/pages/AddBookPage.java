@@ -5,10 +5,30 @@
  */
 package se.nackademin.librarytest.pages;
 
+import com.codeborne.selenide.SelenideElement;
+import org.openqa.selenium.support.FindBy;
+
 /**
  *
  * @author testautom-nack
  */
-public class AddBookPage {
-    
+public class AddBookPage extends MenuPage {
+
+    @FindBy(css = "#gwt-uid-3")
+    SelenideElement booktitleFiled;
+
+    @FindBy(css = "#add-book-button")
+    SelenideElement addBookButton;
+
+    public void setBooktitle(String booktitle) {
+
+        booktitleFiled.clear();
+        booktitleFiled.sendKeys(booktitle);
+    }
+
+    public void clickAddBookButton() {
+
+        clickButton("Add book button", addBookButton);
+    }
+
 }
