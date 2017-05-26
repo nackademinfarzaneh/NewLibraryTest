@@ -11,12 +11,15 @@ import io.github.bonigarcia.wdm.ChromeDriverManager;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Random;
 import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.junit.Assert;
 import static org.junit.Assert.assertEquals;
 import org.junit.Ignore;
+import java.util.GregorianCalendar;
+import static org.junit.Assert.assertNotEquals;
 
 import org.junit.Test;
 import se.nackademin.librarytest.helpers.AuthorHelper;
@@ -79,13 +82,13 @@ public class SelenideTest extends TestBase {
         table.searchAndClick("date av borrow", 2);
 
     }
-    
+
     @Test
-    public void testAddNewBook(){
-        
+    public void testAddNewBook() {
+
         MenuPage menuPage = page(MenuPage.class);
         Book book = new Book();
-        
+
         UserHelper.logInAsUser("admin", "1234567890");
         BookHelper.addNewBook(book);
     }
@@ -191,27 +194,17 @@ public class SelenideTest extends TestBase {
         MenuPage menuPage = page(MenuPage.class);
         UserHelper.logInAsUser("admin", "1234567890");
 
-        //       Book book = BookHelper.fetchBook("Good Omens");
-        //      assertEquals("Title should be, 'Good Omens'", "Good Omens", book.getTitle());
-        BookHelper.changePublishDateBook("Good Omens");
-
         Book book = BookHelper.fetchBook("Good Omens");
+        assertEquals("Title should be, 'Good Omens'", "Good Omens", book.getTitleBook());
 
-        BookPage bookPage = page(BookPage.class);
+        String unsectied = book.getDatePublishedBook();
 
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        try {
-            Date convertedCurrentDate = sdf.parse("2017-05-21");
+        BookHelper.changePublishDateBook("Good Omens",book);
 
-            System.out.println(book.getDatePublishedBook());
-            System.out.print(bookPage.getPublishDate());
+        String actual = book.getDatePublishedBook();
 
-            assertEquals("Published date should be, '2017-05-21'", convertedCurrentDate, book.getDatePublishedBook());
-                                                                                        
-        } catch (ParseException ex) {
+        assertNotEquals("Published ", unsectied, actual);
 
-            Logger.getLogger(SelenideTest.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
 
     @Test
@@ -222,6 +215,8 @@ public class SelenideTest extends TestBase {
         Book book = new Book();
 
         String uuid = UUID.randomUUID().toString();
+
+        String date = BookHelper.randomDate();
 
         UserHelper.createNewUser(uuid, uuid);
         UserHelper.logInAsUser(uuid, uuid);

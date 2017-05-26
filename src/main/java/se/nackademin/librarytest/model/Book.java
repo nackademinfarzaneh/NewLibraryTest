@@ -11,7 +11,7 @@ public class Book {
     private String author;
     private String descriptionBook;
     private String isbn;
-    private Date datePublishedBook;
+    private String datePublishedBook;
     private Integer nbrAvailableBook;
     private Date dateBorrow;
     private Date dateDUE;
@@ -89,14 +89,14 @@ public class Book {
     /**
      * @return the datePublished
      */
-    public Date getDatePublishedBook() {
+    public String getDatePublishedBook() {
         return datePublishedBook;
     }
 
     /**
      * @param datePublishedBook the datePublished to set
      */
-    public void setDatePublishedBook(Date datePublishedBook) {
+    public void setDatePublishedBook(String datePublishedBook) {
         this.datePublishedBook = datePublishedBook;
     }
 

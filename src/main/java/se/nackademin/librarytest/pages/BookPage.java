@@ -50,17 +50,18 @@ public class BookPage extends MenuPage{
         return descriptionFiled.getText();
     }
 
-    public Date getPublishDate() {
+    public String getPublishDate() {
 
-        SimpleDateFormat formatter = new SimpleDateFormat("YYYY-MM-DD");
-        try {
-            return formatter.parse(publishDateFiled.getText());
-
-        } catch (ParseException ex) {
-
-            Logger.getLogger(BookPage.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return null;
+//        SimpleDateFormat formatter = new SimpleDateFormat("YYYY-MM-DD");
+//        try {
+//            return formatter.parse(publishDateFiled.getText());
+//
+//        } catch (ParseException ex) {
+//
+//            Logger.getLogger(BookPage.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        return null;
+        return publishDateFiled.getText();
     }
 
     public Integer getTotNbrOfBooks() {

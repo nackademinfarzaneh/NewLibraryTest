@@ -1,10 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: se.nackademin.librarytest.SelenideTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 12.722 sec <<< FAILURE! - in se.nackademin.librarytest.SelenideTest
-testChangePublishDateBook(se.nackademin.librarytest.SelenideTest)  Time elapsed: 12.605 sec  <<< ERROR!
-java.lang.NullPointerException: null
-	at se.nackademin.librarytest.pages.EditBookPage.setPublishedDateFiled(EditBookPage.java:23)
-	at se.nackademin.librarytest.helpers.BookHelper.changePublishDateBook(BookHelper.java:63)
-	at se.nackademin.librarytest.SelenideTest.testChangePublishDateBook(SelenideTest.java:186)
-
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 16.2 sec - in se.nackademin.librarytest.SelenideTest

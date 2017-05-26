@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="se.nackademin.librarytest.SelenideTest" time="12.605" tests="1" errors="1" skipped="0" failures="0">
+<testsuite name="se.nackademin.librarytest.SelenideTest" time="16.144" tests="1" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-8-oracle/jre/lib/i386"/>
@@ -33,8 +33,6 @@
     <property name="java.class.version" value="52.0"/>
     <property name="sun.management.compiler" value="HotSpot Client Compiler"/>
     <property name="os.version" value="4.4.0-78-generic"/>
-    <property name="jpda.listen" value="true"/>
-    <property name="jpda.address" value="42071"/>
     <property name="user.home" value="/home/testautom-nack"/>
     <property name="user.timezone" value="Europe/Stockholm"/>
     <property name="java.awt.printerjob" value="sun.print.PSPrinterJob"/>
@@ -42,11 +40,10 @@
     <property name="file.encoding" value="UTF-8"/>
     <property name="user.name" value="testautom-nack"/>
     <property name="java.class.path" value="/usr/share/maven/boot/plexus-classworlds-2.x.jar"/>
-    <property name="maven.surefire.debug" value="-Xdebug -Xrunjdwp:transport=dt_socket,server=n,address=42071"/>
     <property name="java.vm.specification.version" value="1.8"/>
     <property name="sun.arch.data.model" value="32"/>
     <property name="java.home" value="/usr/lib/jvm/java-8-oracle/jre"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -Dtest=se.nackademin.librarytest.SelenideTest#testChangePublishDateBook -DforkMode=once -Dmaven.surefire.debug=-Xdebug -Xrunjdwp:transport=dt_socket,server=n,address=42071 -Djpda.listen=true -Djpda.address=42071 -Dmaven.ext.class.path=/home/testautom-nack/netbeans-8.2/java/maven-nblib/netbeans-eventspy.jar surefire:test"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -Dtest=se.nackademin.librarytest.SelenideTest#testChangePublishDateBook -Dmaven.ext.class.path=/home/testautom-nack/netbeans-8.2/java/maven-nblib/netbeans-eventspy.jar surefire:test"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="user.language" value="en"/>
     <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
@@ -59,67 +56,10 @@
     <property name="maven.home" value="/usr/share/maven"/>
     <property name="file.separator" value="/"/>
     <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
-    <property name="forkMode" value="once"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="sun.desktop" value="gnome"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase name="testChangePublishDateBook" classname="se.nackademin.librarytest.SelenideTest" time="12.605">
-    <error type="java.lang.NullPointerException:">java.lang.NullPointerException: null
-	at se.nackademin.librarytest.pages.EditBookPage.setPublishedDateFiled(EditBookPage.java:23)
-	at se.nackademin.librarytest.helpers.BookHelper.changePublishDateBook(BookHelper.java:63)
-	at se.nackademin.librarytest.SelenideTest.testChangePublishDateBook(SelenideTest.java:186)
-</error>
-    <system-err><![CDATA[Starting ChromeDriver 2.29.461599 (8cfe70b3bca63aec509c39bf48c384e7eba3372b) on port 17517
-Only local connections are allowed.
-May 24, 2017 1:53:27 PM com.codeborne.selenide.webdriver.WebDriverFactory createWebDriver
-INFO: BrowserName=chrome Version=58.0.3029.110 Platform=LINUX
-May 24, 2017 1:53:27 PM com.codeborne.selenide.webdriver.WebDriverFactory createWebDriver
-INFO: Selenide v. 3.5.1
-May 24, 2017 1:53:27 PM com.codeborne.selenide.webdriver.WebDriverFactory createWebDriver
-INFO: Selenium WebDriver v. 2.53.0 build time: 2016-03-15 10:43:46
-May 24, 2017 1:53:27 PM com.codeborne.selenide.impl.WebDriverThreadLocalContainer createDriver
-INFO: Create webdriver in current thread 1: ChromeDriver -> ChromeDriver: chrome on LINUX (c6c0613262c6bc4d481998083c302b7a)
-May 24, 2017 1:53:27 PM se.nackademin.librarytest.pages.PageBase clickButton
-INFO: Clicking{0}Sign in
-May 24, 2017 1:53:30 PM se.nackademin.librarytest.pages.PageBase clickButton
-INFO: Clicking{0}Browse Books
-May 24, 2017 1:53:34 PM se.nackademin.librarytest.pages.PageBase clickButton
-INFO: Clicking{0}edit book button
-May 24, 2017 1:53:36 PM se.nackademin.librarytest.pages.BookPage getPublishDate
-SEVERE: null
-java.text.ParseException: Unparseable date: ""
-	at java.text.DateFormat.parse(DateFormat.java:366)
-	at se.nackademin.librarytest.pages.BookPage.getPublishDate(BookPage.java:57)
-	at se.nackademin.librarytest.helpers.BookHelper.changePublishDateBook(BookHelper.java:63)
-	at se.nackademin.librarytest.SelenideTest.testChangePublishDateBook(SelenideTest.java:186)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
-	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
-	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
-	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
-	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
-	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:254)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:149)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:124)
-	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:200)
-	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:153)
-	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:103)
-
-]]></system-err>
-  </testcase>
+  <testcase name="testChangePublishDateBook" classname="se.nackademin.librarytest.SelenideTest" time="16.144"/>
 </testsuite>
