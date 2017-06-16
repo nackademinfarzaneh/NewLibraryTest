@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: se.nackademin.librarytest.SelenideTest
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 2, Time elapsed: 14.985 sec - in se.nackademin.librarytest.SelenideTest

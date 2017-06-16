@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegatirvUserRestServiceTest
+-------------------------------------------------------------------------------
+Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.932 sec - in se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegatirvUserRestServiceTest

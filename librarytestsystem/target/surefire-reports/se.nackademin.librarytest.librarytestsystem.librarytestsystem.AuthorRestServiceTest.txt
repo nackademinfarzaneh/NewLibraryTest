@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: se.nackademin.librarytest.librarytestsystem.librarytestsystem.AuthorRestServiceTest
+-------------------------------------------------------------------------------
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.384 sec - in se.nackademin.librarytest.librarytestsystem.librarytestsystem.AuthorRestServiceTest
