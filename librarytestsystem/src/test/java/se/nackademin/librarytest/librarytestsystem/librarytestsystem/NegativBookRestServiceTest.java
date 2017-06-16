@@ -5,13 +5,10 @@
  */
 package se.nackademin.librarytest.librarytestsystem.librarytestsystem;
 
-import se.nackademin.librarytest.librarytestsystem.model.Authors;
 import se.nackademin.librarytest.librarytestsystem.model.Author;
 import se.nackademin.librarytest.librarytestsystem.model.Book;
 import se.nackademin.librarytest.librarytestsystem.model.SingleBook;
 import com.jayway.restassured.response.Response;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 import static org.junit.Assert.assertEquals;
 import org.junit.Ignore;
@@ -87,8 +84,7 @@ public class NegativBookRestServiceTest {
         author.setId(null);
         book.setAuthor(author);
 
-        SingleBook postSingleBook = new SingleBook(book);
-        Response response = restTestClient.createBook(postSingleBook);
+        Response response = restTestClient.createBook(new SingleBook(book));
 
         System.out.println("Status koden ska vara 400: " + response.statusCode());
         assertEquals("Boken som du föröker skapa har ingen title", 400, response.statusCode());
@@ -109,8 +105,7 @@ public class NegativBookRestServiceTest {
         Author author = restTestClient.createRandomAuthor();
         book.setAuthor(author);
 
-        SingleBook postSingleBook = new SingleBook(book);
-        Response response = restTestClient.createBook(postSingleBook);
+        Response response = restTestClient.createBook(new SingleBook(book));
 
         System.out.println("Status koden ska vara 400: " + response.statusCode());
         assertEquals("Author för boken som du föröker skapa finns inte i DB", 400, response.statusCode());
@@ -122,14 +117,14 @@ public class NegativBookRestServiceTest {
     @Test
     public void testUpdateBookWithoutTitle_StusCode400() {
 
-        BookRestTestClient restTestClient = new BookRestTestClient();
+        BookRestTestClient bookRestTestClient = new BookRestTestClient();
 
-        Book book = restTestClient.createRandomBook();
-         Response responsePostBook = restTestClient.createBook(new SingleBook(book));
+        Book book = bookRestTestClient.createRandomBook();
+        Response responsePostBook = bookRestTestClient.createBook(new SingleBook(book));
         assertEquals("Status code should be 201", 201, responsePostBook.statusCode());
         book.setTitle(null);
 
-        Response response = restTestClient.putBook(new SingleBook(book));
+        Response response = bookRestTestClient.putBook(new SingleBook(book));
         assertEquals("Boken som du föröker uppdatera har ingen title", 400, response.statusCode());
         System.out.println("Status koden ska vara 400: " + response.statusCode());
     }
@@ -145,28 +140,33 @@ public class NegativBookRestServiceTest {
         //uppdate the book 
         //verifiera att the går inte
 
-        BookRestTestClient restTestClient = new BookRestTestClient();
-        Book book = restTestClient.createRandomBookWithNoAuthor();
-        Response responsePostBook = restTestClient.createBook(new SingleBook(book));
+        BookRestTestClient bookRestTestClient = new BookRestTestClient();
+        Book book = bookRestTestClient.createRandomBookWithNoAuthor();
+
+        Response responsePostBook = bookRestTestClient.createBook(new SingleBook(book));
         assertEquals("Status code should be 201", 201, responsePostBook.statusCode());
 
         AuthorRestTestClient authorRestTestClient = new AuthorRestTestClient();
-        Author author = restTestClient.createRandomAuthor();
-         Response responsePostAuthor = authorRestTestClient.createAuthor(new SingleAuthor(author));
+        Author author = bookRestTestClient.createRandomAuthor();
+
+        Response responsePostAuthor = authorRestTestClient.createAuthor(new SingleAuthor(author));
 
         System.out.println("new book " + responsePostAuthor.statusCode());
         assertEquals("Status code should be 201", 201, responsePostAuthor.statusCode());
         author.setId(null);
 
         book.setAuthor(author);
-        Response response = restTestClient.putBook(new SingleBook(book));
+        Response response = bookRestTestClient.putBook(new SingleBook(book));
         assertEquals("Boken som du föröker uppdater har ingen id", 400, response.statusCode());
         System.out.println("Status koden ska vara 400: " + response.statusCode());
     }
 
-    // * Endpoint: /books
-    //-----------------------------    
-    //Uppdate the book contained an author that didn't exist in the database 
+    /**
+     * Endpoint: /books Uppdate the book contained an author that didn't exist
+     * in the database Bugg: Fast author finns inte i db Det går uppdatera
+     * bokens author med en author som finns inte i DB
+     *
+     */
     @Test
     @Ignore
     public void testUpdateBookWithNoAuthorsNameInDB_StusCode400() {
@@ -175,53 +175,31 @@ public class NegativBookRestServiceTest {
         //post the book 
         //set an author to the book 
         //the author dose not exist in the database befor uppdatein the book 
-        BookRestTestClient restTestClient = new BookRestTestClient();
+        BookRestTestClient bookRestTestClient = new BookRestTestClient();
 
-        Book book = restTestClient.createRandomBook();
-        //       Response responsePost = restTestClient.postBook(book.getId());           
-        //        assertEquals("Status code should be 201", 201, responsePost.statusCode());    
+        Book book = bookRestTestClient.createRandomBook();
 
-        //       Response responsePost = restTestClient.createBook(new SingleBook(book));
-        //       assertEquals("Status code should be 201", 201, responsePost.statusCode());
-        book.getAuthors().clear();
+        Response responsePost = bookRestTestClient.createBook(new SingleBook(book));
+        assertEquals("Status code should be 201", 201, responsePost.statusCode());
 
-        Author author = restTestClient.createRandomAuthor();
-        book.setAuthor(author); //.setAuthors(author);
+        Author author = bookRestTestClient.createRandomAuthor();
+        book.setAuthor(null);
+        book.setAuthor(author);
 
-        SingleBook postSingleBook = new SingleBook(book);
-
-        Response response = restTestClient.putBook(postSingleBook);
+        Response response = bookRestTestClient.putBook(new SingleBook(book));
 
         System.out.println("Status koden ska vara 400: " + response.statusCode());
         assertEquals("Author för boken som du föröker skapa finns inte i DB", 400, response.statusCode());
 
-//        BookRestTestClient restTestClient = new BookRestTestClient();
-//        SingleBook randomSingleBook = restTestClient.createRandomSingleBook();
-//        Response responsePost = restTestClient.createBook(randomSingleBook);
-//        assertEquals("Status code should be 201", 201, responsePost.statusCode());
-//        Book randomBook = randomSingleBook.getBook();
-//        //   Author author = book.getAuthor();
-//        //   author.setFirstName("Farzaneh");
-//        // book.setAuthor(author);
-//        List<Author> randomAuthor = randomBook.getAuthors();
-//        Author author = new Author(0, "farzaneh", "yousofi", "iran", "första bok");
-//        randomAuthor.set(0, author);
-//        randomBook.setAuthors(randomAuthor);
-//        SingleBook putSingleBook = new SingleBook(randomBook);
-//        Response response = restTestClient.putBook(putSingleBook);
-//
-//        System.out.println("Status koden ska vara 400: " + response.statusCode());
-//        assertEquals("Författare för boken som du föröker skapa finns inte i DB", 400, response.statusCode());
     }
 
-    // * Endpoint: /books
-    //-----------------------------    
-    //Book was not found
+    /**
+     * Endpoint: /books Book was not found
+     *
+     * create an random id get det book verifiera att booken finns inte i DB
+     */
     @Test
     public void testGetBookByIdNotfound_StatusCode404() {
-        //create an random id
-        //get det book
-        //verifiera att booken finns inte i DB
 
         Random Randomizer = new Random();
         Integer id = Randomizer.nextInt((300 - 50) + 1) + 50;
@@ -230,14 +208,14 @@ public class NegativBookRestServiceTest {
         assertEquals("Status code should be 404", 404, response.statusCode());
     }
 
-    /*
-       Endpoint: /books/{id}  
-        //create randombook, verifiera att booken är skapad
-        //deleat Book, verifiera att booken är delete
-        //koll att den finns inte
-        //Get the book, verifiera att booken finns inte
+    /**
+     * Endpoint: /books/{id} , deleate book
+     *
+     * create randombook, verifiera att booken är skapad deleat Book, verifiera
+     * att booken är delete koll att den finns inte Get the book, verifiera att
+     * booken finns inte
+     *
      */
-
     @Test
     public void testDeleteBookByIdNotFound_StusCode404() {
 
@@ -259,17 +237,16 @@ public class NegativBookRestServiceTest {
 
     }
 
-    // * Endpoint: /books/{id}
-    // --------------------------------- 
-    //uppdate the book which one of the authors din not have the id filed set
-    // uppdate the book contained an author with no id field set
+    /**
+     * Endpoint: /books/{id} uppdate the book contained an author with no id
+     * field set
+     *
+     * create a random book, post book and verifiera att booken är skapad create
+     * an author with no id add the author to the book uppdate the book
+     * verifiera att the går inte
+     */
     @Test
     public void testUpdateAuthorsListOfBookWithNoAuthorsIDForOneAuthor_StusCode400() {
-        //create a random book            
-        //create an author with no id
-        //add the author to the book
-        //uppdate the book 
-        //verifiera att the går inte
 
         BookRestTestClient restTestClient = new BookRestTestClient();
 
@@ -293,8 +270,11 @@ public class NegativBookRestServiceTest {
         assertEquals("Boken som du föröker uppdater har ingen id", 400, response.statusCode());
     }
 
-    //*  En point /books /{book_id} /authors
-    //------------------------------------------
+    /**
+     * En point /books /{book_id} /authors
+     *
+     */
+
     @Test
     public void testGetAuthorOfSpecifiedBookNotFound_StatusCoce404() {
         //

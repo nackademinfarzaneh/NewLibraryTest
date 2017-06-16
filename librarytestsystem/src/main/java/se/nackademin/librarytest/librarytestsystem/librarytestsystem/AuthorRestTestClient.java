@@ -93,15 +93,15 @@ public class AuthorRestTestClient {
         Response response = given().accept(ContentType.JSON).log().all().get(restUrl + resourceName).prettyPeek();
         return response;
     }
-
-    public SingleAuthor creatRandomSingleAuthor() {
-
-        Author author = new Author();
-        author = createRandomAuthor();
-        SingleAuthor singleAuthor = new SingleAuthor(author);
-
-        return singleAuthor;
-    }
+//
+//    public SingleAuthor creatRandomSingleAuthor() {
+//
+//        Author author = new Author();
+//        author = createRandomAuthor();
+//        SingleAuthor singleAuthor = new SingleAuthor(author);
+//
+//        return singleAuthor;
+//    }
     
         public Response deleteAuthor(int id) {
 

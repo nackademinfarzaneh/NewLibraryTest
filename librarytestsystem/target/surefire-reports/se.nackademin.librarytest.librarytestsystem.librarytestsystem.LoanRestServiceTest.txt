@@ -1,25 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: se.nackademin.librarytest.librarytestsystem.librarytestsystem.LoanRestServiceTest
 -------------------------------------------------------------------------------
-Tests run: 8, Failures: 3, Errors: 0, Skipped: 0, Time elapsed: 2.76 sec <<< FAILURE! - in se.nackademin.librarytest.librarytestsystem.librarytestsystem.LoanRestServiceTest
-testGetLoanWithSpicifiedID(se.nackademin.librarytest.librarytestsystem.librarytestsystem.LoanRestServiceTest)  Time elapsed: 1.574 sec  <<< FAILURE!
-java.lang.AssertionError: Status code should be 200  expected:<200> but was:<404>
-	at org.junit.Assert.fail(Assert.java:88)
-	at org.junit.Assert.failNotEquals(Assert.java:834)
-	at org.junit.Assert.assertEquals(Assert.java:645)
-	at se.nackademin.librarytest.librarytestsystem.librarytestsystem.LoanRestServiceTest.testGetLoanWithSpicifiedID(LoanRestServiceTest.java:140)
-
-testUpdateLoanWithNewData(se.nackademin.librarytest.librarytestsystem.librarytestsystem.LoanRestServiceTest)  Time elapsed: 0.2 sec  <<< FAILURE!
-java.lang.AssertionError: Status code should be 201  expected:<201> but was:<400>
-	at org.junit.Assert.fail(Assert.java:88)
-	at org.junit.Assert.failNotEquals(Assert.java:834)
-	at org.junit.Assert.assertEquals(Assert.java:645)
-	at se.nackademin.librarytest.librarytestsystem.librarytestsystem.LoanRestServiceTest.testUpdateLoanWithNewData(LoanRestServiceTest.java:92)
-
-testDeleteWithSpicifiedID(se.nackademin.librarytest.librarytestsystem.librarytestsystem.LoanRestServiceTest)  Time elapsed: 0.056 sec  <<< FAILURE!
-java.lang.AssertionError: Status code should be 201  expected:<201> but was:<400>
-	at org.junit.Assert.fail(Assert.java:88)
-	at org.junit.Assert.failNotEquals(Assert.java:834)
-	at org.junit.Assert.assertEquals(Assert.java:645)
-	at se.nackademin.librarytest.librarytestsystem.librarytestsystem.LoanRestServiceTest.testDeleteWithSpicifiedID(LoanRestServiceTest.java:161)
-
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.909 sec - in se.nackademin.librarytest.librarytestsystem.librarytestsystem.LoanRestServiceTest

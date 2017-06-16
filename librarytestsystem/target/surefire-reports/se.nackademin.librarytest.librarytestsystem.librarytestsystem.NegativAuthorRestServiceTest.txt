@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativAuthorRestServiceTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.699 sec - in se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativAuthorRestServiceTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.847 sec - in se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativAuthorRestServiceTest

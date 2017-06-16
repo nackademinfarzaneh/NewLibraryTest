@@ -79,24 +79,11 @@ public class LoanRestServiceTest {
         Response responsePostUser = new UserRestTestClient().createUser(new SingleUser(user));
         assertEquals("Status code should be 201 ", 201, responsePostUser.statusCode());
 
-//        user.setEmail(null);
-//        user.setFirstName(null);
-//        user.setLastName(null);
-//        user.setPassword(null);
-//        user.setPhone(null);
-//        user.setRole(null);
         Book book1 = new BookRestTestClient().createRandomBook();
         Assert.assertNotNull(book1);
 
         Response responsePostBook = new BookRestTestClient().createBook(new SingleBook(book1));
         assertEquals("Status code should be 201 ", 201, responsePostBook.statusCode());
-
-//        book1.setAuthor(null);
-//        book1.setDescription(null);
-//        book1.setIsbn(null);
-//        book1.setNbrPages(null);
-//        book1.setPublicationDate(null);
-//        book1.setTotalNbrCopies(null);
 
         LoanRestTestClient loanRestTestClient = new LoanRestTestClient();
         String dateBorrowedStr = loanRestTestClient.barrowRandomDate();
@@ -118,9 +105,6 @@ public class LoanRestServiceTest {
         Response responsePut = new LoanRestTestClient().putLoan(new SingleLoan(loan));
         assertEquals("Status code should be 200", 200, responsePut.statusCode());
 
-        //get loan som vi har skapat
-        //update user vid 
-        //put the loan 
     }
 
     // End point: Get /loans

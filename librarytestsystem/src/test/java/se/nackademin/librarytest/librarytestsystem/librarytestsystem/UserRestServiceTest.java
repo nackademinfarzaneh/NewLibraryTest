@@ -7,9 +7,15 @@ package se.nackademin.librarytest.librarytestsystem.librarytestsystem;
 
 import com.jayway.restassured.response.Response;
 import java.io.IOException;
+import java.util.Random;
 import java.util.UUID;
+import org.junit.Assert;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
+import se.nackademin.librarytest.librarytestsystem.model.Book;
+import se.nackademin.librarytest.librarytestsystem.model.Loan;
+import se.nackademin.librarytest.librarytestsystem.model.SingleBook;
+import se.nackademin.librarytest.librarytestsystem.model.SingleLoan;
 import se.nackademin.librarytest.librarytestsystem.model.SingleUser;
 import se.nackademin.librarytest.librarytestsystem.model.User;
 import se.nackademin.librarytest.librarytestsystem.model.Users;
@@ -20,13 +26,13 @@ import se.nackademin.librarytest.librarytestsystem.model.Users;
  */
 public class UserRestServiceTest {
 
-    // End point /users
+    /**
+     * End point /users Create a random user, post the user, verifiera att user
+     * är skapades
+     */
     @Test
     public void testCreateUser() {
 
-        //Create a random user
-        //post the user
-        //verifiera att user är skapades
         UserRestTestClient userRestTestClient = new UserRestTestClient();
         User user = userRestTestClient.createRandomUser();
         SingleUser singleUser = new SingleUser(user);
@@ -38,16 +44,16 @@ public class UserRestServiceTest {
 
     }
 
-    // End point /users
+    // 
+    /**
+     * End point /users Create a random user, post the user, verifiera att user
+     * är skapades change phone nr, Put the user with changes, verifiera att
+     * ändringen sparades statuscod 200
+     *
+     */
     @Test
     public void testUpdateUser() {
 
-        //Create a random user
-        //post the user
-        //verifiera att user är skapades
-        // change phone nr
-        //Put the user with changes
-        //verifiera att ändringen sparades statuscod 200
         UserRestTestClient userRestTestClient = new UserRestTestClient();
         User user = userRestTestClient.createRandomUser();
         SingleUser singleUser = new SingleUser(user);
@@ -67,7 +73,10 @@ public class UserRestServiceTest {
 
     }
 
-    //  Endpoint /users
+    /**
+     * Endpoint /users
+     *
+     */
     @Test
     public void testGetAllUser() throws IOException {
 
@@ -76,15 +85,14 @@ public class UserRestServiceTest {
         System.out.println(response);
     }
 
-    // Endpoint /users/{id}
-    //Get the user with the specified id
+    /**
+     * Endpoint /users/{id} Get the user with the specified id Create a random
+     * user, post and verifiera att booken är skapad Get the user with this Id
+     * verifiera att booken with same id är hämtat
+     */
     @Test
     public void testGetUserWithSpecifiedId() {
 
-        //Create a random user
-        //post and verifiera att booken är skapad
-        //Get the user with this Id 
-        //verifiera att booken with same id är hämtat
         UserRestTestClient userRestTestClient = new UserRestTestClient();
         User user = userRestTestClient.createRandomUser();
         SingleUser singleUser = new SingleUser(user);
@@ -99,12 +107,17 @@ public class UserRestServiceTest {
 
     }
 
-    // Endpoint /users/{id}
-    //Deleat user with the specified id 
+    // 
+    //
+    /**
+     * Endpoint /users/{id} , Deleat user with the specified id Create a
+     * randomUser and post the User, Verifiera att user är skapa
+     *
+     */
     @Test
     public void testDeleteUserWithSpecifiedId() {
-        //Create a randomUser and post the User
-        //Verifiera att user är skapat
+        //
+        //t
         //create loan för the user         -------------------->?
         // Deleta User och verifiera att user är delete
         //verifiera att loan är borta   ---------------------------------->?
@@ -113,14 +126,37 @@ public class UserRestServiceTest {
         User user = userRestTestClient.createRandomUser();
         SingleUser singleUser = new SingleUser(user);
 
-        Response responsePost = userRestTestClient.createUser(singleUser);
+        Response responsePostUser = userRestTestClient.createUser(singleUser);
 
-        System.out.println("new users id är: "+ user.getId()+". Status code för ny book är: " + responsePost.statusCode());
-        assertEquals("Status code should be 201", 201, responsePost.statusCode());
-        
-        Response deleteResponse = userRestTestClient.deleteUser(user.getId());  
-        System.err.println("Book with id: "+ user.getId()+ " är delete. Status code är: " + deleteResponse.statusCode());
+        System.out.println("new users id är: " + user.getId() + ". Status code för ny book är: " + responsePostUser.statusCode());
+        assertEquals("Status code should be 201", 201, responsePostUser.statusCode());
+
+        Book book1 = new BookRestTestClient().createRandomBook();
+        Assert.assertNotNull(book1);
+
+        Response responsePostBook = new BookRestTestClient().createBook(new SingleBook(book1));
+        assertEquals("Status code should be 201 ", 201, responsePostBook.statusCode());
+
+        LoanRestTestClient loanRestTestClient = new LoanRestTestClient();
+
+        Random Randomizer = new Random();
+        Integer id = Randomizer.nextInt((300 - 50) + 1) + 50;
+        String dateBorrowedStr = loanRestTestClient.barrowRandomDate();
+        String dateDueStr = loanRestTestClient.dueRandomDate();
+
+        Loan loan = new Loan(id, book1, dateBorrowedStr, dateDueStr, user);
+        Response responsePostLoan = loanRestTestClient.createLoan(new SingleLoan(loan));
+
+        System.out.println("new loan är skapad " + responsePostLoan.statusCode());
+        assertEquals("Status code should be 201", 201, responsePostLoan.statusCode());
+
+        Response deleteResponse = userRestTestClient.deleteUser(user.getId());
+        System.err.println("Book with id: " + user.getId() + " är delete. Status code är: " + deleteResponse.statusCode());
         assertEquals("Status code should be 204", 204, deleteResponse.statusCode());
+
+        Response responseGet = new LoanRestTestClient().getLoan(loan.getId());
+        System.err.println("XXXXXXXXXXstatus kod för att hämta loan är :  " + responseGet.statusCode());
+        assertEquals("Status code should be 404 ", 404, responseGet.statusCode());
 
     }
 

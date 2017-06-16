@@ -11,7 +11,6 @@ import com.jayway.restassured.http.ContentType;
 import com.jayway.restassured.response.Response;
 import java.util.Random;
 import se.nackademin.librarytest.librarytestsystem.model.Loan;
-import se.nackademin.librarytest.librarytestsystem.model.SingleBook;
 import se.nackademin.librarytest.librarytestsystem.model.SingleLoan;
 
 /**

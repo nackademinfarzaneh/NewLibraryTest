@@ -31,13 +31,12 @@ public class NegativAuthorRestServiceTest {
         Author author = authorRestTestClient.createRandomAuthor();
         int authorID = author.getId();
 
-        SingleAuthor singleAuthor = new SingleAuthor(author);
-        Response response = authorRestTestClient.createAuthor(singleAuthor);
+        Response response = authorRestTestClient.createAuthor(new SingleAuthor(author));
 
         assertEquals("Status code should be 201", 201, response.statusCode());
         System.out.println("status code should be 201:  " + response.statusCode());
 
-        Response response2 = authorRestTestClient.createAuthor(singleAuthor);
+        Response response2 = authorRestTestClient.createAuthor(new SingleAuthor(author));
         assertEquals("Status code should be 400 ", 400, response2.statusCode());
         System.out.println("status code should be 400  :" + response2.statusCode());
     }
@@ -54,11 +53,9 @@ public class NegativAuthorRestServiceTest {
         String firstName = author.getFirstName();
         author.setFirstName(null);
 
-        SingleAuthor singleAuthor = new SingleAuthor(author);
-
-        Response response2 = authorRestTestClient.createAuthor(singleAuthor);
-        assertEquals("Status code should be 400 ", 400, response2.statusCode());
-        System.out.println("status code should be 400  :" + response2.statusCode());
+        Response responsePostAuthor = authorRestTestClient.createAuthor(new SingleAuthor(author));
+        assertEquals("Status code should be 400 ", 400, responsePostAuthor.statusCode());
+        System.out.println("status code should be 400  :" + responsePostAuthor.statusCode());
     }
 
     @Test
@@ -73,9 +70,7 @@ public class NegativAuthorRestServiceTest {
         String firstName = author.getFirstName();
         author.setLastName(null);
 
-        SingleAuthor singleAuthor = new SingleAuthor(author);
-
-        Response response2 = authorRestTestClient.createAuthor(singleAuthor);
+        Response response2 = authorRestTestClient.createAuthor(new SingleAuthor(author));
         assertEquals("Status code should be 400 ", 400, response2.statusCode());
         System.out.println("status code should be 400  :" + response2.statusCode());
     }
@@ -84,14 +79,14 @@ public class NegativAuthorRestServiceTest {
     public void testUpdateAuthorWithNoAuthorsFirstName_StatusCode400() {
 
         AuthorRestTestClient authorRestTestClient = new AuthorRestTestClient();
-        SingleAuthor randomSingleAuthor = authorRestTestClient.creatRandomSingleAuthor();
+        
+        Author author = authorRestTestClient.createRandomAuthor();    
+        
+        Response responsePostAuthor = authorRestTestClient.createAuthor(new SingleAuthor(author));
+        assertEquals("Status code should be 201 ", 201, responsePostAuthor.statusCode());
 
-        Author randomAuthor = randomSingleAuthor.getAuthor();
-
-        randomAuthor.setFirstName(null);
-
-        SingleAuthor putSingleAuthor = new SingleAuthor(randomAuthor);
-        Response response = authorRestTestClient.putAuthor(putSingleAuthor);
+        author.setFirstName(null);
+        Response response = authorRestTestClient.putAuthor(new SingleAuthor(author));
 
         System.out.println("Status koden ska vara 400: " + response.statusCode());
         assertEquals("Boken som du föröker uppdatera har ingen title", 400, response.statusCode());
@@ -101,14 +96,14 @@ public class NegativAuthorRestServiceTest {
     public void testUpdateAuthorWithNoAuthorsLastName_StatusCode400() {
 
         AuthorRestTestClient authorRestTestClient = new AuthorRestTestClient();
-        SingleAuthor randomSingleAuthor = authorRestTestClient.creatRandomSingleAuthor();
-
-        Author randomAuthor = randomSingleAuthor.getAuthor();
-
+        Author randomAuthor = authorRestTestClient.createRandomAuthor();        
+        
+        Response responsePostAuthor = authorRestTestClient.createAuthor(new SingleAuthor(randomAuthor));
+        assertEquals("Status code should be 201 ", 201, responsePostAuthor.statusCode());
+        
         randomAuthor.setLastName(null);
-
-        SingleAuthor putSingleAuthor = new SingleAuthor(randomAuthor);
-        Response response = authorRestTestClient.putAuthor(putSingleAuthor);
+;
+        Response response = authorRestTestClient.putAuthor(new SingleAuthor(randomAuthor));
 
         System.out.println("Status koden ska vara 400: " + response.statusCode());
         assertEquals("Boken som du föröker uppdatera har ingen title", 400, response.statusCode());
@@ -137,9 +132,7 @@ public class NegativAuthorRestServiceTest {
         AuthorRestTestClient authorRestTestClient = new AuthorRestTestClient();
         Author author = authorRestTestClient.createRandomAuthor();
 
-        SingleAuthor singleAuthor = new SingleAuthor(author);
-        singleAuthor.getAuthor();
-        Response response = authorRestTestClient.createAuthor(singleAuthor);
+        Response response = authorRestTestClient.createAuthor(new SingleAuthor(author));
         assertEquals("Status code should be 201", 201, response.statusCode());
 
         Response deleateResponse = authorRestTestClient.deleteAuthor(author.getId());
@@ -159,9 +152,7 @@ public class NegativAuthorRestServiceTest {
         AuthorRestTestClient authorRestTestClient = new AuthorRestTestClient();
         Author author = authorRestTestClient.createRandomAuthor();
 
-        SingleAuthor singleAuthor = new SingleAuthor(author);
-        //  singleAuthor.getAuthor();
-        Response response = authorRestTestClient.createAuthor(singleAuthor);
+        Response response = authorRestTestClient.createAuthor(new SingleAuthor(author));
         assertEquals("Status code should be 201", 201, response.statusCode());
 
         BookRestTestClient restTestClient = new BookRestTestClient();
