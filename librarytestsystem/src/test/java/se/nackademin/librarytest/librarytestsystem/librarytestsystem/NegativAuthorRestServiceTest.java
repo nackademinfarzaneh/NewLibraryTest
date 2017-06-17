@@ -21,7 +21,7 @@ import org.junit.Test;
 public class NegativAuthorRestServiceTest {
 
     @Test
-    public void authorsIdExistInDB_StatusCode400() {
+    public void testAuthorsIdExistInDB_StatusCode400() {
 
         //create a Random authors
         //försök create a new authors with samma id

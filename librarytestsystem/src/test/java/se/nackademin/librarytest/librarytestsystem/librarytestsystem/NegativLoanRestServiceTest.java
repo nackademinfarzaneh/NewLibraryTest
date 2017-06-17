@@ -140,19 +140,7 @@ public class NegativLoanRestServiceTest {
 
         System.out.println("Loan är inte skapad eftersom user har inte Role. " +" staus koden är:  "+ responsePost.statusCode());
         assertEquals("Status code should be 400", 400, responsePost.statusCode());
-    }
-
-    /*
-        //
-        Det går inte uppdatera displayName av det user som man har skapat med en userDeiplayName som finns i DB
-    
-        //
-        //get the displayname of user
-        //Spara de i en array
-        //4-//hämta första user o get display name för that
-
-     */
-    
+    }    
     /**
      * End point: Post  /loans
      * Get all loan
@@ -271,27 +259,6 @@ public class NegativLoanRestServiceTest {
         assertEquals("Status code should be 409", 409, responsePost.statusCode());
 
     }
-
-    /*
-        End point Put, /loans
-        Vet inte vad menas
-        //the loan had id set ?
-    
-     */
-    @Test
-    public void testPutLoanIdSet_StatusCode400() {
-
-    }
-
-    /*
-        
-        //Get all loan
-        //
-        //
-        // jag uppdaterar date of borrowed with null /0 , men det gick och uppdatera den
-        // Bugg
-        //
-     */
     /**
      * End point Put, /loans
      * uppdate Date of Borrowed with null

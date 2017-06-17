@@ -200,33 +200,9 @@ public class BookRestTestClient {
         String publicationDate = restTestClient.randomDate();
         String title = UUID.randomUUID().toString().substring(1, 5);
         Integer totalNbrCopies = Randomizer.nextInt((300 - 50) + 1) + 50;
-        
 
-                
-                
-//
-//        String bio = "Sri Lankabhimanya Sir Arthur Charles Clarke, CBE, FRAS (16 December 1917 – 19 "
-//                + "March 2008) was a British science fiction writer, science writer and futurist,"
-//                + " inventor, undersea explorer, and television series host.He is perhaps most"
-//                + " famous for being co-writer of the screenplay for the movie 2001: A Space Odyssey,"
-//                + " widely considered to be one of the most influential films of all time. "
-//                + "His other science fiction writings earned him a number of Hugo and Nebula awards,"
-//                + " which along with a large readership made him one of the towering figures of science fiction.";
-
-
-
-        Book book = new Book();       //(id,author, description, isbn, nberPage, publicationDate, title, totalNbrCopies);
-//      Author author = new Author();  //(4, "Arthur C.", "Clarke", "Great Britain", bio);
-//        author.setId(4);
-//        author.setFirstName("Arthur C.");
-//        author.setLastName("Clarke");
-//        author.setCountry("Great Britain");
-//        author.setBio(bio);
-        
-   //     book.setAuthor(author);
+        Book book = new Book();
         book.setId(id);
-      //  book.setAuthors(author);
-  //      book.setAuthor(author);
         book.setDescription(description);
         book.setIsbn(isbn);
         book.setNbrPages(nberPage);

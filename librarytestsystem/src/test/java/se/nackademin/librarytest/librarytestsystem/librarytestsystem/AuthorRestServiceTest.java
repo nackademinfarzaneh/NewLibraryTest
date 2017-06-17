@@ -21,28 +21,15 @@ import org.junit.Test;
  */
 public class AuthorRestServiceTest {
 
-    @Test
-    @Ignore
-    public void testDeleteAuthor() {
-
-        AuthorRestTestClient authorRestTestClient = new AuthorRestTestClient();
-        Response deleateResponse = authorRestTestClient.deleteAuthor(170);
-
-        assertEquals("Status code should be 204", 204, deleateResponse.statusCode());
-
-    }
-
-    /*
-         Endpoint:  Get /authors
-         Hämta alla author från databasen
-     */
-    @Test
-    public void testGetAllAuthors() throws IOException {
-
-        Response response = new AuthorRestTestClient().getAllAuthor();
-        assertEquals("Status code should be 200", 200, response.statusCode());
-        System.out.println(response.statusCode());
-    }
+//    @Test
+//    @Ignore
+//    public void testDeleteAuthor() {
+//
+//        AuthorRestTestClient authorRestTestClient = new AuthorRestTestClient();
+//        Response deleateResponse = authorRestTestClient.deleteAuthor(258);
+//        Response deleateResponse2 = authorRestTestClient.deleteAuthor(197);
+//        Response deleateResponse3 = authorRestTestClient.deleteAuthor(61);
+//    }
 
     /*
         Endpint: post/authors
@@ -58,6 +45,18 @@ public class AuthorRestServiceTest {
 
         System.out.println("new book " + response.statusCode());
         assertEquals("Status code should be 201", 201, response.statusCode());
+    }
+
+    /*
+         Endpoint:  Get /authors
+         Hämta alla author från databasen
+     */
+    @Test
+    public void testGetAllAuthors() throws IOException {
+
+        Response response = new AuthorRestTestClient().getAllAuthor();
+        assertEquals("Status code should be 200", 200, response.statusCode());
+        System.out.println(response.statusCode());
     }
 
     /*
@@ -79,7 +78,6 @@ public class AuthorRestServiceTest {
 
         Response responsePut1 = authorRestTestClient.putAuthor(new SingleAuthor(author2));
         assertEquals("Status code should be 200", 200, responsePut1.statusCode());
-
     }
 
     /*
@@ -87,7 +85,6 @@ public class AuthorRestServiceTest {
         Hämtade author med id=5
         verifiera att den är hämtad
      */
-
     @Test
     public void testGetAuthorWithSpecifiedID() {
 
@@ -106,7 +103,6 @@ public class AuthorRestServiceTest {
         //Deleta den från databasen 
         // bekräfta att den är deletat statusCod 204
      */
-
     @Test
     public void testDeleteAuthorWithSpecifiedID() {
 
@@ -119,10 +115,8 @@ public class AuthorRestServiceTest {
         assertEquals("Status code should be 201", 201, response.statusCode());
 
         Response deleateResponse = authorRestTestClient.deleteAuthor(author.getId());
-
-        assertEquals("Status code should be 204", 204, deleateResponse.statusCode());
         System.out.println("Author with id " + author.getId() + " is delete.");
-
+        assertEquals("Status code should be 204", 204, deleateResponse.statusCode());
     }
 
 }

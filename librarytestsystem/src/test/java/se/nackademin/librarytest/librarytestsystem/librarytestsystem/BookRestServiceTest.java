@@ -27,16 +27,13 @@ import se.nackademin.librarytest.librarytestsystem.model.User;
  */
 public class BookRestServiceTest {
 
-    /*
-        Endpoint /books
-     */
-    @Test
-    public void testGetAllBooks() throws IOException {
-
-        Response response = new BookRestTestClient().getAllBooks();
-        assertEquals("Status code should be 200", 200, response.statusCode());
-    }
-
+//    @Test
+//    @Ignore
+//    public void testDeleteBook() {
+//        BookRestTestClient bookRestTestClient = new BookRestTestClient();
+//        bookRestTestClient.deleteBook(239);
+//        bookRestTestClient.deleteBook(166);
+//    }
     /*
         Endpoint /books , Post
         Skapa en random book, post boken, verifiera att boken är skapat
@@ -46,11 +43,21 @@ public class BookRestServiceTest {
 
         BookRestTestClient restTestClient = new BookRestTestClient();
 
-         Book book = createBook();
+        Book book = new Book();
+        book = createBook();
         Response response = restTestClient.createBook(new SingleBook(book));
 
         assertEquals("Status code should be 201", 201, response.statusCode());
         System.out.println("new book " + response.statusCode());
+    }
+    /*
+        Endpoint /books
+     */
+    @Test
+    public void testGetAllBooks() throws IOException {
+
+        Response response = new BookRestTestClient().getAllBooks();
+        assertEquals("Status code should be 200", 200, response.statusCode());
     }
 
     /*
@@ -63,7 +70,8 @@ public class BookRestServiceTest {
 
         BookRestTestClient bookRestTestClient = new BookRestTestClient();
 
-        Book book = createBook();
+        Book book = new Book();
+        book = createBook();
         Assert.assertNotNull(book);
 
         Response responsPost = bookRestTestClient.createBook(new SingleBook(book));
@@ -78,7 +86,6 @@ public class BookRestServiceTest {
         Response responsePut = bookRestTestClient.putBook(new SingleBook(book));
         assertEquals("Status code should be 200", 200, responsePut.statusCode());
     }
-
     /*
         Hämta alla böcker från DB
         Endpoint: /books/{id}   
@@ -89,7 +96,6 @@ public class BookRestServiceTest {
         Response response = new BookRestTestClient().getBook(5);
         assertEquals("Status code should be 200", 200, response.statusCode());
     }
-
     /*
         Endpoint: /books/{id}
         Delete the book whit the specified id. This also deletes all loans of this book.
@@ -107,15 +113,16 @@ public class BookRestServiceTest {
         BookRestTestClient restTestClient = new BookRestTestClient();
 
         //Create a book      
-        Book book = createBook();  
+        Book book = new Book();
+        book = createBook();
         Response response = restTestClient.createBook(new SingleBook(book));
-      
+
         System.out.println("New books id är: " + book.getId() + " och statusCode är: " + response.statusCode());
         assertEquals("Status code should be 201", 201, response.statusCode());
 
         //Create a user
         User user = new UserRestTestClient().createRandomUser();
-       Assert.assertNotNull(user);
+        Assert.assertNotNull(user);
 
         Response responsePostUser = new UserRestTestClient().createUser(new SingleUser(user));
         assertEquals("Status code should be 201 ", 201, responsePostUser.statusCode());
@@ -173,7 +180,6 @@ public class BookRestServiceTest {
         Endpoint: Post /books/{book_id}/authors
         Add an author to the specified book
      */
-
     @Test
     @Ignore
     public void testAddAuthorToSpecifiedBook() { //fungerar ej //när jag lägger till en author till en book. rubriken för authror lista blir authros 
@@ -198,9 +204,9 @@ public class BookRestServiceTest {
 
         Authors allAuthors = responsGetAllaAuthors.jsonPath().getObject("authors.author", Authors.class);
         Assert.assertNotNull(allAuthors);
-        
+
         book.setAuthor(allAuthors.get(0));
-      
+
         Response responsePost = restTestClient.addAuthorToSpecifiedBook(book.getId(), new SingleBook(book));
         assertEquals("status kod must be 201", 201, responsePost.statusCode());
 
@@ -223,7 +229,6 @@ public class BookRestServiceTest {
         Response response = restTestClient.createBook(new SingleBook(book));
         assertEquals("Status code should be 201", 201, response.statusCode());
 
-
         Response responsGetAllaAuthors = new AuthorRestTestClient().getAllAuthor();
         assertEquals("Status code should be 200", 200, responsGetAllaAuthors.statusCode());
 
@@ -235,8 +240,7 @@ public class BookRestServiceTest {
         assertEquals("status kod must be 200", 200, responsePut.statusCode());
 
     }
-    
-       
+
     Book createBook() {
 
         AuthorRestTestClient authorRestTestClient = new AuthorRestTestClient();
@@ -246,7 +250,7 @@ public class BookRestServiceTest {
         assertEquals("Status code should be 201 ", 201, responsePostAuthor.statusCode());
 
         Book book = new BookRestTestClient().createRandomBook();
-        org.junit.Assert.assertNotNull(book);
+        Assert.assertNotNull(book);
 
         book.setAuthor(author);
 

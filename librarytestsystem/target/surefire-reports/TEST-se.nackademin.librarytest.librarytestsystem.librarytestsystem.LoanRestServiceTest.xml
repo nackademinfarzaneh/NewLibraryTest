@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="se.nackademin.librarytest.librarytestsystem.librarytestsystem.LoanRestServiceTest" time="0.423" tests="9" errors="0" skipped="1" failures="5">
+<testsuite name="se.nackademin.librarytest.librarytestsystem.librarytestsystem.LoanRestServiceTest" time="2.406" tests="9" errors="0" skipped="1" failures="4">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-8-oracle/jre/lib/i386"/>
@@ -14,6 +14,7 @@
     <property name="user.country" value="US"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.os.patch.level" value="unknown"/>
+    <property name="test" value="se.nackademin.librarytest.librarytestsystem.librarytestsystem.LoanRestServiceTest"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
     <property name="user.dir" value="/home/testautom-nack/NetBeansProjects/librarytest/librarytestsystem"/>
     <property name="java.runtime.version" value="1.8.0_121-b13"/>
@@ -42,7 +43,7 @@
     <property name="java.vm.specification.version" value="1.8"/>
     <property name="sun.arch.data.model" value="32"/>
     <property name="java.home" value="/usr/lib/jvm/java-8-oracle/jre"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -Dmaven.ext.class.path=/home/testautom-nack/netbeans-8.2/java/maven-nblib/netbeans-eventspy.jar clean install"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -Dtest=se.nackademin.librarytest.librarytestsystem.librarytestsystem.LoanRestServiceTest -Dmaven.ext.class.path=/home/testautom-nack/netbeans-8.2/java/maven-nblib/netbeans-eventspy.jar surefire:test"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="user.language" value="en"/>
     <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
@@ -60,18 +61,83 @@
     <property name="sun.desktop" value="gnome"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase name="testGetLoanWithSpicifiedID" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.LoanRestServiceTest" time="0.108"/>
-  <testcase name="testGetAllaLoan" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.LoanRestServiceTest" time="0.021"/>
+  <testcase name="testGetLoanWithSpicifiedID" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.LoanRestServiceTest" time="1.658">
+    <failure message="Status code should be 201  expected:&lt;201&gt; but was:&lt;400&gt;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: Status code should be 201  expected:<201> but was:<400>
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:834)
+	at org.junit.Assert.assertEquals(Assert.java:645)
+	at se.nackademin.librarytest.librarytestsystem.librarytestsystem.LoanRestServiceTest.testGetLoanWithSpicifiedID(LoanRestServiceTest.java:138)
+]]></failure>
+    <system-out><![CDATA[Request method:	POST
+Request path:	http://localhost:8080/librarytest-rest/users/
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Multiparts:		<none>
+Headers:		Accept=*/*
+				Content-Type=application/json; charset=UTF-8
+Cookies:		<none>
+Body:
+{
+    "user": {
+        "displayName": "646b",
+        "password": "5740",
+        "role": "LOANER",
+        "firstName": "646b",
+        "lastName": "c980",
+        "phone": "f2e1",
+        "email": "1019",
+        "id": 252
+    }
+}
+]]></system-out>
+  </testcase>
+  <testcase name="testGetAllaLoan" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.LoanRestServiceTest" time="0.056"/>
   <testcase name="testDeleateLoan" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.LoanRestServiceTest" time="0">
     <skipped/>
   </testcase>
-  <testcase name="testUpdateLoanWithNewData" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.LoanRestServiceTest" time="0.084"/>
-  <testcase name="testGetLoanoOfSpecifiedBookBySpecifiedUser" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.LoanRestServiceTest" time="0.049">
+  <testcase name="testUpdateLoanWithNewData" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.LoanRestServiceTest" time="0.031">
     <failure message="Status code should be 201  expected:&lt;201&gt; but was:&lt;400&gt;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: Status code should be 201  expected:<201> but was:<400>
 	at org.junit.Assert.fail(Assert.java:88)
 	at org.junit.Assert.failNotEquals(Assert.java:834)
 	at org.junit.Assert.assertEquals(Assert.java:645)
-	at se.nackademin.librarytest.librarytestsystem.librarytestsystem.LoanRestServiceTest.testGetLoanoOfSpecifiedBookBySpecifiedUser(LoanRestServiceTest.java:311)
+	at se.nackademin.librarytest.librarytestsystem.librarytestsystem.LoanRestServiceTest.testUpdateLoanWithNewData(LoanRestServiceTest.java:91)
+]]></failure>
+    <system-out><![CDATA[Request method:	POST
+Request path:	http://localhost:8080/librarytest-rest/users/
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Multiparts:		<none>
+Headers:		Accept=*/*
+				Content-Type=application/json; charset=UTF-8
+Cookies:		<none>
+Body:
+{
+    "user": {
+        "displayName": "acc9",
+        "password": "d2fc",
+        "role": "LOANER",
+        "firstName": "acc9",
+        "lastName": "a50d",
+        "phone": "a33e",
+        "email": "c5f8",
+        "id": 246
+    }
+}
+]]></system-out>
+  </testcase>
+  <testcase name="testGetLoanoOfSpecifiedBookBySpecifiedUser" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.LoanRestServiceTest" time="0.034">
+    <failure message="Status code should be 201  expected:&lt;201&gt; but was:&lt;400&gt;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: Status code should be 201  expected:<201> but was:<400>
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:834)
+	at org.junit.Assert.assertEquals(Assert.java:645)
+	at se.nackademin.librarytest.librarytestsystem.librarytestsystem.BookRestServiceTest.createBook(BookRestServiceTest.java:258)
+	at se.nackademin.librarytest.librarytestsystem.librarytestsystem.LoanRestServiceTest.testGetLoanoOfSpecifiedBookBySpecifiedUser(LoanRestServiceTest.java:308)
 ]]></failure>
     <system-out><![CDATA[Request method:	POST
 Request path:	http://localhost:8080/librarytest-rest/authors
@@ -87,11 +153,94 @@ Cookies:		<none>
 Body:
 {
     "author": {
-        "id": 131,
-        "firstName": "bb51",
-        "lastName": "5979",
-        "country": "c64e",
-        "bio": "3e1f3ab9-e69d-41ac-b398-365d2719895f",
+        "id": 89,
+        "firstName": "aa2a",
+        "lastName": "47f5",
+        "country": "7607",
+        "bio": "bf9a72ac-7fff-47b5-8a79-643e1f826240",
+        "authors": [
+            
+        ]
+    }
+}
+]]></system-out>
+  </testcase>
+  <testcase name="testDeleteWithSpicifiedID" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.LoanRestServiceTest" time="0.163"/>
+  <testcase name="testCreateloan" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.LoanRestServiceTest" time="0.083"/>
+  <testcase name="testGetAllLoansOfTheSpecifiedBook" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.LoanRestServiceTest" time="0.208">
+    <failure message="Status code should be 201 expected:&lt;201&gt; but was:&lt;409&gt;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: Status code should be 201 expected:<201> but was:<409>
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:834)
+	at org.junit.Assert.assertEquals(Assert.java:645)
+	at se.nackademin.librarytest.librarytestsystem.librarytestsystem.LoanRestServiceTest.testGetAllLoansOfTheSpecifiedBook(LoanRestServiceTest.java:293)
+]]></failure>
+    <system-out><![CDATA[Request method:	POST
+Request path:	http://localhost:8080/librarytest-rest/users/
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Multiparts:		<none>
+Headers:		Accept=*/*
+				Content-Type=application/json; charset=UTF-8
+Cookies:		<none>
+Body:
+{
+    "user": {
+        "displayName": "304d",
+        "password": "ad89",
+        "role": "LOANER",
+        "firstName": "304d",
+        "lastName": "910c",
+        "phone": "c21c",
+        "email": "0663",
+        "id": 215
+    }
+}
+Request method:	POST
+Request path:	http://localhost:8080/librarytest-rest/users/
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Multiparts:		<none>
+Headers:		Accept=*/*
+				Content-Type=application/json; charset=UTF-8
+Cookies:		<none>
+Body:
+{
+    "user": {
+        "displayName": "be91",
+        "password": "8f03",
+        "role": "LOANER",
+        "firstName": "be91",
+        "lastName": "b4c6",
+        "phone": "c6c4",
+        "email": "b386",
+        "id": 62
+    }
+}
+Request method:	POST
+Request path:	http://localhost:8080/librarytest-rest/authors
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Multiparts:		<none>
+Headers:		Accept=*/*
+				Content-Type=application/json; charset=UTF-8
+Cookies:		<none>
+Body:
+{
+    "author": {
+        "id": 219,
+        "firstName": "3ed6",
+        "lastName": "fe7a",
+        "country": "9c93",
+        "bio": "441a6848-4864-47de-b1a8-bec48f049b5c",
         "authors": [
             
         ]
@@ -111,288 +260,124 @@ Cookies:		<none>
 Body:
 {
     "book": {
-        "id": 275,
-        "description": "ffb8",
-        "isbn": "5ba1",
-        "nbrPages": 155,
-        "publicationDate": "1998-12-28",
-        "title": "7d34",
-        "totalNbrCopies": 174,
+        "id": 212,
+        "description": "b9c3",
+        "isbn": "7c5d",
+        "nbrPages": 235,
+        "publicationDate": "1995-04-02",
+        "title": "20b9",
+        "totalNbrCopies": 108,
         "author": {
-            "id": 131,
-            "firstName": "bb51",
-            "lastName": "5979",
-            "country": "c64e",
-            "bio": "3e1f3ab9-e69d-41ac-b398-365d2719895f",
+            "id": 219,
+            "firstName": "3ed6",
+            "lastName": "fe7a",
+            "country": "9c93",
+            "bio": "441a6848-4864-47de-b1a8-bec48f049b5c",
             "authors": [
                 
             ]
         }
     }
 }
+Request method:	POST
+Request path:	http://localhost:8080/librarytest-rest/loans
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Multiparts:		<none>
+Headers:		Accept=*/*
+				Content-Type=application/json; charset=UTF-8
+Cookies:		<none>
+Body:
+{
+    "loan": {
+        "book": {
+            "id": 212,
+            "description": "b9c3",
+            "isbn": "7c5d",
+            "nbrPages": 235,
+            "publicationDate": "1995-04-02",
+            "title": "20b9",
+            "totalNbrCopies": 108,
+            "author": {
+                "id": 219,
+                "firstName": "3ed6",
+                "lastName": "fe7a",
+                "country": "9c93",
+                "bio": "441a6848-4864-47de-b1a8-bec48f049b5c",
+                "authors": [
+                    
+                ]
+            }
+        },
+        "user": {
+            "displayName": "304d",
+            "password": "ad89",
+            "role": "LOANER",
+            "firstName": "304d",
+            "lastName": "910c",
+            "phone": "c21c",
+            "email": "0663",
+            "id": 215
+        },
+        "dateBorrowed": "1993-06-19",
+        "dateDue": "1996-07-2",
+        "id": 283
+    }
+}
+new loan är skapad 201
+Request method:	POST
+Request path:	http://localhost:8080/librarytest-rest/loans
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Multiparts:		<none>
+Headers:		Accept=*/*
+				Content-Type=application/json; charset=UTF-8
+Cookies:		<none>
+Body:
+{
+    "loan": {
+        "book": {
+            "id": 212,
+            "description": "b9c3",
+            "isbn": "7c5d",
+            "nbrPages": 235,
+            "publicationDate": "1995-04-02",
+            "title": "20b9",
+            "totalNbrCopies": 108,
+            "author": {
+                "id": 219,
+                "firstName": "3ed6",
+                "lastName": "fe7a",
+                "country": "9c93",
+                "bio": "441a6848-4864-47de-b1a8-bec48f049b5c",
+                "authors": [
+                    
+                ]
+            }
+        },
+        "user": {
+            "displayName": "be91",
+            "password": "8f03",
+            "role": "LOANER",
+            "firstName": "be91",
+            "lastName": "b4c6",
+            "phone": "c6c4",
+            "email": "b386",
+            "id": 62
+        },
+        "dateBorrowed": "1993-06-19",
+        "dateDue": "1996-07-2",
+        "id": 283
+    }
+}
+new loan är skapad 409
 ]]></system-out>
   </testcase>
-  <testcase name="testDeleteWithSpicifiedID" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.LoanRestServiceTest" time="0.039">
-    <failure message="Status code should be 201  expected:&lt;201&gt; but was:&lt;400&gt;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: Status code should be 201  expected:<201> but was:<400>
-	at org.junit.Assert.fail(Assert.java:88)
-	at org.junit.Assert.failNotEquals(Assert.java:834)
-	at org.junit.Assert.assertEquals(Assert.java:645)
-	at se.nackademin.librarytest.librarytestsystem.librarytestsystem.BookRestServiceTest.createBook(BookRestServiceTest.java:246)
-	at se.nackademin.librarytest.librarytestsystem.librarytestsystem.LoanRestServiceTest.testDeleteWithSpicifiedID(LoanRestServiceTest.java:174)
-]]></failure>
-    <system-out><![CDATA[Request method:	POST
-Request path:	http://localhost:8080/librarytest-rest/users/
-Proxy:			<none>
-Request params:	<none>
-Query params:	<none>
-Form params:	<none>
-Path params:	<none>
-Multiparts:		<none>
-Headers:		Accept=*/*
-				Content-Type=application/json; charset=UTF-8
-Cookies:		<none>
-Body:
-{
-    "user": {
-        "displayName": "f14c",
-        "password": "fd35",
-        "role": "LOANER",
-        "firstName": "f14c",
-        "lastName": "d21d",
-        "phone": "bf1d",
-        "email": "fb93",
-        "id": 272
-    }
-}
-Request method:	POST
-Request path:	http://localhost:8080/librarytest-rest/authors
-Proxy:			<none>
-Request params:	<none>
-Query params:	<none>
-Form params:	<none>
-Path params:	<none>
-Multiparts:		<none>
-Headers:		Accept=*/*
-				Content-Type=application/json; charset=UTF-8
-Cookies:		<none>
-Body:
-{
-    "author": {
-        "id": 298,
-        "firstName": "bb42",
-        "lastName": "f880",
-        "country": "214f",
-        "bio": "6b8b4015-ef0a-4d7b-89ff-7d48455b4708",
-        "authors": [
-            
-        ]
-    }
-}
-]]></system-out>
-  </testcase>
-  <testcase name="testCreateloan" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.LoanRestServiceTest" time="0.053">
-    <failure message="Status code should be 201  expected:&lt;201&gt; but was:&lt;400&gt;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: Status code should be 201  expected:<201> but was:<400>
-	at org.junit.Assert.fail(Assert.java:88)
-	at org.junit.Assert.failNotEquals(Assert.java:834)
-	at org.junit.Assert.assertEquals(Assert.java:645)
-	at se.nackademin.librarytest.librarytestsystem.librarytestsystem.BookRestServiceTest.createBook(BookRestServiceTest.java:246)
-	at se.nackademin.librarytest.librarytestsystem.librarytestsystem.LoanRestServiceTest.testCreateloan(LoanRestServiceTest.java:53)
-]]></failure>
-    <system-out><![CDATA[Request method:	POST
-Request path:	http://localhost:8080/librarytest-rest/users/
-Proxy:			<none>
-Request params:	<none>
-Query params:	<none>
-Form params:	<none>
-Path params:	<none>
-Multiparts:		<none>
-Headers:		Accept=*/*
-				Content-Type=application/json; charset=UTF-8
-Cookies:		<none>
-Body:
-{
-    "user": {
-        "displayName": "2161",
-        "password": "f9c7",
-        "role": "LOANER",
-        "firstName": "2161",
-        "lastName": "9f53",
-        "phone": "9960",
-        "email": "8dee",
-        "id": 277
-    }
-}
-Request method:	POST
-Request path:	http://localhost:8080/librarytest-rest/authors
-Proxy:			<none>
-Request params:	<none>
-Query params:	<none>
-Form params:	<none>
-Path params:	<none>
-Multiparts:		<none>
-Headers:		Accept=*/*
-				Content-Type=application/json; charset=UTF-8
-Cookies:		<none>
-Body:
-{
-    "author": {
-        "id": 194,
-        "firstName": "dc03",
-        "lastName": "39d4",
-        "country": "7e3e",
-        "bio": "3d1c1bab-b692-473c-8f40-c8871d685167",
-        "authors": [
-            
-        ]
-    }
-}
-]]></system-out>
-  </testcase>
-  <testcase name="testGetAllLoansOfTheSpecifiedBook" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.LoanRestServiceTest" time="0.056">
-    <failure message="Status code should be 201  expected:&lt;201&gt; but was:&lt;400&gt;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: Status code should be 201  expected:<201> but was:<400>
-	at org.junit.Assert.fail(Assert.java:88)
-	at org.junit.Assert.failNotEquals(Assert.java:834)
-	at org.junit.Assert.assertEquals(Assert.java:645)
-	at se.nackademin.librarytest.librarytestsystem.librarytestsystem.LoanRestServiceTest.testGetAllLoansOfTheSpecifiedBook(LoanRestServiceTest.java:271)
-]]></failure>
-    <system-out><![CDATA[Request method:	POST
-Request path:	http://localhost:8080/librarytest-rest/users/
-Proxy:			<none>
-Request params:	<none>
-Query params:	<none>
-Form params:	<none>
-Path params:	<none>
-Multiparts:		<none>
-Headers:		Accept=*/*
-				Content-Type=application/json; charset=UTF-8
-Cookies:		<none>
-Body:
-{
-    "user": {
-        "displayName": "71b5",
-        "password": "2b48",
-        "role": "LOANER",
-        "firstName": "71b5",
-        "lastName": "9a0e",
-        "phone": "e1db",
-        "email": "65bb",
-        "id": 191
-    }
-}
-Request method:	POST
-Request path:	http://localhost:8080/librarytest-rest/users/
-Proxy:			<none>
-Request params:	<none>
-Query params:	<none>
-Form params:	<none>
-Path params:	<none>
-Multiparts:		<none>
-Headers:		Accept=*/*
-				Content-Type=application/json; charset=UTF-8
-Cookies:		<none>
-Body:
-{
-    "user": {
-        "displayName": "13d6",
-        "password": "02f7",
-        "role": "LOANER",
-        "firstName": "13d6",
-        "lastName": "5b20",
-        "phone": "9ce2",
-        "email": "7ff6",
-        "id": 233
-    }
-}
-Request method:	POST
-Request path:	http://localhost:8080/librarytest-rest/authors
-Proxy:			<none>
-Request params:	<none>
-Query params:	<none>
-Form params:	<none>
-Path params:	<none>
-Multiparts:		<none>
-Headers:		Accept=*/*
-				Content-Type=application/json; charset=UTF-8
-Cookies:		<none>
-Body:
-{
-    "author": {
-        "id": 175,
-        "firstName": "f0fb",
-        "lastName": "22e0",
-        "country": "1cdb",
-        "bio": "fadcc8d1-98c5-4638-84d7-034c3b6ac7a7",
-        "authors": [
-            
-        ]
-    }
-}
-Request method:	POST
-Request path:	http://localhost:8080/librarytest-rest/books
-Proxy:			<none>
-Request params:	<none>
-Query params:	<none>
-Form params:	<none>
-Path params:	<none>
-Multiparts:		<none>
-Headers:		Accept=*/*
-				Content-Type=application/json; charset=UTF-8
-Cookies:		<none>
-Body:
-{
-    "book": {
-        "id": 247,
-        "description": "1575",
-        "isbn": "fcbf",
-        "nbrPages": 184,
-        "publicationDate": "2000-10-26",
-        "title": "c095",
-        "totalNbrCopies": 276,
-        "author": {
-            "id": 175,
-            "firstName": "f0fb",
-            "lastName": "22e0",
-            "country": "1cdb",
-            "bio": "fadcc8d1-98c5-4638-84d7-034c3b6ac7a7",
-            "authors": [
-                
-            ]
-        }
-    }
-}
-]]></system-out>
-  </testcase>
-  <testcase name="testGetAllLoansOfTheSpecifiedUser" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.LoanRestServiceTest" time="0.013">
-    <failure message="Status code should be 201  expected:&lt;201&gt; but was:&lt;400&gt;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: Status code should be 201  expected:<201> but was:<400>
-	at org.junit.Assert.fail(Assert.java:88)
-	at org.junit.Assert.failNotEquals(Assert.java:834)
-	at org.junit.Assert.assertEquals(Assert.java:645)
-	at se.nackademin.librarytest.librarytestsystem.librarytestsystem.LoanRestServiceTest.testGetAllLoansOfTheSpecifiedUser(LoanRestServiceTest.java:207)
-]]></failure>
-    <system-out><![CDATA[Request method:	POST
-Request path:	http://localhost:8080/librarytest-rest/users/
-Proxy:			<none>
-Request params:	<none>
-Query params:	<none>
-Form params:	<none>
-Path params:	<none>
-Multiparts:		<none>
-Headers:		Accept=*/*
-				Content-Type=application/json; charset=UTF-8
-Cookies:		<none>
-Body:
-{
-    "user": {
-        "displayName": "1b7d",
-        "password": "3bd2",
-        "role": "LOANER",
-        "firstName": "1b7d",
-        "lastName": "9298",
-        "phone": "d9dd",
-        "email": "cefe",
-        "id": 249
-    }
-}
-]]></system-out>
-  </testcase>
+  <testcase name="testGetAllLoansOfTheSpecifiedUser" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.LoanRestServiceTest" time="0.173"/>
 </testsuite>

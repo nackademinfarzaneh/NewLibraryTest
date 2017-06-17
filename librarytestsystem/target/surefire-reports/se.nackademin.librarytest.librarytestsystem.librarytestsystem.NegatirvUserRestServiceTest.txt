@@ -1,11 +1,18 @@
 -------------------------------------------------------------------------------
 Test set: se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegatirvUserRestServiceTest
 -------------------------------------------------------------------------------
-Tests run: 12, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 2.858 sec <<< FAILURE! - in se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegatirvUserRestServiceTest
-testDeleteUserWithSpecifiedIdNotFound_StatusCode404(se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegatirvUserRestServiceTest)  Time elapsed: 0.019 sec  <<< FAILURE!
-java.lang.AssertionError: Status code should be 404 expected:<404> but was:<204>
+Tests run: 12, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 1.202 sec <<< FAILURE! - in se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegatirvUserRestServiceTest
+testUpdateUserWithNoRole_StusCode400(se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegatirvUserRestServiceTest)  Time elapsed: 0.014 sec  <<< FAILURE!
+java.lang.AssertionError: A new user är skapat expected:<201> but was:<400>
 	at org.junit.Assert.fail(Assert.java:88)
 	at org.junit.Assert.failNotEquals(Assert.java:834)
 	at org.junit.Assert.assertEquals(Assert.java:645)
-	at se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegatirvUserRestServiceTest.testDeleteUserWithSpecifiedIdNotFound_StatusCode404(NegatirvUserRestServiceTest.java:307)
+	at se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegatirvUserRestServiceTest.testUpdateUserWithNoRole_StusCode400(NegatirvUserRestServiceTest.java:218)
+
+testGetUserWithSpecifiedIdNotFound_StatusCode404(se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegatirvUserRestServiceTest)  Time elapsed: 0.009 sec  <<< FAILURE!
+java.lang.AssertionError: Status code should be 404 expected:<404> but was:<200>
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:834)
+	at org.junit.Assert.assertEquals(Assert.java:645)
+	at se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegatirvUserRestServiceTest.testGetUserWithSpecifiedIdNotFound_StatusCode404(NegatirvUserRestServiceTest.java:291)
 
