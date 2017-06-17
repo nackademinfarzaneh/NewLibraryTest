@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import org.junit.Assert;
 import static org.junit.Assert.assertEquals;
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -20,11 +21,21 @@ import org.junit.Test;
  */
 public class AuthorRestServiceTest {
 
+    @Test
+    @Ignore
+    public void testDeleteAuthor() {
+
+        AuthorRestTestClient authorRestTestClient = new AuthorRestTestClient();
+        Response deleateResponse = authorRestTestClient.deleteAuthor(170);
+
+        assertEquals("Status code should be 204", 204, deleateResponse.statusCode());
+
+    }
+
     /*
          Endpoint:  Get /authors
          Hämta alla author från databasen
-    */
-   
+     */
     @Test
     public void testGetAllAuthors() throws IOException {
 
@@ -36,8 +47,7 @@ public class AuthorRestServiceTest {
     /*
         Endpint: post/authors
         Create a random author, post author och verifiera att author är skapat.
-    */
-    
+     */
     @Test
     public void testCreateAuthor() throws ParseException {
 
@@ -55,7 +65,6 @@ public class AuthorRestServiceTest {
          Create a random author. Posti author och verifiera att den är skapat
          Updatera authorsName med ny namn. Verifiera att author är uppdaterat         
      */
-
     @Test
     public void testUpdateAuthor() {
 
@@ -72,12 +81,13 @@ public class AuthorRestServiceTest {
         assertEquals("Status code should be 200", 200, responsePut1.statusCode());
 
     }
+
     /*
         endpoint /authors/{id}  
         Hämtade author med id=5
         verifiera att den är hämtad
-    */
-     
+     */
+
     @Test
     public void testGetAuthorWithSpecifiedID() {
 
@@ -88,13 +98,14 @@ public class AuthorRestServiceTest {
         assertEquals("Status code should be 200", 200, response.statusCode());
         System.out.println(" Det author id som vi hämtade är " + author.getId() + " " + "Status code should be: " + response.statusCode());
     }
+
     /*
         End point Delete, /authors/{id}
         //create en random author
         //kolla att den är skapad statusCode 201
         //Deleta den från databasen 
         // bekräfta att den är deletat statusCod 204
-    */
+     */
 
     @Test
     public void testDeleteAuthorWithSpecifiedID() {

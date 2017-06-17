@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativBookRestServiceTest" time="1.425" tests="1" errors="0" skipped="0" failures="0">
+<testsuite name="se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativBookRestServiceTest" time="0.229" tests="17" errors="0" skipped="1" failures="1">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-8-oracle/jre/lib/i386"/>
@@ -14,7 +14,6 @@
     <property name="user.country" value="US"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.os.patch.level" value="unknown"/>
-    <property name="test" value="se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativBookRestServiceTest#testGetAuthorOfSpecifiedBookNotFound_StatusCoce404"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
     <property name="user.dir" value="/home/testautom-nack/NetBeansProjects/librarytest/librarytestsystem"/>
     <property name="java.runtime.version" value="1.8.0_121-b13"/>
@@ -43,7 +42,7 @@
     <property name="java.vm.specification.version" value="1.8"/>
     <property name="sun.arch.data.model" value="32"/>
     <property name="java.home" value="/usr/lib/jvm/java-8-oracle/jre"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -Dtest=se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativBookRestServiceTest#testGetAuthorOfSpecifiedBookNotFound_StatusCoce404 -Dmaven.ext.class.path=/home/testautom-nack/netbeans-8.2/java/maven-nblib/netbeans-eventspy.jar surefire:test"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -Dmaven.ext.class.path=/home/testautom-nack/netbeans-8.2/java/maven-nblib/netbeans-eventspy.jar clean install"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="user.language" value="en"/>
     <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
@@ -61,5 +60,55 @@
     <property name="sun.desktop" value="gnome"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase name="testGetAuthorOfSpecifiedBookNotFound_StatusCoce404" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativBookRestServiceTest" time="1.425"/>
+  <testcase name="testCreateBookWithIDInDB_StusCode400" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativBookRestServiceTest" time="0.024"/>
+  <testcase name="testUpdateSpecifiedBookWithAuthorListBookNotFound_StusCode404" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativBookRestServiceTest" time="0"/>
+  <testcase name="testUpdateBookWithNoAuthorsNameInDB_StusCode400" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativBookRestServiceTest" time="0">
+    <skipped/>
+  </testcase>
+  <testcase name="testAddAuthorTospecifiedBookWithNoAuthorsID_StusCode400" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativBookRestServiceTest" time="0"/>
+  <testcase name="testCreateBookWithNoTitle_StusCode400" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativBookRestServiceTest" time="0.039"/>
+  <testcase name="testAddAuthorToSpecifiedBookNotFound_StusCode404" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativBookRestServiceTest" time="0"/>
+  <testcase name="testDeleteBookByIdNotFound_StusCode404" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativBookRestServiceTest" time="0.034"/>
+  <testcase name="testUpdateBookWithAuthorListToSpecifiedBookWithNoIDForOneAuthor_StusCode400" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativBookRestServiceTest" time="0"/>
+  <testcase name="testGetAuthorOfSpecifiedBookNotFound_StatusCoce404" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativBookRestServiceTest" time="0.01"/>
+  <testcase name="testAddAuthorTospecifiedBook_StusCode400" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativBookRestServiceTest" time="0"/>
+  <testcase name="testCreateBookWithNoAuthorsID_StusCode400" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativBookRestServiceTest" time="0.011"/>
+  <testcase name="testUpdateBookWithAuthorListToSpecifiedBookAuthorExistInTheListOfBook_StusCode400" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativBookRestServiceTest" time="0"/>
+  <testcase name="testCreateBookWithNoAuthorsNameInDB_StusCode400" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativBookRestServiceTest" time="0.011"/>
+  <testcase name="testUpdateBookWithNoAuthorsID_StusCode400" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativBookRestServiceTest" time="0.05"/>
+  <testcase name="testUpdateAuthorsListOfBookWithNoAuthorsIDForOneAuthor_StusCode400" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativBookRestServiceTest" time="0.016">
+    <failure message="Status code should be 201 expected:&lt;201&gt; but was:&lt;400&gt;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: Status code should be 201 expected:<201> but was:<400>
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:834)
+	at org.junit.Assert.assertEquals(Assert.java:645)
+	at se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativBookRestServiceTest.testUpdateAuthorsListOfBookWithNoAuthorsIDForOneAuthor_StusCode400(NegativBookRestServiceTest.java:257)
+]]></failure>
+    <system-out><![CDATA[Request method:	POST
+Request path:	http://localhost:8080/librarytest-rest/books
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Multiparts:		<none>
+Headers:		Accept=*/*
+				Content-Type=application/json; charset=UTF-8
+Cookies:		<none>
+Body:
+{
+    "book": {
+        "id": 121,
+        "description": "e4d5",
+        "isbn": "bda2",
+        "nbrPages": 206,
+        "publicationDate": "1992-02-21",
+        "title": "6ad1",
+        "totalNbrCopies": 159
+    }
+}
+New books id är: 121 och statusCode är: 400
+]]></system-out>
+  </testcase>
+  <testcase name="testGetBookByIdNotfound_StatusCode404" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativBookRestServiceTest" time="0.011"/>
+  <testcase name="testUpdateBookWithoutTitle_StusCode400" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativBookRestServiceTest" time="0.023"/>
 </testsuite>

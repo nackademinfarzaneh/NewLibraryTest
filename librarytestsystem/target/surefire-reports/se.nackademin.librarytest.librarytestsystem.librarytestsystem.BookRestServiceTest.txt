@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: se.nackademin.librarytest.librarytestsystem.librarytestsystem.BookRestServiceTest
 -------------------------------------------------------------------------------
-Tests run: 9, Failures: 0, Errors: 0, Skipped: 2, Time elapsed: 2.489 sec - in se.nackademin.librarytest.librarytestsystem.librarytestsystem.BookRestServiceTest
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 2, Time elapsed: 2.713 sec - in se.nackademin.librarytest.librarytestsystem.librarytestsystem.BookRestServiceTest

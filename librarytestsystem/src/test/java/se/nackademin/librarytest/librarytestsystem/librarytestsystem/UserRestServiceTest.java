@@ -11,6 +11,7 @@ import java.util.Random;
 import java.util.UUID;
 import org.junit.Assert;
 import static org.junit.Assert.assertEquals;
+import org.junit.Ignore;
 import org.junit.Test;
 import se.nackademin.librarytest.librarytestsystem.model.Book;
 import se.nackademin.librarytest.librarytestsystem.model.Loan;
@@ -25,6 +26,24 @@ import se.nackademin.librarytest.librarytestsystem.model.Users;
  * @author testautom-nack
  */
 public class UserRestServiceTest {
+
+    @Test
+    @Ignore
+    public void testDeteUser() {
+
+        UserRestTestClient userRestTestClient = new UserRestTestClient();
+        Response deleteResponse1 = userRestTestClient.deleteUser(244);
+           Response deleteResponse2 = userRestTestClient.deleteUser(293);
+              Response deleteResponse3 = userRestTestClient.deleteUser(179);
+                 Response deleteResponse4 = userRestTestClient.deleteUser(288);
+                 
+                    Response deleteResponse5 = userRestTestClient.deleteUser(133);
+           Response deleteResponse6 = userRestTestClient.deleteUser(219);
+              Response deleteResponse7 = userRestTestClient.deleteUser(89);
+            //     Response deleteResponse8 = userRestTestClient.deleteUser(293);
+       
+       
+    }
 
     /**
      * End point /users Create a random user, post the user, verifiera att user
@@ -76,6 +95,7 @@ public class UserRestServiceTest {
     /**
      * Endpoint /users
      *
+     * @throws java.io.IOException
      */
     @Test
     public void testGetAllUser() throws IOException {

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------------------
 Test set: se.nackademin.librarytest.librarytestsystem.librarytestsystem.AuthorRestServiceTest
 -------------------------------------------------------------------------------
-Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.384 sec - in se.nackademin.librarytest.librarytestsystem.librarytestsystem.AuthorRestServiceTest
+Tests run: 6, Failures: 1, Errors: 0, Skipped: 1, Time elapsed: 0.479 sec <<< FAILURE! - in se.nackademin.librarytest.librarytestsystem.librarytestsystem.AuthorRestServiceTest
+testUpdateAuthor(se.nackademin.librarytest.librarytestsystem.librarytestsystem.AuthorRestServiceTest)  Time elapsed: 0.011 sec  <<< FAILURE!
+java.lang.AssertionError: Status code should be 201 expected:<201> but was:<400>
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:834)
+	at org.junit.Assert.assertEquals(Assert.java:645)
+	at se.nackademin.librarytest.librarytestsystem.librarytestsystem.AuthorRestServiceTest.testUpdateAuthor(AuthorRestServiceTest.java:77)
+

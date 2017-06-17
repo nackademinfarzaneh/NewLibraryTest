@@ -1,4 +1,18 @@
 -------------------------------------------------------------------------------
 Test set: se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativLoanRestServiceTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.833 sec - in se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativLoanRestServiceTest
+Tests run: 19, Failures: 2, Errors: 0, Skipped: 4, Time elapsed: 0.628 sec <<< FAILURE! - in se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativLoanRestServiceTest
+testPutLoanNotFound_StatusCode404(se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativLoanRestServiceTest)  Time elapsed: 0.03 sec  <<< FAILURE!
+java.lang.AssertionError: Status code should be 201  expected:<201> but was:<400>
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:834)
+	at org.junit.Assert.assertEquals(Assert.java:645)
+	at se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativLoanRestServiceTest.testPutLoanNotFound_StatusCode404(NegativLoanRestServiceTest.java:441)
+
+testGetLoanOfSpecifiedUserLoanNotFound_StatusCode404(se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativLoanRestServiceTest)  Time elapsed: 0.026 sec  <<< FAILURE!
+java.lang.AssertionError: Status code should be 201  expected:<201> but was:<400>
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:834)
+	at org.junit.Assert.assertEquals(Assert.java:645)
+	at se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativLoanRestServiceTest.testGetLoanOfSpecifiedUserLoanNotFound_StatusCode404(NegativLoanRestServiceTest.java:513)
+

@@ -18,82 +18,81 @@ import se.nackademin.librarytest.librarytestsystem.model.SingleLoan;
  * @author testautom-nack
  */
 public class LoanRestTestClient {
-    
+
     private static final String restUrl = "http://localhost:8080/librarytest-rest/";
-    
+
     public Response createLoan(SingleLoan singleloan) {
         String postResourceName = "loans";
         Response response = resoursCreator(postResourceName, singleloan);
         return response;
     }
-    
+
     private static Response resoursCreator(String resourceName, SingleLoan singleloan) {
         Response response = given().contentType(ContentType.JSON).body(singleloan).log().all().post(restUrl + resourceName);
         return response;
     }
-    
+
     public Response getLoan(int id) {
-        
+
         String resourceName = "loans/" + id;
         Response response = resoursGetter(resourceName);
         return response;
     }
-    
+
     private static Response resoursGetter(String resourceName) {
         Response response = given().accept(ContentType.JSON).log().all().get(restUrl + resourceName).prettyPeek();
         return response;
     }
-    
+
     public Response getAllLoan() {
         Response response = resoursGetter("loans");
         return response;
     }
-    
+
     Response getLoanOfBook(int id) {
         String resourceName = "loans/ofbook/" + id;
         Response response = resoursGetter(resourceName);
         return response;
     }
-    
+
     Response getLoanOfUser(int id) {
-        
+
         String resourceName = "loans/ofuser/" + id;
         Response response = resoursGetter(resourceName);
         return response;
     }
 
-    
     Response getLoanOfBookByUser(SingleLoan singleLoan) {
-        
+
         Loan loan = singleLoan.getLoan();
         int bookId = loan.getBook().getId();
         int userId = loan.getUser().getId();
-        
-        String resourceName = "loans/ofuser/" + userId + "/ofbook/" + bookId; 
-        
+
+        String resourceName = "loans/ofuser/" + userId + "/ofbook/" + bookId;
+
         Response response = given().contentType(ContentType.JSON).body(loan.getUser()).log().all().get(restUrl + resourceName).prettyPeek();   //.body(singleLoan)
         return response;
-        
+
     }
-    
+
     public Response deleteLoan(int id) {
-        
+
         String deleteResourceName = "loans/" + id;
         Response deleteResponse = delete(restUrl + deleteResourceName);
         return deleteResponse;
     }
-    
+
     public Response putLoan(SingleLoan singleLoan) {
         Response response = resoursPutter("loans", singleLoan);
         return response;
     }
-    
+
     private static Response resoursPutter(String resourceName, SingleLoan singleLoan) {
         Response response = given().contentType(ContentType.JSON).body(singleLoan).log().all().put(restUrl + resourceName).prettyPeek();
         return response;
     }
-    
-     public String barrowRandomDate() {
+
+    public String barrowRandomDate() {
 
         //random.nextInt(max - min + 1) + min
         Random ran = new Random();
@@ -135,5 +134,4 @@ public class LoanRestTestClient {
         return date;
     }
 
-    
 }

@@ -6,12 +6,15 @@
 package se.nackademin.librarytest.librarytestsystem.librarytestsystem;
 
 import com.jayway.restassured.response.Response;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import junit.framework.Assert;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 import se.nackademin.librarytest.librarytestsystem.model.SingleUser;
 import se.nackademin.librarytest.librarytestsystem.model.User;
+import se.nackademin.librarytest.librarytestsystem.model.Users;
 
 /**
  *
@@ -25,27 +28,22 @@ public class NegatirvUserRestServiceTest {
     @Test
     public void testCreateUserWithIDInDB_StusCode400() {
 
-        // user with id 13 finns i DB
-        //Get a user from DB 
-        // verifiera att user finns
-        //get det user id
+        //Create randomUser, post user och verifiera att den finn i DB
+        //get alla user from db
         //create a random user 
-        // set the random usersid till user som vi hämtade
+        // set the usersid från första user av user lista till user som vi skapade
         // post random user with the user id som vi hämtade först
         //verifiera att det går inte att skapa user
         UserRestTestClient userRestTestClient = new UserRestTestClient();
-        Response responseGetUser = userRestTestClient.getUser(13);
-        assertEquals("Status code should be 200", 200, responseGetUser.statusCode());
 
-        User user = responseGetUser.jsonPath().getObject("user", User.class);
-        Assert.assertNotNull(user);
+        Response responseGetAllUser = userRestTestClient.getAllUser();
+        Users users = responseGetAllUser.jsonPath().getObject("users.user", Users.class);
+        Assert.assertNotNull(users);
 
-        User userRandom = new User();
-        userRandom = userRestTestClient.createRandomUser();
-        userRandom.setId(user.getId());
+        User user = userRestTestClient.createRandomUser();
+        user.setId(users.get(0).getId());
 
-        Response responsePostUser = userRestTestClient.createUser(new SingleUser(user));    //.createUser(new SingleUser(user));
-
+        Response responsePostUser = userRestTestClient.createUser(new SingleUser(user));
         System.out.println("Status koden ska vara 400: " + responsePostUser.statusCode());
         assertEquals("En user med samma id finns redan i databasen,", 400, responsePostUser.statusCode());
 
@@ -62,8 +60,8 @@ public class NegatirvUserRestServiceTest {
         //posta den 
         // verifiera att det går inte skapa user
         UserRestTestClient userRestTestClient = new UserRestTestClient();
-        User userRandom = new User();
-        userRandom = userRestTestClient.createRandomUser();
+        User userRandom = userRestTestClient.createRandomUser();
+        //     user = userRestTestClient.createRandomUser();
 
         userRandom.setDisplayName(null);
         Response responsePostUser = userRestTestClient.createUser(new SingleUser(userRandom));
@@ -83,8 +81,8 @@ public class NegatirvUserRestServiceTest {
         //posta den 
         // verifiera att det går inte skapa user
         UserRestTestClient userRestTestClient = new UserRestTestClient();
-        User userRandom = new User();
-        userRandom = userRestTestClient.createRandomUser();
+        User userRandom = userRestTestClient.createRandomUser();
+        //  user = userRestTestClient.createRandomUser();
 
         userRandom.setPassword(null);
         Response responsePostUser = userRestTestClient.createUser(new SingleUser(userRandom));
@@ -104,8 +102,8 @@ public class NegatirvUserRestServiceTest {
         //posta den 
         // verifiera att det går inte skapa user
         UserRestTestClient userRestTestClient = new UserRestTestClient();
-        User userRandom = new User();
-        userRandom = userRestTestClient.createRandomUser();
+        User userRandom = userRestTestClient.createRandomUser();
+        //   user = userRestTestClient.createRandomUser();
 
         userRandom.setRole(null);
         Response responsePostUser = userRestTestClient.createUser(new SingleUser(userRandom));
@@ -126,17 +124,21 @@ public class NegatirvUserRestServiceTest {
         //sätt diplay name för that till display name which we get from DB
         //posta den 
         // verifiera att det går inte skapa user
+       
         UserRestTestClient userRestTestClient = new UserRestTestClient();
 
-        Response responseGetUser = userRestTestClient.getUser(13);
-        User user13 = responseGetUser.jsonPath().getObject("user", User.class);
-        Assert.assertNotNull(user13);
+        Response responseGetAllUser = userRestTestClient.getAllUser();
+        Users users = responseGetAllUser.jsonPath().getObject("users.user", Users.class);
+        Assert.assertNotNull(users);
 
-        User userRandom = new User();
-        userRandom = userRestTestClient.createRandomUser();
+        User user = userRestTestClient.createRandomUser();
+        user.setId(users.get(0).getId());
 
-        userRandom.setDisplayName(user13.getDisplayName());
-        Response responsePostUser = userRestTestClient.createUser(new SingleUser(userRandom));
+        Response responsePostUserRandom = userRestTestClient.createUser(new SingleUser(user));
+
+        user.setDisplayName(users.getUsers().get(0).getDisplayName());
+        
+        Response responsePostUser = userRestTestClient.createUser(new SingleUser(user));
         assertEquals("Display name allredy exist in the DB", 400, responsePostUser.statusCode());
         System.out.println("Display name allredy exist in the DB. Därför status code för din körning blir: " + responsePostUser.statusCode());
 
@@ -155,8 +157,8 @@ public class NegatirvUserRestServiceTest {
         //Update / put  den 
         // verifiera att det går inte updatera user
         UserRestTestClient userRestTestClient = new UserRestTestClient();
-        User userRandom = new User();
-        userRandom = userRestTestClient.createRandomUser();
+        User userRandom = userRestTestClient.createRandomUser();
+        //   user = userRestTestClient.createRandomUser();
 
         Response responsePostRandomUser = userRestTestClient.createUser(new SingleUser(userRandom));
         assertEquals("A new user är skapat", 201, responsePostRandomUser.statusCode());
@@ -182,8 +184,8 @@ public class NegatirvUserRestServiceTest {
         //Update / put  den 
         // verifiera att det går inte updatera user
         UserRestTestClient userRestTestClient = new UserRestTestClient();
-        User userRandom = new User();
-        userRandom = userRestTestClient.createRandomUser();
+        User userRandom = userRestTestClient.createRandomUser();
+        //  user = userRestTestClient.createRandomUser();
 
         Response responsePostRandomUser = userRestTestClient.createUser(new SingleUser(userRandom));
         assertEquals("A new user är skapat", 201, responsePostRandomUser.statusCode());
@@ -209,8 +211,8 @@ public class NegatirvUserRestServiceTest {
         //Update / put  den 
         // verifiera att det går inte updatera user
         UserRestTestClient userRestTestClient = new UserRestTestClient();
-        User userRandom = new User();
-        userRandom = userRestTestClient.createRandomUser();
+        User userRandom = userRestTestClient.createRandomUser();
+        // user = userRestTestClient.createRandomUser();
 
         Response responsePostRandomUser = userRestTestClient.createUser(new SingleUser(userRandom));
         assertEquals("A new user är skapat", 201, responsePostRandomUser.statusCode());
@@ -229,30 +231,29 @@ public class NegatirvUserRestServiceTest {
     @Test
     public void testUpdateUserDisplayNameWhichExistInDB_StusCode400() {
 
-        //Get an user which exist in DB. tex user id 13
-        //Get display name för user
         //create a random user 
         //post that and verifiera att den är skapad
-        //sätt diplay name för that till display name which we get from DB
+        //hämta alla user från DB
+        //updatera displayName från random user med user med index0 från db
         //uppdate random user 
         // verifiera att det går inte uppdater user with a user wich allredy exist in the DB
         UserRestTestClient userRestTestClient = new UserRestTestClient();
 
-        Response responseGetUser = userRestTestClient.getUser(13);
-        User user13 = responseGetUser.jsonPath().getObject("user", User.class);
-        Assert.assertNotNull(user13);
+        User user = userRestTestClient.createRandomUser();
 
-        User userRandom = new User();
-        userRandom = userRestTestClient.createRandomUser();
-
-        Response responsePostRandomUser = userRestTestClient.createUser(new SingleUser(userRandom));
+        Response responsePostRandomUser = userRestTestClient.createUser(new SingleUser(user));
         assertEquals("A new user är skapat", 201, responsePostRandomUser.statusCode());
 
-        userRandom.setDisplayName(user13.getDisplayName());
+        Response responseGetAllUser = userRestTestClient.getAllUser();
+        Users users = responseGetAllUser.jsonPath().getObject("users.user", Users.class);
+        Assert.assertNotNull(users);
 
-        Response responsePostUser = userRestTestClient.putUser(new SingleUser(userRandom));
-        assertEquals("Display name allredy exist in the DB", 400, responsePostUser.statusCode());
+        User userIndex0 = users.getUsers().get(0);
+        user.setDisplayName(userIndex0.getDisplayName());
+
+        Response responsePostUser = userRestTestClient.putUser(new SingleUser(user));
         System.out.println("Display name allredy exist in the DB. Därför status code för din körning blir: " + responsePostUser.statusCode());
+        assertEquals("Display name allredy exist in the DB", 400, responsePostUser.statusCode());
 
     }
     // * Endpoint: /users
@@ -265,8 +266,8 @@ public class NegatirvUserRestServiceTest {
         //update the user 
         //verifiera att user existera inte i DB
 
-        User userRandom = new User();
-        userRandom = new UserRestTestClient().createRandomUser();
+        User userRandom = new UserRestTestClient().createRandomUser();
+        //     user = new UserRestTestClient().createRandomUser();
         SingleUser singleUser = new SingleUser(userRandom);
 
         Response response = new UserRestTestClient().putUser(singleUser);
@@ -290,14 +291,13 @@ public class NegatirvUserRestServiceTest {
         assertEquals("Status code should be 404", 404, response.statusCode());
         System.out.println("User som du föröker hämta finns inte i DB. Därför status code för din körning blir: " + response.statusCode());
     }
-    
-      // Endpoint: /users/{id}
+
+    // Endpoint: /users/{id}
     //Delete
-    
     @Test
-    public void testDeleteUserWithSpecifiedIdNotFound_StatusCode404(){
-        
-                //Create random id
+    public void testDeleteUserWithSpecifiedIdNotFound_StatusCode404() {
+
+        //Create random id
         //get the user för the random id
         //verifiera att user finns inte i DB
         Random Randomizer = new Random();

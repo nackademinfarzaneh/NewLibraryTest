@@ -10,10 +10,13 @@ import java.util.Random;
 import java.util.UUID;
 import org.junit.Assert;
 import static org.junit.Assert.assertEquals;
+import org.junit.Ignore;
 import org.junit.Test;
+import se.nackademin.librarytest.librarytestsystem.model.Author;
 import se.nackademin.librarytest.librarytestsystem.model.Book;
 import se.nackademin.librarytest.librarytestsystem.model.SingleBook;
 import se.nackademin.librarytest.librarytestsystem.model.Loan;
+import se.nackademin.librarytest.librarytestsystem.model.SingleAuthor;
 import se.nackademin.librarytest.librarytestsystem.model.SingleLoan;
 import se.nackademin.librarytest.librarytestsystem.model.User;
 import se.nackademin.librarytest.librarytestsystem.model.SingleUser;
@@ -23,6 +26,14 @@ import se.nackademin.librarytest.librarytestsystem.model.SingleUser;
  * @author testautom-nack
  */
 public class LoanRestServiceTest {
+
+    @Test
+    @Ignore
+    public void testDeleateLoan() {
+
+        Response responseDelete = new LoanRestTestClient().deleteLoan(176);
+        assertEquals("Status code should be 204 ", 204, responseDelete.statusCode());
+    }
 
     // End point /loans
     @Test
@@ -39,19 +50,19 @@ public class LoanRestServiceTest {
 
         Response responsePostUser = new UserRestTestClient().createUser(new SingleUser(user));
         assertEquals("Status code should be 201 ", 201, responsePostUser.statusCode());
+        Book book = new BookRestServiceTest().createBook();
 
-        Book book1 = new BookRestTestClient().createRandomBook();
-        Assert.assertNotNull(book1);
+        Assert.assertNotNull(book);
 
-        Response responsePostBook = new BookRestTestClient().createBook(new SingleBook(book1));
+        Response responsePostBook = new BookRestTestClient().createBook(new SingleBook(book));
         assertEquals("Status code should be 201 ", 201, responsePostBook.statusCode());
 
-         LoanRestTestClient loanRestTestClient = new LoanRestTestClient();
-         
+        LoanRestTestClient loanRestTestClient = new LoanRestTestClient();
+
         String dateBorrowedStr = loanRestTestClient.barrowRandomDate();
         String dateDueStr = loanRestTestClient.dueRandomDate();
-       
-        Loan loan = new Loan(book1, dateBorrowedStr, dateDueStr, user);
+
+        Loan loan = new Loan(book, dateBorrowedStr, dateDueStr, user);
         Response responsePost = loanRestTestClient.createLoan(new SingleLoan(loan));
 
         System.out.println("new loan är skapad " + responsePost.statusCode());
@@ -79,10 +90,10 @@ public class LoanRestServiceTest {
         Response responsePostUser = new UserRestTestClient().createUser(new SingleUser(user));
         assertEquals("Status code should be 201 ", 201, responsePostUser.statusCode());
 
-        Book book1 = new BookRestTestClient().createRandomBook();
-        Assert.assertNotNull(book1);
+        Book book = new BookRestServiceTest().createBook();
+        Assert.assertNotNull(book);
 
-        Response responsePostBook = new BookRestTestClient().createBook(new SingleBook(book1));
+        Response responsePostBook = new BookRestTestClient().createBook(new SingleBook(book));
         assertEquals("Status code should be 201 ", 201, responsePostBook.statusCode());
 
         LoanRestTestClient loanRestTestClient = new LoanRestTestClient();
@@ -92,7 +103,7 @@ public class LoanRestServiceTest {
         Random Randomizer = new Random();
         Integer id = Randomizer.nextInt((300 - 50) + 1) + 50;
 
-        Loan loan = new Loan(id, book1, dateBorrowedStr, dateDueStr, user);
+        Loan loan = new Loan(id, book, dateBorrowedStr, dateDueStr, user);
         Response responsePost = loanRestTestClient.createLoan(new SingleLoan(loan));
 
         System.out.println("new loan är skapad " + responsePost.statusCode());
@@ -120,7 +131,29 @@ public class LoanRestServiceTest {
     @Test
     public void testGetLoanWithSpicifiedID() {
 
-        Response responseGet = new LoanRestTestClient().getLoan(15);
+        User user = new UserRestTestClient().createRandomUser();
+        Assert.assertNotNull(user);
+
+        Response responsePostUser = new UserRestTestClient().createUser(new SingleUser(user));
+        assertEquals("Status code should be 201 ", 201, responsePostUser.statusCode());
+
+        Book book = new BookRestServiceTest().createBook();
+        Assert.assertNotNull(book);
+
+        Response responsePostBook = new BookRestTestClient().createBook(new SingleBook(book));
+        assertEquals("Status code should be 201 ", 201, responsePostBook.statusCode());
+
+        LoanRestTestClient loanRestTestClient = new LoanRestTestClient();
+        String dateBorrowedStr = loanRestTestClient.barrowRandomDate();
+        String dateDueStr = loanRestTestClient.dueRandomDate();
+
+        Random Randomizer = new Random();
+        Integer id = Randomizer.nextInt((300 - 50) + 1) + 50;
+
+        Loan loan = new Loan(id, book, dateBorrowedStr, dateDueStr, user);
+        Response responsePost = loanRestTestClient.createLoan(new SingleLoan(loan));
+
+        Response responseGet = new LoanRestTestClient().getLoan(loan.getId());
         assertEquals("Status code should be 200 ", 200, responseGet.statusCode());
     }
 
@@ -138,10 +171,9 @@ public class LoanRestServiceTest {
         Response responsePostUser = new UserRestTestClient().createUser(new SingleUser(user));
         assertEquals("Status code should be 201 ", 201, responsePostUser.statusCode());
 
-        Book book1 = new BookRestTestClient().createRandomBook();
-        Assert.assertNotNull(book1);
+        Book book = new BookRestServiceTest().createBook();
 
-        Response responsePostBook = new BookRestTestClient().createBook(new SingleBook(book1));
+        Response responsePostBook = new BookRestTestClient().createBook(new SingleBook(book));
         assertEquals("Status code should be 201 ", 201, responsePostBook.statusCode());
 
         LoanRestTestClient loanRestTestClient = new LoanRestTestClient();
@@ -151,7 +183,7 @@ public class LoanRestServiceTest {
         Random Randomizer = new Random();
         Integer id = Randomizer.nextInt((300 - 50) + 1) + 50;
 
-        Loan loan = new Loan(id, book1, dateBorrowedStr, dateDueStr, user);
+        Loan loan = new Loan(id, book, dateBorrowedStr, dateDueStr, user);
         Response responsePost = loanRestTestClient.createLoan(new SingleLoan(loan));
 
         System.out.println("new loan är skapad " + responsePost.statusCode());
@@ -174,14 +206,12 @@ public class LoanRestServiceTest {
         Response responsePostUser = new UserRestTestClient().createUser(new SingleUser(user));
         assertEquals("Status code should be 201 ", 201, responsePostUser.statusCode());
 
-        Book book = new BookRestTestClient().createRandomBook();
-        Assert.assertNotNull(book);
+        Book book = new BookRestServiceTest().createBook();
 
         Response responsePostBook = new BookRestTestClient().createBook(new SingleBook(book));
         assertEquals("Status code should be 201 ", 201, responsePostBook.statusCode());
 
-        Book book2 = new BookRestTestClient().createRandomBook();
-        Assert.assertNotNull(book2);
+        Book book2 = new BookRestServiceTest().createBook();
 
         Response responsePostBook2 = new BookRestTestClient().createBook(new SingleBook(book2));
         assertEquals("Status code should be 201 ", 201, responsePostBook2.statusCode());
@@ -202,7 +232,7 @@ public class LoanRestServiceTest {
 
         Integer id2 = Randomizer.nextInt((300 - 50) + 1) + 50;
 
-        Loan loan2 = new Loan(id2, book, dateBorrowedStr, dateDueStr, user);
+        Loan loan2 = new Loan(id2, book2, dateBorrowedStr, dateDueStr, user);
         Assert.assertNotNull(loan);
 
         Response responsePost2 = loanRestTestClient.createLoan(new SingleLoan(loan2));
@@ -236,9 +266,7 @@ public class LoanRestServiceTest {
         Response responsePostUser2 = new UserRestTestClient().createUser(new SingleUser(user2));
         assertEquals("Status code should be 201 ", 201, responsePostUser2.statusCode());
 
-        Book book = new BookRestTestClient().createRandomBook();
-        Assert.assertNotNull(book);
-
+        Book book = new BookRestServiceTest().createBook();
         Response responsePostBook = new BookRestTestClient().createBook(new SingleBook(book));
         assertEquals("Status code should be 201 ", 201, responsePostBook.statusCode());
 
@@ -277,9 +305,8 @@ public class LoanRestServiceTest {
         //Create a loan av book by the user
         //Get the loan        
 
-        Book book = new BookRestTestClient().createRandomBook();
-        Assert.assertNotNull(book);
-
+        Book book = new BookRestServiceTest().createBook();
+        
         Response responsePostBook = new BookRestTestClient().createBook(new SingleBook(book));
         assertEquals("Status code should be 201 ", 201, responsePostBook.statusCode());
 
@@ -306,7 +333,6 @@ public class LoanRestServiceTest {
 
         Response responseGet = new LoanRestTestClient().getLoanOfBookByUser(new SingleLoan(loan));
         assertEquals("Status code should be 200 ", 200, responseGet.statusCode());
-
     }
 
 }
