@@ -27,13 +27,15 @@ import se.nackademin.librarytest.librarytestsystem.model.SingleUser;
  */
 public class LoanRestServiceTest {
 
-//    @Test
-//    @Ignore
-//    public void testDeleateLoan() {
-//
-//        Response responseDelete = new LoanRestTestClient().deleteLoan(176);
-//        assertEquals("Status code should be 204 ", 204, responseDelete.statusCode());
-//    }
+    @Test
+    @Ignore
+    public void testDeleateLoan() {
+
+        Response responseDelete = new LoanRestTestClient().deleteLoan(176);
+        Response responseDelete2 = new LoanRestTestClient().deleteLoan(176);
+  
+        assertEquals("Status code should be 204 ", 204, responseDelete.statusCode());
+    }
 
     // End point /loans
     @Test

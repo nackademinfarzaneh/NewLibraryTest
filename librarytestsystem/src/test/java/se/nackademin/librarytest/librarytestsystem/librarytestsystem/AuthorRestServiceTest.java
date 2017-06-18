@@ -21,15 +21,17 @@ import org.junit.Test;
  */
 public class AuthorRestServiceTest {
 
-//    @Test
-//    @Ignore
-//    public void testDeleteAuthor() {
-//
-//        AuthorRestTestClient authorRestTestClient = new AuthorRestTestClient();
-//        Response deleateResponse = authorRestTestClient.deleteAuthor(258);
-//        Response deleateResponse2 = authorRestTestClient.deleteAuthor(197);
-//        Response deleateResponse3 = authorRestTestClient.deleteAuthor(61);
-//    }
+    @Test
+    @Ignore
+    public void testDeleteAuthor() {
+
+        AuthorRestTestClient authorRestTestClient = new AuthorRestTestClient();
+         authorRestTestClient.deleteAuthor(198);
+        authorRestTestClient.deleteAuthor(64);
+        authorRestTestClient.deleteAuthor(191);
+        authorRestTestClient.deleteAuthor(291);
+        
+    }
 
     /*
         Endpint: post/authors

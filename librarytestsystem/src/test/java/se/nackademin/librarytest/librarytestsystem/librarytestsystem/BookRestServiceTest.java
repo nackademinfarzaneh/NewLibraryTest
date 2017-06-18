@@ -27,13 +27,27 @@ import se.nackademin.librarytest.librarytestsystem.model.User;
  */
 public class BookRestServiceTest {
 
-//    @Test
-//    @Ignore
-//    public void testDeleteBook() {
-//        BookRestTestClient bookRestTestClient = new BookRestTestClient();
-//        bookRestTestClient.deleteBook(239);
-//        bookRestTestClient.deleteBook(166);
-//    }
+    @Test 
+    @Ignore
+    public void testDeleteBook() {
+        BookRestTestClient bookRestTestClient = new BookRestTestClient();
+        bookRestTestClient.deleteBook(74);
+        bookRestTestClient.deleteBook(226);
+          bookRestTestClient.deleteBook(114);
+          
+        bookRestTestClient.deleteBook(182);
+          bookRestTestClient.deleteBook(183);
+        bookRestTestClient.deleteBook(194);
+          bookRestTestClient.deleteBook(126);
+          
+        bookRestTestClient.deleteBook(86);
+          bookRestTestClient.deleteBook(76);
+        bookRestTestClient.deleteBook(57);
+          bookRestTestClient.deleteBook(110);
+          
+        bookRestTestClient.deleteBook(199);
+     
+    }
     /*
         Endpoint /books , Post
         Skapa en random book, post boken, verifiera att boken är skapat

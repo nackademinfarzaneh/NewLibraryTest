@@ -5,8 +5,6 @@
  */
 package se.nackademin.librarytest.librarytestsystem.librarytestsystem;
 
-import se.nackademin.librarytest.librarytestsystem.model.Authors;
-import se.nackademin.librarytest.librarytestsystem.model.Author;
 import se.nackademin.librarytest.librarytestsystem.model.Book;
 import se.nackademin.librarytest.librarytestsystem.model.SingleBook;
 
@@ -112,9 +110,7 @@ public class BookRestTestClient {
         String deleteResourceName = "books/" + id;
         Response deleteResponse = delete(restUrl + deleteResourceName);
         return deleteResponse;
-    }
-    
-    
+    }  
 
     public String randomDate() {
 
@@ -135,56 +131,6 @@ public class BookRestTestClient {
         }
         String date = ar + "-" + manad1 + "-" + dag1;
         return date;
-    }
-
-//    public Book randomBookVariable() {
-//
-//        Random Randomizer = new Random();
-//        Integer id = Randomizer.nextInt((300 - 50) + 1) + 50;
-//        String description = UUID.randomUUID().toString().substring(1, 5);
-//        String isbn = UUID.randomUUID().toString().substring(1, 5);
-//
-//        Integer nberPage = Randomizer.nextInt((300 - 50) + 1) + 50;
-//        String publicationDate = randomDate();
-//        String title = UUID.randomUUID().toString().substring(1, 5);
-//        Integer totalNbrCopies = Randomizer.nextInt((300 - 50) + 1) + 50;
-//
-//        Book randomBook1 = new Book(id, description, isbn, nberPage, publicationDate, title, totalNbrCopies);
-//
-//        Book randomBook = new Book(id, description, isbn, nberPage, publicationDate, title, totalNbrCopies);
-//        return randomBook;
-//
-//    }
-    public SingleBook updateRandomSingleBook() {
-
-        Response getResponse = getBook(5);
-        Book book = getResponse.jsonPath().getObject("book", Book.class);
-
-        Random Randomizer = new Random();
-        Integer id = Randomizer.nextInt((300 - 50) + 1) + 50;
-        String description = UUID.randomUUID().toString().substring(1, 5);
-        String isbn = UUID.randomUUID().toString().substring(1, 5);
-
-        Integer nberPage = Randomizer.nextInt((300 - 50) + 1) + 50;
-        String publicationDate = randomDate();
-        String title = UUID.randomUUID().toString().substring(1, 5);
-        Integer totalNbrCopies = Randomizer.nextInt((300 - 50) + 1) + 50;
-
-        String bio = "Sri Lankabhimanya Sir Arthur Charles Clarke, CBE, FRAS (16 December 1917 – 19 "
-                + "March 2008) was a British science fiction writer, science writer and futurist,"
-                + " inventor, undersea explorer, and television series host.He is perhaps most"
-                + " famous for being co-writer of the screenplay for the movie 2001: A Space Odyssey,"
-                + " widely considered to be one of the most influential films of all time. "
-                + "His other science fiction writings earned him a number of Hugo and Nebula awards,"
-                + " which along with a large readership made him one of the towering figures of science fiction.";
-
-        Author author = new Author(4, "Arthur C.", "Clarke", "Great Britain", bio);
-
-        Book bookNew = new Book(id, author, book.getDescription(), isbn, book.getNbrPages(), book.getPublicationDate(), title, (book.getTotalNbrCopies()));
-
-        book.getAuthors().add(author);
-
-        return new SingleBook(book);
     }
 
     public Book createRandomBook() {
@@ -212,60 +158,5 @@ public class BookRestTestClient {
 
         return book;
     }
-
-    public Book createRandomBookWithNoAuthor() {
-        BookRestTestClient restTestClient = new BookRestTestClient();
-
-        //  r.nextInt((max - min) + 1) + min;
-        Random Randomizer = new Random();
-        Integer id = Randomizer.nextInt((300 - 50) + 1) + 50;
-        String description = UUID.randomUUID().toString().substring(1, 5);
-        String isbn = UUID.randomUUID().toString().substring(1, 5);
-
-        Integer nberPage = Randomizer.nextInt((300 - 50) + 1) + 50;
-        String publicationDate = restTestClient.randomDate();
-        String title = UUID.randomUUID().toString().substring(1, 5);
-        Integer totalNbrCopies = Randomizer.nextInt((300 - 50) + 1) + 50;
-
-        Book book = new Book(id, description, isbn, nberPage, publicationDate, title, totalNbrCopies);
-
-        return book;
-    }
-
-    public Author createRandomAuthor() {
-
-        Random Randomizer = new Random();
-        Integer id = Randomizer.nextInt((300 - 50) + 1) + 50;
-        String firstName = UUID.randomUUID().toString().substring(1, 5);
-        String lastName = UUID.randomUUID().toString().substring(1, 5);
-        String country = UUID.randomUUID().toString().substring(1, 5);
-        String bio = UUID.randomUUID().toString().substring(1, 5);
-
-        Author author = new Author(id, firstName, lastName, country, bio);
-        return author;
-    }
-
-    public Authors createRandomAuthor1() {
-
-        Random Randomizer = new Random();
-        Authors authors = new Authors();
-
-        for (int i = 0; i < 3; i++) {
-
-            Integer id = Randomizer.nextInt((300 - 50) + 1) + 50;
-            String firstName = UUID.randomUUID().toString().substring(1, 5);
-            String lastName = UUID.randomUUID().toString().substring(1, 5);
-            String country = UUID.randomUUID().toString().substring(1, 5);
-            String bio = UUID.randomUUID().toString().substring(1, 5);
-            Author author = new Author(id, firstName, lastName, country, bio);
-
-            authors.add(author);
-            i++;
-        }
-
-        return authors;
-    }
-    
-
 
 }

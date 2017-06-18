@@ -69,10 +69,8 @@ public class LoanRestTestClient {
         int userId = loan.getUser().getId();
 
         String resourceName = "loans/ofuser/" + userId + "/ofbook/" + bookId;
-
         Response response = given().contentType(ContentType.JSON).body(loan.getUser()).log().all().get(restUrl + resourceName).prettyPeek();   //.body(singleLoan)
         return response;
-
     }
 
     public Response deleteLoan(int id) {

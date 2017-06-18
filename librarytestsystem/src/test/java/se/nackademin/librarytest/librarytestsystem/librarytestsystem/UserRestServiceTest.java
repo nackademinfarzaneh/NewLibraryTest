@@ -28,18 +28,19 @@ import se.nackademin.librarytest.librarytestsystem.model.Users;
 public class UserRestServiceTest {
 
     @Test
+    @Ignore
     public void testDeteUser() {
 
         UserRestTestClient userRestTestClient = new UserRestTestClient();
-        Response deleteResponse1 = userRestTestClient.deleteUser(255);
-        Response deleteResponse2 = userRestTestClient.deleteUser(100);
-      Response deleteResponse3 = userRestTestClient.deleteUser(251);
-//        Response deleteResponse4 = userRestTestClient.deleteUser(95);
-//
-//        Response deleteResponse5 = userRestTestClient.deleteUser(117);
-//        Response deleteResponse6 = userRestTestClient.deleteUser(290);
-//        Response deleteResponse7 = userRestTestClient.deleteUser(286);
-//     Response deleteResponse8 = userRestTestClient.deleteUser(170);
+
+         userRestTestClient.deleteUser(275);
+        userRestTestClient.deleteUser(161);
+        userRestTestClient.deleteUser(167);
+        userRestTestClient.deleteUser(269);
+        
+        userRestTestClient.deleteUser(258);
+        userRestTestClient.deleteUser(132);
+         
 
     }
 

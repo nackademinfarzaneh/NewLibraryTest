@@ -564,7 +564,7 @@ public class NegativLoanRestServiceTest {
         Response responsePostUser = new UserRestTestClient().createUser(new SingleUser(user));
         assertEquals("Status code should be 201 ", 201, responsePostUser.statusCode());
 
-        Book book = new BookRestTestClient().createRandomBook();
+        Book book = new BookRestServiceTest().createBook();
         Assert.assertNotNull(book);
 
         Response responsePostBook = new BookRestTestClient().createBook(new SingleBook(book));

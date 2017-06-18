@@ -35,29 +35,7 @@ public class AuthorRestTestClient {
         Author author = new Author(id, firstName, lastName, country, bio);
         return author;
     }
-
-    public SingleAuthor updateRandomSingleAuthor(Author author) {
-        
-        Random Randomizer = new Random();
-
-        String firstNameRandom = UUID.randomUUID().toString().substring(1, 5);
-
-        String bio = "Sri Lankabhimanya Sir Arthur Charles Clarke, CBE, FRAS (16 December 1917 – 19 "
-                + "March 2008) was a British science fiction writer, science writer and futurist,"
-                + " inventor, undersea explorer, and television series host.He is perhaps most"
-                + " famous for being co-writer of the screenplay for the movie 2001: A Space Odyssey,"
-                + " widely considered to be one of the most influential films of all time. "
-                + "His other science fiction writings earned him a number of Hugo and Nebula awards,"
-                + " which along with a large readership made him one of the towering figures of science fiction.";
-        String country = author.getCountry();
-        String firstName = author.getFirstName();
-        String lastName = author.getLastName();
-
-        Author author2 = new Author(4, firstNameRandom, lastName, country, bio);
-        return new SingleAuthor(author2);
-
-    }
-
+      
     public Response putAuthor(SingleAuthor singleAuthor) {
         Response response = resoursPutter("authors", singleAuthor);
         return response;
@@ -93,21 +71,11 @@ public class AuthorRestTestClient {
         Response response = given().accept(ContentType.JSON).log().all().get(restUrl + resourceName).prettyPeek();
         return response;
     }
-//
-//    public SingleAuthor creatRandomSingleAuthor() {
-//
-//        Author author = new Author();
-//        author = createRandomAuthor();
-//        SingleAuthor singleAuthor = new SingleAuthor(author);
-//
-//        return singleAuthor;
-//    }
-    
-        public Response deleteAuthor(int id) {
+
+    public Response deleteAuthor(int id) {
 
         String deleteResourceName = "authors/" + id;
         Response deleteResponse = delete(restUrl + deleteResourceName);
         return deleteResponse;
     }
-
 }

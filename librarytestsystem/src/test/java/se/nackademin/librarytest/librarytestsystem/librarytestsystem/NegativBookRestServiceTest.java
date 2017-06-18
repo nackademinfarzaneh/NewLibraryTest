@@ -71,18 +71,14 @@ public class NegativBookRestServiceTest {
     //The book contained an author with no id field set
     @Test
     public void testCreateBookWithNoAuthorsID_StusCode400() {
-        //Det book with id = 5 finns i databasen    
-        //create book withNoAuthor
-        //Create an Author with no AuthorID
-        //add author to book
+        //Create a randmombook with author, author
+        //set author id till null  
         //verifiera att det går inte addera en author with no ID to book
 
         BookRestTestClient restTestClient = new BookRestTestClient();
-        Book book = restTestClient.createRandomBookWithNoAuthor();
 
-        Author author = restTestClient.createRandomAuthor();
-        author.setId(null);
-        book.setAuthor(author);
+        Book book = new BookRestServiceTest().createBook();
+        book.getAuthor().setId(null);
 
         Response response = restTestClient.createBook(new SingleBook(book));
 
@@ -99,11 +95,10 @@ public class NegativBookRestServiceTest {
         //create a random book 
         //set an author to the book 
         //the author dose not exist in the database befor post the book 
+        
         BookRestTestClient restTestClient = new BookRestTestClient();
-        Book book = restTestClient.createRandomBookWithNoAuthor();
-
-        Author author = restTestClient.createRandomAuthor();
-        book.setAuthor(author);
+        Book book = new BookRestServiceTest().createBook();
+        book.getAuthor().setFirstName("Farzaneh");
 
         Response response = restTestClient.createBook(new SingleBook(book));
 
@@ -141,13 +136,15 @@ public class NegativBookRestServiceTest {
         //verifiera att the går inte
 
         BookRestTestClient bookRestTestClient = new BookRestTestClient();
-        Book book = bookRestTestClient.createRandomBookWithNoAuthor();
+        BookRestServiceTest bookRestServiceTest = new BookRestServiceTest();
+
+        Book book = bookRestServiceTest.createBook();  
 
         Response responsePostBook = bookRestTestClient.createBook(new SingleBook(book));
         assertEquals("Status code should be 201", 201, responsePostBook.statusCode());
 
         AuthorRestTestClient authorRestTestClient = new AuthorRestTestClient();
-        Author author = bookRestTestClient.createRandomAuthor();
+        Author author = new AuthorRestTestClient().createRandomAuthor();    
 
         Response responsePostAuthor = authorRestTestClient.createAuthor(new SingleAuthor(author));
 
@@ -167,7 +164,7 @@ public class NegativBookRestServiceTest {
      * bokens author med en author som finns inte i DB
      *
      */
-    @Test
+    @Test 
     @Ignore
     public void testUpdateBookWithNoAuthorsNameInDB_StusCode400() {
 
@@ -182,7 +179,7 @@ public class NegativBookRestServiceTest {
         Response responsePost = bookRestTestClient.createBook(new SingleBook(book));
         assertEquals("Status code should be 201", 201, responsePost.statusCode());
 
-        Author author = bookRestTestClient.createRandomAuthor();
+        Author author = new AuthorRestTestClient().createRandomAuthor(); //bookRestTestClient.createRandomAuthor();
         book.setAuthor(null);
         book.setAuthor(author);
 
@@ -274,7 +271,6 @@ public class NegativBookRestServiceTest {
      * En point /books /{book_id} /authors
      *
      */
-
     @Test
     public void testGetAuthorOfSpecifiedBookNotFound_StatusCoce404() {
         //
