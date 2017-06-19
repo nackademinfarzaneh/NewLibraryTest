@@ -1,50 +1,48 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package se.nackademin.librarytest.model;
 
-/**
- *
- * @author testautom-nack
- */
+import java.util.Date;
+
+
 public class Book {
 
-    private Integer id;
-    private String title;
+    private Integer idBook;
+    private String titleBook;
     private String author;
-    private String description;
+    private String descriptionBook;
     private String isbn;
-    private String datePublished;
-    private Integer nbrAvailable;
+    private String datePublishedBook;
+    private Integer nbrAvailableBook;
+    private Date dateBorrow;
+    private Date dateDUE;
+    private Integer pageNr;
 
     /**
      * @return the id
      */
-    public Integer getId() {
-        return id;
+    public Integer getIdBook() {
+        return idBook;
     }
 
     /**
-     * @param id the id to set
+     * @param idBook the id to set
      */
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdBook(Integer idBook) {
+        this.idBook = idBook;
     }
 
     /**
      * @return the title
      */
-    public String getTitle() {
-        return title;
+    public String getTitleBook() {
+        return titleBook;
     }
 
     /**
-     * @param title the title to set
+     * @param titleBook the title to set
      */
-    public void setTitle(String title) {
-        this.title = title;
+    public void setTitleBook(String titleBook) {
+        this.titleBook = titleBook;
     }
 
     /**
@@ -64,15 +62,15 @@ public class Book {
     /**
      * @return the description
      */
-    public String getDescription() {
-        return description;
+    public String getDescriptionBook() {
+        return descriptionBook;
     }
 
     /**
-     * @param description the description to set
+     * @param descriptionBook the description to set
      */
-    public void setDescription(String description) {
-        this.description = description;
+    public void setDescriptionBook(String descriptionBook) {
+        this.descriptionBook = descriptionBook;
     }
 
     /**
@@ -92,29 +90,71 @@ public class Book {
     /**
      * @return the datePublished
      */
-    public String getDatePublished() {
-        return datePublished;
+    public String getDatePublishedBook() {
+        return datePublishedBook;
     }
 
     /**
-     * @param datePublished the datePublished to set
+     * @param datePublishedBook the datePublished to set
      */
-    public void setDatePublished(String datePublished) {
-        this.datePublished = datePublished;
+    public void setDatePublishedBook(String datePublishedBook) {
+        this.datePublishedBook = datePublishedBook;
     }
 
     /**
      * @return the nbrAvailable
      */
-    public Integer getNbrAvailable() {
-        return nbrAvailable;
+    public Integer getNbrAvailableBook() {
+        return nbrAvailableBook;
     }
 
     /**
-     * @param nbrAvailable the nbrAvailable to set
+     * @param nbrAvailableBook the nbrAvailable to set
      */
-    public void setNbrAvailable(Integer nbrAvailable) {
-        this.nbrAvailable = nbrAvailable;
+    public void setNbrAvailableBook(Integer nbrAvailableBook) {
+        this.nbrAvailableBook = nbrAvailableBook;
+    }
+
+    /**
+     * @return the dateBorrow
+     */
+    public Date getDateBorrow() {
+        return dateBorrow;
+    }
+
+    /**
+     * @param dateBorrow the dateBorrow to set
+     */
+    public void setDateBorrow(Date dateBorrow) {
+        this.dateBorrow = dateBorrow;
+    }
+
+    /**
+     * @return the dateDUE
+     */
+    public Date getDateDUE() {
+        return dateDUE;
+    }
+
+    /**
+     * @param dateDUE the dateDUE to set
+     */
+    public void setDateDUE(Date dateDUE) {
+        this.dateDUE = dateDUE;
+    }
+
+    /**
+     * @return the pageNr
+     */
+    public Integer getPageNr() {
+        return pageNr;
+    }
+
+    /**
+     * @param pageNr the pageNr to set
+     */
+    public void setPageNr(Integer pageNr) {
+        this.pageNr = pageNr;
     }
 
 }

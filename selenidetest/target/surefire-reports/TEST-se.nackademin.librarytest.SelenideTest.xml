@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="se.nackademin.librarytest.SelenideTest" time="14.938" tests="3" errors="0" skipped="2" failures="0">
+<testsuite name="se.nackademin.librarytest.SelenideTest" time="67.418" tests="11" errors="1" skipped="4" failures="5">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-8-oracle/jre/lib/i386"/>
     <property name="java.vm.version" value="25.121-b13"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
-    <property name="maven.multiModuleProjectDirectory" value="/home/testautom-nack/NetBeansProjects/librarytest/selenidetest"/>
+    <property name="maven.multiModuleProjectDirectory" value="/home/testautom-nack/NetBeansProjects/selenidetest"/>
     <property name="java.vendor.url" value="http://java.oracle.com/"/>
     <property name="path.separator" value=":"/>
     <property name="guice.disable.misplaced.annotation.check" value="true"/>
@@ -14,8 +14,9 @@
     <property name="user.country" value="US"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.os.patch.level" value="unknown"/>
+    <property name="test" value="se.nackademin.librarytest.SelenideTest"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="user.dir" value="/home/testautom-nack/NetBeansProjects/librarytest/selenidetest"/>
+    <property name="user.dir" value="/home/testautom-nack/NetBeansProjects/selenidetest"/>
     <property name="java.runtime.version" value="1.8.0_121-b13"/>
     <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment"/>
     <property name="java.endorsed.dirs" value="/usr/lib/jvm/java-8-oracle/jre/lib/endorsed"/>
@@ -42,7 +43,7 @@
     <property name="java.vm.specification.version" value="1.8"/>
     <property name="sun.arch.data.model" value="32"/>
     <property name="java.home" value="/usr/lib/jvm/java-8-oracle/jre"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -Dmaven.ext.class.path=/home/testautom-nack/netbeans-8.2/java/maven-nblib/netbeans-eventspy.jar clean install"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -Dtest=se.nackademin.librarytest.SelenideTest -Dmaven.ext.class.path=/home/testautom-nack/netbeans-8.2/java/maven-nblib/netbeans-eventspy.jar surefire:test"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="user.language" value="en"/>
     <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
@@ -60,11 +61,222 @@
     <property name="sun.desktop" value="gnome"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
+  <testcase name="testAddNewBook" classname="se.nackademin.librarytest.SelenideTest" time="11.427">
+    <failure message="Element not found {#side-menu-link-add-book}&#10;Expected: visible" type="com.codeborne.selenide.ex.ElementNotFound">com.codeborne.selenide.ex.ElementNotFound: Element not found {#side-menu-link-add-book}
+Expected: visible
+	at sun.reflect.GeneratedConstructorAccessor10.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:206)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:158)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:678)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:363)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByCssSelector(RemoteWebDriver.java:492)
+	at org.openqa.selenium.By$ByCssSelector.findElement(By.java:430)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:355)
+	at com.codeborne.selenide.impl.WebElementSelector.findElement(WebElementSelector.java:28)
+	at com.codeborne.selenide.impl.ElementFinder.getWebElement(ElementFinder.java:56)
+	at com.codeborne.selenide.impl.WebElementSource.checkCondition(WebElementSource.java:44)
+	at com.codeborne.selenide.impl.WebElementSource.findAndAssertElementIsVisible(WebElementSource.java:72)
+	at com.codeborne.selenide.commands.Click.execute(Click.java:14)
+	at com.codeborne.selenide.commands.Click.execute(Click.java:11)
+	at com.codeborne.selenide.commands.Commands.execute(Commands.java:136)
+	at com.codeborne.selenide.impl.SelenideElementProxy.dispatchAndRetry(SelenideElementProxy.java:82)
+	at com.codeborne.selenide.impl.SelenideElementProxy.invoke(SelenideElementProxy.java:58)
+	at com.sun.proxy.$Proxy8.click(Unknown Source)
+	at se.nackademin.librarytest.pages.PageBase.clickButton(PageBase.java:22)
+	at se.nackademin.librarytest.pages.MenuPage.navigateToAddBook(MenuPage.java:43)
+	at se.nackademin.librarytest.helpers.BookHelper.addNewBook(BookHelper.java:55)
+	at se.nackademin.librarytest.SelenideTest.testAddNewBook(SelenideTest.java:174)
+</failure>
+    <system-err><![CDATA[Starting ChromeDriver 2.29.461599 (8cfe70b3bca63aec509c39bf48c384e7eba3372b) on port 25145
+Only local connections are allowed.
+Jun 19, 2017 10:46:46 PM com.codeborne.selenide.webdriver.WebDriverFactory createWebDriver
+INFO: BrowserName=chrome Version=58.0.3029.110 Platform=LINUX
+Jun 19, 2017 10:46:46 PM com.codeborne.selenide.webdriver.WebDriverFactory createWebDriver
+INFO: Selenide v. 3.5.1
+Jun 19, 2017 10:46:46 PM com.codeborne.selenide.webdriver.WebDriverFactory createWebDriver
+INFO: Selenium WebDriver v. 2.53.0 build time: 2016-03-15 10:43:46
+Jun 19, 2017 10:46:46 PM com.codeborne.selenide.impl.WebDriverThreadLocalContainer createDriver
+INFO: Create webdriver in current thread 1: ChromeDriver -> ChromeDriver: chrome on LINUX (28221b7a9fab836aec94ad7846e2f741)
+Jun 19, 2017 10:46:47 PM se.nackademin.librarytest.pages.PageBase clickButton
+INFO: Clicking{0}Sign in
+Jun 19, 2017 10:46:51 PM se.nackademin.librarytest.pages.PageBase clickButton
+INFO: Clicking{0}Add book
+]]></system-err>
+  </testcase>
   <testcase name="testLogin" classname="se.nackademin.librarytest.SelenideTest" time="0">
+    <skipped/>
+  </testcase>
+  <testcase name="tesTable" classname="se.nackademin.librarytest.SelenideTest" time="10.779">
+    <error message="Couldnot find cell containbook title&#10;For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html&#10;Build info: version: &apos;2.53.0&apos;, revision: &apos;35ae25b1534ae328c771e0856c93e187490ca824&apos;, time: &apos;2016-03-15 10:43:46&apos;&#10;System info: host: &apos;testautomnack-VirtualBox&apos;, ip: &apos;127.0.1.1&apos;, os.name: &apos;Linux&apos;, os.arch: &apos;i386&apos;, os.version: &apos;4.4.0-79-generic&apos;, java.version: &apos;1.8.0_121&apos;&#10;Driver info: driver.version: unknown" type="org.openqa.selenium.NoSuchElementException">org.openqa.selenium.NoSuchElementException: Couldnot find cell containbook title
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '2.53.0', revision: '35ae25b1534ae328c771e0856c93e187490ca824', time: '2016-03-15 10:43:46'
+System info: host: 'testautomnack-VirtualBox', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'i386', os.version: '4.4.0-79-generic', java.version: '1.8.0_121'
+Driver info: driver.version: unknown
+	at se.nackademin.librarytest.helpers.Table.searchAndClick(Table.java:46)
+	at se.nackademin.librarytest.SelenideTest.tesTable(SelenideTest.java:73)
+</error>
+    <system-err><![CDATA[Jun 19, 2017 10:46:55 PM se.nackademin.librarytest.pages.PageBase clickButton
+INFO: Clicking{0}Add user
+Jun 19, 2017 10:46:57 PM se.nackademin.librarytest.pages.PageBase setTextFieldValue
+INFO: settingnUser name filedto4e9366a9-7f91-4b13-a5ef-5a13f3e3f38f
+Jun 19, 2017 10:46:58 PM se.nackademin.librarytest.pages.PageBase setTextFieldValue
+INFO: settingnPassword filedto4e9366a9-7f91-4b13-a5ef-5a13f3e3f38f
+Jun 19, 2017 10:46:59 PM se.nackademin.librarytest.pages.PageBase clickButton
+INFO: Clicking{0}Add user button
+Jun 19, 2017 10:46:59 PM se.nackademin.librarytest.pages.PageBase clickButton
+INFO: Clicking{0}Sign in
+Jun 19, 2017 10:47:02 PM se.nackademin.librarytest.pages.PageBase clickButton
+INFO: Clicking{0}My profile
+]]></system-err>
+  </testcase>
+  <testcase name="testFetchAuthor" classname="se.nackademin.librarytest.SelenideTest" time="0">
     <skipped/>
   </testcase>
   <testcase name="testFetchBook" classname="se.nackademin.librarytest.SelenideTest" time="0">
     <skipped/>
   </testcase>
-  <testcase name="testUsingTable" classname="se.nackademin.librarytest.SelenideTest" time="14.938"/>
+  <testcase name="testAddAuthor" classname="se.nackademin.librarytest.SelenideTest" time="7.582">
+    <failure message="Element not found {#side-menu-link-add-author}&#10;Expected: visible" type="com.codeborne.selenide.ex.ElementNotFound">com.codeborne.selenide.ex.ElementNotFound: Element not found {#side-menu-link-add-author}
+Expected: visible
+	at sun.reflect.GeneratedConstructorAccessor10.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:206)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:158)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:678)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:363)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByCssSelector(RemoteWebDriver.java:492)
+	at org.openqa.selenium.By$ByCssSelector.findElement(By.java:430)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:355)
+	at com.codeborne.selenide.impl.WebElementSelector.findElement(WebElementSelector.java:28)
+	at com.codeborne.selenide.impl.ElementFinder.getWebElement(ElementFinder.java:56)
+	at com.codeborne.selenide.impl.WebElementSource.checkCondition(WebElementSource.java:44)
+	at com.codeborne.selenide.impl.WebElementSource.findAndAssertElementIsVisible(WebElementSource.java:72)
+	at com.codeborne.selenide.commands.Click.execute(Click.java:14)
+	at com.codeborne.selenide.commands.Click.execute(Click.java:11)
+	at com.codeborne.selenide.commands.Commands.execute(Commands.java:136)
+	at com.codeborne.selenide.impl.SelenideElementProxy.dispatchAndRetry(SelenideElementProxy.java:82)
+	at com.codeborne.selenide.impl.SelenideElementProxy.invoke(SelenideElementProxy.java:58)
+	at com.sun.proxy.$Proxy8.click(Unknown Source)
+	at se.nackademin.librarytest.pages.PageBase.clickButton(PageBase.java:22)
+	at se.nackademin.librarytest.pages.MenuPage.navigateToAddAuthor(MenuPage.java:33)
+	at se.nackademin.librarytest.helpers.AuthorHelper.createNewAuthor(AuthorHelper.java:18)
+	at se.nackademin.librarytest.SelenideTest.testAddAuthor(SelenideTest.java:154)
+</failure>
+    <system-err><![CDATA[Jun 19, 2017 10:47:06 PM se.nackademin.librarytest.pages.PageBase clickButton
+INFO: Clicking{0}Sign in
+Jun 19, 2017 10:47:09 PM se.nackademin.librarytest.pages.PageBase clickButton
+INFO: Clicking{0}Add Author
+]]></system-err>
+  </testcase>
+  <testcase name="testUsingTable" classname="se.nackademin.librarytest.SelenideTest" time="8.788"/>
+  <testcase name="testChangePublishDateBook" classname="se.nackademin.librarytest.SelenideTest" time="17.003">
+    <failure message="Element not found {#edit-book-button}&#10;Expected: visible" type="com.codeborne.selenide.ex.ElementNotFound">com.codeborne.selenide.ex.ElementNotFound: Element not found {#edit-book-button}
+Expected: visible
+	at sun.reflect.GeneratedConstructorAccessor10.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:206)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:158)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:678)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:363)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByCssSelector(RemoteWebDriver.java:492)
+	at org.openqa.selenium.By$ByCssSelector.findElement(By.java:430)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:355)
+	at com.codeborne.selenide.impl.WebElementSelector.findElement(WebElementSelector.java:28)
+	at com.codeborne.selenide.impl.ElementFinder.getWebElement(ElementFinder.java:56)
+	at com.codeborne.selenide.impl.WebElementSource.checkCondition(WebElementSource.java:44)
+	at com.codeborne.selenide.impl.WebElementSource.findAndAssertElementIsVisible(WebElementSource.java:72)
+	at com.codeborne.selenide.commands.Click.execute(Click.java:14)
+	at com.codeborne.selenide.commands.Click.execute(Click.java:11)
+	at com.codeborne.selenide.commands.Commands.execute(Commands.java:136)
+	at com.codeborne.selenide.impl.SelenideElementProxy.dispatchAndRetry(SelenideElementProxy.java:82)
+	at com.codeborne.selenide.impl.SelenideElementProxy.invoke(SelenideElementProxy.java:58)
+	at com.sun.proxy.$Proxy8.click(Unknown Source)
+	at se.nackademin.librarytest.pages.PageBase.clickButton(PageBase.java:22)
+	at se.nackademin.librarytest.pages.BookPage.clickEditBookButton(BookPage.java:77)
+	at se.nackademin.librarytest.helpers.BookHelper.changePublishDateBook(BookHelper.java:100)
+	at se.nackademin.librarytest.SelenideTest.testChangePublishDateBook(SelenideTest.java:203)
+</failure>
+    <system-err><![CDATA[Jun 19, 2017 10:47:22 PM se.nackademin.librarytest.pages.PageBase clickButton
+INFO: Clicking{0}Sign in
+Jun 19, 2017 10:47:25 PM se.nackademin.librarytest.pages.PageBase clickButton
+INFO: Clicking{0}Browse Books
+Jun 19, 2017 10:47:30 PM se.nackademin.librarytest.pages.PageBase clickButton
+INFO: Clicking{0}Browse Books
+Jun 19, 2017 10:47:34 PM se.nackademin.librarytest.pages.PageBase clickButton
+INFO: Clicking{0}edit book button
+]]></system-err>
+  </testcase>
+  <testcase name="testBorrowBook" classname="se.nackademin.librarytest.SelenideTest" time="7.403">
+    <failure message="Element not found {#side-menu-link-add-book}&#10;Expected: visible" type="com.codeborne.selenide.ex.ElementNotFound">com.codeborne.selenide.ex.ElementNotFound: Element not found {#side-menu-link-add-book}
+Expected: visible
+	at sun.reflect.GeneratedConstructorAccessor10.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:206)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:158)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:678)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:363)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByCssSelector(RemoteWebDriver.java:492)
+	at org.openqa.selenium.By$ByCssSelector.findElement(By.java:430)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:355)
+	at com.codeborne.selenide.impl.WebElementSelector.findElement(WebElementSelector.java:28)
+	at com.codeborne.selenide.impl.ElementFinder.getWebElement(ElementFinder.java:56)
+	at com.codeborne.selenide.impl.WebElementSource.checkCondition(WebElementSource.java:44)
+	at com.codeborne.selenide.impl.WebElementSource.findAndAssertElementIsVisible(WebElementSource.java:72)
+	at com.codeborne.selenide.commands.Click.execute(Click.java:14)
+	at com.codeborne.selenide.commands.Click.execute(Click.java:11)
+	at com.codeborne.selenide.commands.Commands.execute(Commands.java:136)
+	at com.codeborne.selenide.impl.SelenideElementProxy.dispatchAndRetry(SelenideElementProxy.java:82)
+	at com.codeborne.selenide.impl.SelenideElementProxy.invoke(SelenideElementProxy.java:58)
+	at com.sun.proxy.$Proxy8.click(Unknown Source)
+	at se.nackademin.librarytest.pages.PageBase.clickButton(PageBase.java:22)
+	at se.nackademin.librarytest.pages.MenuPage.navigateToAddBook(MenuPage.java:43)
+	at se.nackademin.librarytest.helpers.BookHelper.addNewBook(BookHelper.java:55)
+	at se.nackademin.librarytest.SelenideTest.testBorrowBook(SelenideTest.java:222)
+</failure>
+    <system-err><![CDATA[Jun 19, 2017 10:47:39 PM se.nackademin.librarytest.pages.PageBase clickButton
+INFO: Clicking{0}Sign in
+Jun 19, 2017 10:47:42 PM se.nackademin.librarytest.pages.PageBase clickButton
+INFO: Clicking{0}Add book
+]]></system-err>
+  </testcase>
+  <testcase name="viewUserProfilePage" classname="se.nackademin.librarytest.SelenideTest" time="4.436">
+    <failure message="Element not found {#side-menu-link-add-user}&#10;Expected: visible" type="com.codeborne.selenide.ex.ElementNotFound">com.codeborne.selenide.ex.ElementNotFound: Element not found {#side-menu-link-add-user}
+Expected: visible
+	at sun.reflect.GeneratedConstructorAccessor10.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:206)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:158)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:678)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:363)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByCssSelector(RemoteWebDriver.java:492)
+	at org.openqa.selenium.By$ByCssSelector.findElement(By.java:430)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:355)
+	at com.codeborne.selenide.impl.WebElementSelector.findElement(WebElementSelector.java:28)
+	at com.codeborne.selenide.impl.ElementFinder.getWebElement(ElementFinder.java:56)
+	at com.codeborne.selenide.impl.WebElementSource.checkCondition(WebElementSource.java:44)
+	at com.codeborne.selenide.impl.WebElementSource.findAndAssertElementIsVisible(WebElementSource.java:72)
+	at com.codeborne.selenide.commands.Click.execute(Click.java:14)
+	at com.codeborne.selenide.commands.Click.execute(Click.java:11)
+	at com.codeborne.selenide.commands.Commands.execute(Commands.java:136)
+	at com.codeborne.selenide.impl.SelenideElementProxy.dispatchAndRetry(SelenideElementProxy.java:82)
+	at com.codeborne.selenide.impl.SelenideElementProxy.invoke(SelenideElementProxy.java:58)
+	at com.sun.proxy.$Proxy8.click(Unknown Source)
+	at se.nackademin.librarytest.pages.PageBase.clickButton(PageBase.java:22)
+	at se.nackademin.librarytest.pages.MenuPage.navigateToAddUser(MenuPage.java:38)
+	at se.nackademin.librarytest.helpers.UserHelper.createNewUser(UserHelper.java:26)
+	at se.nackademin.librarytest.SelenideTest.viewUserProfilePage(SelenideTest.java:261)
+</failure>
+    <system-err><![CDATA[Jun 19, 2017 10:47:46 PM se.nackademin.librarytest.pages.PageBase clickButton
+INFO: Clicking{0}Add user
+]]></system-err>
+  </testcase>
+  <testcase name="testChangeEmailFromMyProfile" classname="se.nackademin.librarytest.SelenideTest" time="0">
+    <skipped/>
+  </testcase>
 </testsuite>

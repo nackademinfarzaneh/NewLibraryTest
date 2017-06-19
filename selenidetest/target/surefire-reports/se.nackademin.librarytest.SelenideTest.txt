@@ -1,4 +1,153 @@
 -------------------------------------------------------------------------------
 Test set: se.nackademin.librarytest.SelenideTest
 -------------------------------------------------------------------------------
-Tests run: 3, Failures: 0, Errors: 0, Skipped: 2, Time elapsed: 14.985 sec - in se.nackademin.librarytest.SelenideTest
+Tests run: 11, Failures: 5, Errors: 1, Skipped: 4, Time elapsed: 67.498 sec <<< FAILURE! - in se.nackademin.librarytest.SelenideTest
+testAddNewBook(se.nackademin.librarytest.SelenideTest)  Time elapsed: 11.427 sec  <<< FAILURE!
+com.codeborne.selenide.ex.ElementNotFound: Element not found {#side-menu-link-add-book}
+Expected: visible
+	at sun.reflect.GeneratedConstructorAccessor10.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:206)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:158)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:678)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:363)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByCssSelector(RemoteWebDriver.java:492)
+	at org.openqa.selenium.By$ByCssSelector.findElement(By.java:430)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:355)
+	at com.codeborne.selenide.impl.WebElementSelector.findElement(WebElementSelector.java:28)
+	at com.codeborne.selenide.impl.ElementFinder.getWebElement(ElementFinder.java:56)
+	at com.codeborne.selenide.impl.WebElementSource.checkCondition(WebElementSource.java:44)
+	at com.codeborne.selenide.impl.WebElementSource.findAndAssertElementIsVisible(WebElementSource.java:72)
+	at com.codeborne.selenide.commands.Click.execute(Click.java:14)
+	at com.codeborne.selenide.commands.Click.execute(Click.java:11)
+	at com.codeborne.selenide.commands.Commands.execute(Commands.java:136)
+	at com.codeborne.selenide.impl.SelenideElementProxy.dispatchAndRetry(SelenideElementProxy.java:82)
+	at com.codeborne.selenide.impl.SelenideElementProxy.invoke(SelenideElementProxy.java:58)
+	at com.sun.proxy.$Proxy8.click(Unknown Source)
+	at se.nackademin.librarytest.pages.PageBase.clickButton(PageBase.java:22)
+	at se.nackademin.librarytest.pages.MenuPage.navigateToAddBook(MenuPage.java:43)
+	at se.nackademin.librarytest.helpers.BookHelper.addNewBook(BookHelper.java:55)
+	at se.nackademin.librarytest.SelenideTest.testAddNewBook(SelenideTest.java:174)
+
+tesTable(se.nackademin.librarytest.SelenideTest)  Time elapsed: 10.779 sec  <<< ERROR!
+org.openqa.selenium.NoSuchElementException: Couldnot find cell containbook title
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '2.53.0', revision: '35ae25b1534ae328c771e0856c93e187490ca824', time: '2016-03-15 10:43:46'
+System info: host: 'testautomnack-VirtualBox', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'i386', os.version: '4.4.0-79-generic', java.version: '1.8.0_121'
+Driver info: driver.version: unknown
+	at se.nackademin.librarytest.helpers.Table.searchAndClick(Table.java:46)
+	at se.nackademin.librarytest.SelenideTest.tesTable(SelenideTest.java:73)
+
+testAddAuthor(se.nackademin.librarytest.SelenideTest)  Time elapsed: 7.582 sec  <<< FAILURE!
+com.codeborne.selenide.ex.ElementNotFound: Element not found {#side-menu-link-add-author}
+Expected: visible
+	at sun.reflect.GeneratedConstructorAccessor10.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:206)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:158)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:678)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:363)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByCssSelector(RemoteWebDriver.java:492)
+	at org.openqa.selenium.By$ByCssSelector.findElement(By.java:430)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:355)
+	at com.codeborne.selenide.impl.WebElementSelector.findElement(WebElementSelector.java:28)
+	at com.codeborne.selenide.impl.ElementFinder.getWebElement(ElementFinder.java:56)
+	at com.codeborne.selenide.impl.WebElementSource.checkCondition(WebElementSource.java:44)
+	at com.codeborne.selenide.impl.WebElementSource.findAndAssertElementIsVisible(WebElementSource.java:72)
+	at com.codeborne.selenide.commands.Click.execute(Click.java:14)
+	at com.codeborne.selenide.commands.Click.execute(Click.java:11)
+	at com.codeborne.selenide.commands.Commands.execute(Commands.java:136)
+	at com.codeborne.selenide.impl.SelenideElementProxy.dispatchAndRetry(SelenideElementProxy.java:82)
+	at com.codeborne.selenide.impl.SelenideElementProxy.invoke(SelenideElementProxy.java:58)
+	at com.sun.proxy.$Proxy8.click(Unknown Source)
+	at se.nackademin.librarytest.pages.PageBase.clickButton(PageBase.java:22)
+	at se.nackademin.librarytest.pages.MenuPage.navigateToAddAuthor(MenuPage.java:33)
+	at se.nackademin.librarytest.helpers.AuthorHelper.createNewAuthor(AuthorHelper.java:18)
+	at se.nackademin.librarytest.SelenideTest.testAddAuthor(SelenideTest.java:154)
+
+testChangePublishDateBook(se.nackademin.librarytest.SelenideTest)  Time elapsed: 17.003 sec  <<< FAILURE!
+com.codeborne.selenide.ex.ElementNotFound: Element not found {#edit-book-button}
+Expected: visible
+	at sun.reflect.GeneratedConstructorAccessor10.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:206)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:158)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:678)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:363)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByCssSelector(RemoteWebDriver.java:492)
+	at org.openqa.selenium.By$ByCssSelector.findElement(By.java:430)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:355)
+	at com.codeborne.selenide.impl.WebElementSelector.findElement(WebElementSelector.java:28)
+	at com.codeborne.selenide.impl.ElementFinder.getWebElement(ElementFinder.java:56)
+	at com.codeborne.selenide.impl.WebElementSource.checkCondition(WebElementSource.java:44)
+	at com.codeborne.selenide.impl.WebElementSource.findAndAssertElementIsVisible(WebElementSource.java:72)
+	at com.codeborne.selenide.commands.Click.execute(Click.java:14)
+	at com.codeborne.selenide.commands.Click.execute(Click.java:11)
+	at com.codeborne.selenide.commands.Commands.execute(Commands.java:136)
+	at com.codeborne.selenide.impl.SelenideElementProxy.dispatchAndRetry(SelenideElementProxy.java:82)
+	at com.codeborne.selenide.impl.SelenideElementProxy.invoke(SelenideElementProxy.java:58)
+	at com.sun.proxy.$Proxy8.click(Unknown Source)
+	at se.nackademin.librarytest.pages.PageBase.clickButton(PageBase.java:22)
+	at se.nackademin.librarytest.pages.BookPage.clickEditBookButton(BookPage.java:77)
+	at se.nackademin.librarytest.helpers.BookHelper.changePublishDateBook(BookHelper.java:100)
+	at se.nackademin.librarytest.SelenideTest.testChangePublishDateBook(SelenideTest.java:203)
+
+testBorrowBook(se.nackademin.librarytest.SelenideTest)  Time elapsed: 7.403 sec  <<< FAILURE!
+com.codeborne.selenide.ex.ElementNotFound: Element not found {#side-menu-link-add-book}
+Expected: visible
+	at sun.reflect.GeneratedConstructorAccessor10.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:206)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:158)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:678)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:363)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByCssSelector(RemoteWebDriver.java:492)
+	at org.openqa.selenium.By$ByCssSelector.findElement(By.java:430)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:355)
+	at com.codeborne.selenide.impl.WebElementSelector.findElement(WebElementSelector.java:28)
+	at com.codeborne.selenide.impl.ElementFinder.getWebElement(ElementFinder.java:56)
+	at com.codeborne.selenide.impl.WebElementSource.checkCondition(WebElementSource.java:44)
+	at com.codeborne.selenide.impl.WebElementSource.findAndAssertElementIsVisible(WebElementSource.java:72)
+	at com.codeborne.selenide.commands.Click.execute(Click.java:14)
+	at com.codeborne.selenide.commands.Click.execute(Click.java:11)
+	at com.codeborne.selenide.commands.Commands.execute(Commands.java:136)
+	at com.codeborne.selenide.impl.SelenideElementProxy.dispatchAndRetry(SelenideElementProxy.java:82)
+	at com.codeborne.selenide.impl.SelenideElementProxy.invoke(SelenideElementProxy.java:58)
+	at com.sun.proxy.$Proxy8.click(Unknown Source)
+	at se.nackademin.librarytest.pages.PageBase.clickButton(PageBase.java:22)
+	at se.nackademin.librarytest.pages.MenuPage.navigateToAddBook(MenuPage.java:43)
+	at se.nackademin.librarytest.helpers.BookHelper.addNewBook(BookHelper.java:55)
+	at se.nackademin.librarytest.SelenideTest.testBorrowBook(SelenideTest.java:222)
+
+viewUserProfilePage(se.nackademin.librarytest.SelenideTest)  Time elapsed: 4.436 sec  <<< FAILURE!
+com.codeborne.selenide.ex.ElementNotFound: Element not found {#side-menu-link-add-user}
+Expected: visible
+	at sun.reflect.GeneratedConstructorAccessor10.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:206)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:158)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:678)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:363)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByCssSelector(RemoteWebDriver.java:492)
+	at org.openqa.selenium.By$ByCssSelector.findElement(By.java:430)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:355)
+	at com.codeborne.selenide.impl.WebElementSelector.findElement(WebElementSelector.java:28)
+	at com.codeborne.selenide.impl.ElementFinder.getWebElement(ElementFinder.java:56)
+	at com.codeborne.selenide.impl.WebElementSource.checkCondition(WebElementSource.java:44)
+	at com.codeborne.selenide.impl.WebElementSource.findAndAssertElementIsVisible(WebElementSource.java:72)
+	at com.codeborne.selenide.commands.Click.execute(Click.java:14)
+	at com.codeborne.selenide.commands.Click.execute(Click.java:11)
+	at com.codeborne.selenide.commands.Commands.execute(Commands.java:136)
+	at com.codeborne.selenide.impl.SelenideElementProxy.dispatchAndRetry(SelenideElementProxy.java:82)
+	at com.codeborne.selenide.impl.SelenideElementProxy.invoke(SelenideElementProxy.java:58)
+	at com.sun.proxy.$Proxy8.click(Unknown Source)
+	at se.nackademin.librarytest.pages.PageBase.clickButton(PageBase.java:22)
+	at se.nackademin.librarytest.pages.MenuPage.navigateToAddUser(MenuPage.java:38)
+	at se.nackademin.librarytest.helpers.UserHelper.createNewUser(UserHelper.java:26)
+	at se.nackademin.librarytest.SelenideTest.viewUserProfilePage(SelenideTest.java:261)
+
