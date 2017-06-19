@@ -1,4 +1,20 @@
 -------------------------------------------------------------------------------
 Test set: se.nackademin.librarytest.librarytestsystem.librarytestsystem.BookRestServiceTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.764 sec - in se.nackademin.librarytest.librarytestsystem.librarytestsystem.BookRestServiceTest
+Tests run: 10, Failures: 2, Errors: 0, Skipped: 3, Time elapsed: 2.351 sec <<< FAILURE! - in se.nackademin.librarytest.librarytestsystem.librarytestsystem.BookRestServiceTest
+testDeleteBookById(se.nackademin.librarytest.librarytestsystem.librarytestsystem.BookRestServiceTest)  Time elapsed: 0.136 sec  <<< FAILURE!
+java.lang.AssertionError: Status code should be 201  expected:<201> but was:<400>
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:834)
+	at org.junit.Assert.assertEquals(Assert.java:645)
+	at se.nackademin.librarytest.librarytestsystem.librarytestsystem.BookRestServiceTest.createBook(BookRestServiceTest.java:264)
+	at se.nackademin.librarytest.librarytestsystem.librarytestsystem.BookRestServiceTest.testDeleteBookById(BookRestServiceTest.java:131)
+
+testCreateBook(se.nackademin.librarytest.librarytestsystem.librarytestsystem.BookRestServiceTest)  Time elapsed: 0.032 sec  <<< FAILURE!
+java.lang.AssertionError: Status code should be 201  expected:<201> but was:<400>
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:834)
+	at org.junit.Assert.assertEquals(Assert.java:645)
+	at se.nackademin.librarytest.librarytestsystem.librarytestsystem.BookRestServiceTest.createBook(BookRestServiceTest.java:264)
+	at se.nackademin.librarytest.librarytestsystem.librarytestsystem.BookRestServiceTest.testCreateBook(BookRestServiceTest.java:61)
+

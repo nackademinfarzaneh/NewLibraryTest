@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="se.nackademin.librarytest.librarytestsystem.librarytestsystem.BookRestServiceTest" time="1.609" tests="1" errors="0" skipped="0" failures="0">
+<testsuite name="se.nackademin.librarytest.librarytestsystem.librarytestsystem.BookRestServiceTest" time="2.3" tests="10" errors="0" skipped="3" failures="2">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-8-oracle/jre/lib/i386"/>
@@ -14,7 +14,6 @@
     <property name="user.country" value="US"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.os.patch.level" value="unknown"/>
-    <property name="test" value="se.nackademin.librarytest.librarytestsystem.librarytestsystem.BookRestServiceTest#testDeleteBook"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
     <property name="user.dir" value="/home/testautom-nack/NetBeansProjects/librarytest/librarytestsystem"/>
     <property name="java.runtime.version" value="1.8.0_121-b13"/>
@@ -43,7 +42,7 @@
     <property name="java.vm.specification.version" value="1.8"/>
     <property name="sun.arch.data.model" value="32"/>
     <property name="java.home" value="/usr/lib/jvm/java-8-oracle/jre"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -Dtest=se.nackademin.librarytest.librarytestsystem.librarytestsystem.BookRestServiceTest#testDeleteBook -Dmaven.ext.class.path=/home/testautom-nack/netbeans-8.2/java/maven-nblib/netbeans-eventspy.jar surefire:test"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -Dmaven.ext.class.path=/home/testautom-nack/netbeans-8.2/java/maven-nblib/netbeans-eventspy.jar clean install"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="user.language" value="en"/>
     <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
@@ -61,5 +60,86 @@
     <property name="sun.desktop" value="gnome"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase name="testDeleteBook" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.BookRestServiceTest" time="1.609"/>
+  <testcase name="testgetAuthorsOfSpecifiedBook" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.BookRestServiceTest" time="1.813"/>
+  <testcase name="testDeleteBookById" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.BookRestServiceTest" time="0.136">
+    <failure message="Status code should be 201  expected:&lt;201&gt; but was:&lt;400&gt;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: Status code should be 201  expected:<201> but was:<400>
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:834)
+	at org.junit.Assert.assertEquals(Assert.java:645)
+	at se.nackademin.librarytest.librarytestsystem.librarytestsystem.BookRestServiceTest.createBook(BookRestServiceTest.java:264)
+	at se.nackademin.librarytest.librarytestsystem.librarytestsystem.BookRestServiceTest.testDeleteBookById(BookRestServiceTest.java:131)
+]]></failure>
+    <system-out><![CDATA[Request method:	POST
+Request path:	http://localhost:8080/librarytest-rest/authors
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Multiparts:		<none>
+Headers:		Accept=*/*
+				Content-Type=application/json; charset=UTF-8
+Cookies:		<none>
+Body:
+{
+    "author": {
+        "id": 269,
+        "firstName": "ca85",
+        "lastName": "4961",
+        "country": "b192",
+        "bio": "98370b6f-c6ba-4f63-8114-b4d2c6b6f30d",
+        "authors": [
+            
+        ]
+    }
+}
+]]></system-out>
+  </testcase>
+  <testcase name="testGetAllBooks" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.BookRestServiceTest" time="0.112"/>
+  <testcase name="testUpdateBook" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.BookRestServiceTest" time="0.131"/>
+  <testcase name="testGetBookById" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.BookRestServiceTest" time="0.036"/>
+  <testcase name="testgetAllBooksBySpecifiedAuthor" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.BookRestServiceTest" time="0.04"/>
+  <testcase name="testCreateBook" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.BookRestServiceTest" time="0.032">
+    <failure message="Status code should be 201  expected:&lt;201&gt; but was:&lt;400&gt;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: Status code should be 201  expected:<201> but was:<400>
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:834)
+	at org.junit.Assert.assertEquals(Assert.java:645)
+	at se.nackademin.librarytest.librarytestsystem.librarytestsystem.BookRestServiceTest.createBook(BookRestServiceTest.java:264)
+	at se.nackademin.librarytest.librarytestsystem.librarytestsystem.BookRestServiceTest.testCreateBook(BookRestServiceTest.java:61)
+]]></failure>
+    <system-out><![CDATA[Request method:	POST
+Request path:	http://localhost:8080/librarytest-rest/authors
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Multiparts:		<none>
+Headers:		Accept=*/*
+				Content-Type=application/json; charset=UTF-8
+Cookies:		<none>
+Body:
+{
+    "author": {
+        "id": 234,
+        "firstName": "6603",
+        "lastName": "50a3",
+        "country": "39bf",
+        "bio": "05503038-4c34-45f8-ba72-df64c92bf716",
+        "authors": [
+            
+        ]
+    }
+}
+]]></system-out>
+  </testcase>
+  <testcase name="testDeleteBook" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.BookRestServiceTest" time="0">
+    <skipped/>
+  </testcase>
+  <testcase name="testAddAuthorToSpecifiedBook" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.BookRestServiceTest" time="0">
+    <skipped/>
+  </testcase>
+  <testcase name="testUppdateAuthorListOfSpecifiedBook" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.BookRestServiceTest" time="0">
+    <skipped/>
+  </testcase>
 </testsuite>

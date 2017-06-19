@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativAuthorRestServiceTest" time="0.654" tests="8" errors="0" skipped="0" failures="4">
+<testsuite name="se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativAuthorRestServiceTest" time="0.247" tests="8" errors="0" skipped="0" failures="3">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-8-oracle/jre/lib/i386"/>
@@ -60,13 +60,14 @@
     <property name="sun.desktop" value="gnome"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase name="testCreatAuthorWithNoFirstName_StatusCode400" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativAuthorRestServiceTest" time="0.035"/>
-  <testcase name="testAuthorsDeleteNotFound_StatusCode404" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativAuthorRestServiceTest" time="0.049">
-    <failure message="Status code should be 201 expected:&lt;201&gt; but was:&lt;400&gt;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: Status code should be 201 expected:<201> but was:<400>
+  <testcase name="testCreatAuthorWithNoFirstName_StatusCode400" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativAuthorRestServiceTest" time="0.008"/>
+  <testcase name="testAuthorsDeleteNotFound_StatusCode404" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativAuthorRestServiceTest" time="0.05"/>
+  <testcase name="testUpdateAuthorWithNoAuthorsFirstName_StatusCode400" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativAuthorRestServiceTest" time="0.019">
+    <failure message="Status code should be 201  expected:&lt;201&gt; but was:&lt;400&gt;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: Status code should be 201  expected:<201> but was:<400>
 	at org.junit.Assert.fail(Assert.java:88)
 	at org.junit.Assert.failNotEquals(Assert.java:834)
 	at org.junit.Assert.assertEquals(Assert.java:645)
-	at se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativAuthorRestServiceTest.testAuthorsDeleteNotFound_StatusCode404(NegativAuthorRestServiceTest.java:136)
+	at se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativAuthorRestServiceTest.testUpdateAuthorWithNoAuthorsFirstName_StatusCode400(NegativAuthorRestServiceTest.java:86)
 ]]></failure>
     <system-out><![CDATA[Request method:	POST
 Request path:	http://localhost:8080/librarytest-rest/authors
@@ -82,11 +83,11 @@ Cookies:		<none>
 Body:
 {
     "author": {
-        "id": 99,
-        "firstName": "32b2",
-        "lastName": "eac1",
-        "country": "22dd",
-        "bio": "7917a034-a388-4f59-b96c-a6fe344575de",
+        "id": 216,
+        "firstName": "9ce1",
+        "lastName": "3f57",
+        "country": "da77",
+        "bio": "5f8a85ff-664e-41d2-96db-1a81539cc3a3",
         "authors": [
             
         ]
@@ -94,14 +95,12 @@ Body:
 }
 ]]></system-out>
   </testcase>
-  <testcase name="testUpdateAuthorWithNoAuthorsFirstName_StatusCode400" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativAuthorRestServiceTest" time="0.412"/>
-  <testcase name="testAuthorsGetNotFound_StatusCode404" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativAuthorRestServiceTest" time="0.015"/>
-  <testcase name="testDeleteAuthorWithBookInDB_StatusCode409" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativAuthorRestServiceTest" time="0.063">
+  <testcase name="testAuthorsIdExistInDB_StatusCode400" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativAuthorRestServiceTest" time="0.022">
     <failure message="Status code should be 201 expected:&lt;201&gt; but was:&lt;400&gt;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: Status code should be 201 expected:<201> but was:<400>
 	at org.junit.Assert.fail(Assert.java:88)
 	at org.junit.Assert.failNotEquals(Assert.java:834)
 	at org.junit.Assert.assertEquals(Assert.java:645)
-	at se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativAuthorRestServiceTest.testDeleteAuthorWithBookInDB_StatusCode409(NegativAuthorRestServiceTest.java:166)
+	at se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativAuthorRestServiceTest.testAuthorsIdExistInDB_StatusCode400(NegativAuthorRestServiceTest.java:36)
 ]]></failure>
     <system-out><![CDATA[Request method:	POST
 Request path:	http://localhost:8080/librarytest-rest/authors
@@ -117,78 +116,11 @@ Cookies:		<none>
 Body:
 {
     "author": {
-        "id": 233,
-        "firstName": "6860",
-        "lastName": "77b6",
-        "country": "547b",
-        "bio": "6ac7e126-4fa0-4041-a5b5-1f1c7867f4dd",
-        "authors": [
-            
-        ]
-    }
-}
-Request method:	POST
-Request path:	http://localhost:8080/librarytest-rest/books
-Proxy:			<none>
-Request params:	<none>
-Query params:	<none>
-Form params:	<none>
-Path params:	<none>
-Multiparts:		<none>
-Headers:		Accept=*/*
-				Content-Type=application/json; charset=UTF-8
-Cookies:		<none>
-Body:
-{
-    "book": {
-        "id": 246,
-        "description": "9052",
-        "isbn": "0528",
-        "nbrPages": 216,
-        "publicationDate": "2000-10-09",
-        "title": "d4f0",
-        "totalNbrCopies": 264,
-        "author": {
-            "id": 233,
-            "firstName": "6860",
-            "lastName": "77b6",
-            "country": "547b",
-            "bio": "6ac7e126-4fa0-4041-a5b5-1f1c7867f4dd",
-            "authors": [
-                
-            ]
-        }
-    }
-}
-new book 201
-]]></system-out>
-  </testcase>
-  <testcase name="authorsIdExistInDB_StatusCode400" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativAuthorRestServiceTest" time="0.035">
-    <failure message="Status code should be 201 expected:&lt;201&gt; but was:&lt;400&gt;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: Status code should be 201 expected:<201> but was:<400>
-	at org.junit.Assert.fail(Assert.java:88)
-	at org.junit.Assert.failNotEquals(Assert.java:834)
-	at org.junit.Assert.assertEquals(Assert.java:645)
-	at se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativAuthorRestServiceTest.authorsIdExistInDB_StatusCode400(NegativAuthorRestServiceTest.java:36)
-]]></failure>
-    <system-out><![CDATA[Request method:	POST
-Request path:	http://localhost:8080/librarytest-rest/authors
-Proxy:			<none>
-Request params:	<none>
-Query params:	<none>
-Form params:	<none>
-Path params:	<none>
-Multiparts:		<none>
-Headers:		Accept=*/*
-				Content-Type=application/json; charset=UTF-8
-Cookies:		<none>
-Body:
-{
-    "author": {
-        "id": 106,
-        "firstName": "894a",
-        "lastName": "7a76",
-        "country": "0d8b",
-        "bio": "e6b3f5f5-a41f-441b-b239-8b36998d71dd",
+        "id": 114,
+        "firstName": "5cff",
+        "lastName": "d652",
+        "country": "c328",
+        "bio": "090ac333-2fff-4ad6-95cc-fedd9a8dd455",
         "authors": [
             
         ]
@@ -196,8 +128,10 @@ Body:
 }
 ]]></system-out>
   </testcase>
-  <testcase name="testCreatAuthorWithNoLastName_StatusCode400" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativAuthorRestServiceTest" time="0.024"/>
-  <testcase name="testUpdateAuthorWithNoAuthorsLastName_StatusCode400" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativAuthorRestServiceTest" time="0.021">
+  <testcase name="testAuthorsGetNotFound_StatusCode404" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativAuthorRestServiceTest" time="0.065"/>
+  <testcase name="testDeleteAuthorWithBookInDB_StatusCode409" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativAuthorRestServiceTest" time="0.053"/>
+  <testcase name="testCreatAuthorWithNoLastName_StatusCode400" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativAuthorRestServiceTest" time="0.015"/>
+  <testcase name="testUpdateAuthorWithNoAuthorsLastName_StatusCode400" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativAuthorRestServiceTest" time="0.015">
     <failure message="Status code should be 201  expected:&lt;201&gt; but was:&lt;400&gt;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: Status code should be 201  expected:<201> but was:<400>
 	at org.junit.Assert.fail(Assert.java:88)
 	at org.junit.Assert.failNotEquals(Assert.java:834)
@@ -218,11 +152,11 @@ Cookies:		<none>
 Body:
 {
     "author": {
-        "id": 207,
-        "firstName": "3e13",
-        "lastName": "9912",
-        "country": "4158",
-        "bio": "d3d3c6b9-f52b-48ce-8009-0a7508949565",
+        "id": 232,
+        "firstName": "7ddd",
+        "lastName": "4918",
+        "country": "7a19",
+        "bio": "61249cd5-166a-4301-a756-ce3b364f67fd",
         "authors": [
             
         ]

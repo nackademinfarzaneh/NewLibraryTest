@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativLoanRestServiceTest" time="1.846" tests="1" errors="0" skipped="0" failures="0">
+<testsuite name="se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativLoanRestServiceTest" time="0.541" tests="18" errors="0" skipped="4" failures="6">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-8-oracle/jre/lib/i386"/>
@@ -14,7 +14,6 @@
     <property name="user.country" value="US"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.os.patch.level" value="unknown"/>
-    <property name="test" value="se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativLoanRestServiceTest#testGetLoanOfSpecifiedBookBySpecifiedUserLoanNotFound_Status404"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
     <property name="user.dir" value="/home/testautom-nack/NetBeansProjects/librarytest/librarytestsystem"/>
     <property name="java.runtime.version" value="1.8.0_121-b13"/>
@@ -43,7 +42,7 @@
     <property name="java.vm.specification.version" value="1.8"/>
     <property name="sun.arch.data.model" value="32"/>
     <property name="java.home" value="/usr/lib/jvm/java-8-oracle/jre"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -Dtest=se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativLoanRestServiceTest#testGetLoanOfSpecifiedBookBySpecifiedUserLoanNotFound_Status404 -Dmaven.ext.class.path=/home/testautom-nack/netbeans-8.2/java/maven-nblib/netbeans-eventspy.jar surefire:test"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -Dmaven.ext.class.path=/home/testautom-nack/netbeans-8.2/java/maven-nblib/netbeans-eventspy.jar clean install"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="user.language" value="en"/>
     <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
@@ -61,5 +60,882 @@
     <property name="sun.desktop" value="gnome"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase name="testGetLoanOfSpecifiedBookBySpecifiedUserLoanNotFound_Status404" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativLoanRestServiceTest" time="1.846"/>
+  <testcase name="testGetLoanNotFound_StatusCode_404" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativLoanRestServiceTest" time="0.008"/>
+  <testcase name="testDeleteLoanNotFound_StatusCode_404" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativLoanRestServiceTest" time="0.007"/>
+  <testcase name="createLoanUserNotFoundInDB_StatusCode400" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativLoanRestServiceTest" time="0.031"/>
+  <testcase name="testCreateLoanBookNotFoundInDB_StatusCode400" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativLoanRestServiceTest" time="0.034">
+    <failure message="Status code should be 400 expected:&lt;400&gt; but was:&lt;201&gt;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: Status code should be 400 expected:<400> but was:<201>
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:834)
+	at org.junit.Assert.assertEquals(Assert.java:645)
+	at se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativLoanRestServiceTest.testCreateLoanBookNotFoundInDB_StatusCode400(NegativLoanRestServiceTest.java:98)
+]]></failure>
+    <system-out><![CDATA[Request method:	POST
+Request path:	http://localhost:8080/librarytest-rest/users/
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Multiparts:		<none>
+Headers:		Accept=*/*
+				Content-Type=application/json; charset=UTF-8
+Cookies:		<none>
+Body:
+{
+    "user": {
+        "displayName": "ea5f",
+        "password": "9584",
+        "role": "LOANER",
+        "firstName": "ea5f",
+        "lastName": "b4f6",
+        "phone": "b516",
+        "email": "ada3",
+        "id": 295
+    }
+}
+Request method:	POST
+Request path:	http://localhost:8080/librarytest-rest/loans
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Multiparts:		<none>
+Headers:		Accept=*/*
+				Content-Type=application/json; charset=UTF-8
+Cookies:		<none>
+Body:
+{
+    "loan": {
+        "book": {
+            "id": 115,
+            "description": "dbd4",
+            "isbn": "20dd",
+            "nbrPages": 229,
+            "publicationDate": "1997-10-09",
+            "title": "c20c",
+            "totalNbrCopies": 94
+        },
+        "user": {
+            "displayName": "ea5f",
+            "password": "9584",
+            "role": "LOANER",
+            "firstName": "ea5f",
+            "lastName": "b4f6",
+            "phone": "b516",
+            "email": "ada3",
+            "id": 295
+        },
+        "dateBorrowed": "1991-02-19",
+        "dateDue": "1995-05-26",
+        "id": 286
+    }
+}
+Loan är inte skapad eftersom book hitades inte 201
+]]></system-out>
+  </testcase>
+  <testcase name="testGetLoanOfSpecifiedBookNotFound_StatusCode404" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativLoanRestServiceTest" time="0.013">
+    <failure message="Status code should be 201  expected:&lt;201&gt; but was:&lt;400&gt;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: Status code should be 201  expected:<201> but was:<400>
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:834)
+	at org.junit.Assert.assertEquals(Assert.java:645)
+	at se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativLoanRestServiceTest.testGetLoanOfSpecifiedBookNotFound_StatusCode404(NegativLoanRestServiceTest.java:509)
+]]></failure>
+    <system-out><![CDATA[Request method:	POST
+Request path:	http://localhost:8080/librarytest-rest/books
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Multiparts:		<none>
+Headers:		Accept=*/*
+				Content-Type=application/json; charset=UTF-8
+Cookies:		<none>
+Body:
+{
+    "book": {
+        "id": 164,
+        "description": "0307",
+        "isbn": "fb9d",
+        "nbrPages": 218,
+        "publicationDate": "1998-10-10",
+        "title": "b5f1",
+        "totalNbrCopies": 177
+    }
+}
+]]></system-out>
+  </testcase>
+  <testcase name="testPutLoanWithUserChanged_StatusCode400" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativLoanRestServiceTest" time="0.113"/>
+  <testcase name="testGetLoanOfSpecifiedBookBySpecifiedUserLoanNotFound_Status404" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativLoanRestServiceTest" time="0.029">
+    <failure message="Status code should be 201  expected:&lt;201&gt; but was:&lt;400&gt;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: Status code should be 201  expected:<201> but was:<400>
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:834)
+	at org.junit.Assert.assertEquals(Assert.java:645)
+	at se.nackademin.librarytest.librarytestsystem.librarytestsystem.BookRestServiceTest.createBook(BookRestServiceTest.java:264)
+	at se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativLoanRestServiceTest.testGetLoanOfSpecifiedBookBySpecifiedUserLoanNotFound_Status404(NegativLoanRestServiceTest.java:567)
+]]></failure>
+    <system-out><![CDATA[Request method:	POST
+Request path:	http://localhost:8080/librarytest-rest/users/
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Multiparts:		<none>
+Headers:		Accept=*/*
+				Content-Type=application/json; charset=UTF-8
+Cookies:		<none>
+Body:
+{
+    "user": {
+        "displayName": "5d31",
+        "password": "e25c",
+        "role": "LOANER",
+        "firstName": "5d31",
+        "lastName": "2065",
+        "phone": "cd64",
+        "email": "6473",
+        "id": 178
+    }
+}
+Request method:	POST
+Request path:	http://localhost:8080/librarytest-rest/authors
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Multiparts:		<none>
+Headers:		Accept=*/*
+				Content-Type=application/json; charset=UTF-8
+Cookies:		<none>
+Body:
+{
+    "author": {
+        "id": 134,
+        "firstName": "7a82",
+        "lastName": "8da1",
+        "country": "aae0",
+        "bio": "4a336229-daf0-4f83-9fda-4e817f810367",
+        "authors": [
+            
+        ]
+    }
+}
+]]></system-out>
+  </testcase>
+  <testcase name="testGetLoanOfSpecifiedBookBySpecifiedUserBookNotFound_Status404" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativLoanRestServiceTest" time="0.023">
+    <failure message="Status code should be 201  expected:&lt;201&gt; but was:&lt;400&gt;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: Status code should be 201  expected:<201> but was:<400>
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:834)
+	at org.junit.Assert.assertEquals(Assert.java:645)
+	at se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativLoanRestServiceTest.testGetLoanOfSpecifiedBookBySpecifiedUserBookNotFound_Status404(NegativLoanRestServiceTest.java:532)
+]]></failure>
+    <system-out><![CDATA[Request method:	POST
+Request path:	http://localhost:8080/librarytest-rest/users/
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Multiparts:		<none>
+Headers:		Accept=*/*
+				Content-Type=application/json; charset=UTF-8
+Cookies:		<none>
+Body:
+{
+    "user": {
+        "displayName": "ef23",
+        "password": "466b",
+        "role": "LOANER",
+        "firstName": "ef23",
+        "lastName": "5140",
+        "phone": "8a72",
+        "email": "e00a",
+        "id": 218
+    }
+}
+]]></system-out>
+  </testcase>
+  <testcase name="testCreateLoanWithNotEnoughAntallKopiaAvBook_StatusCode409" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativLoanRestServiceTest" time="0.038"/>
+  <testcase name="testPutLoanHadNoDateOfDueSet_StatusCode400" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativLoanRestServiceTest" time="0">
+    <skipped/>
+  </testcase>
+  <testcase name="testPutLoanNotFound_StatusCode404" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativLoanRestServiceTest" time="0.044"/>
+  <testcase name="testCreateLoanWithSameUserAndBook_StatusCode409" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativLoanRestServiceTest" time="0.092"/>
+  <testcase name="testGetLoanOfSpecifiedUserNotFound_StatusCode404" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativLoanRestServiceTest" time="0.013"/>
+  <testcase name="testCreateLoanUserHasNoRole_StatusCode400" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativLoanRestServiceTest" time="0">
+    <skipped/>
+  </testcase>
+  <testcase name="testGetLoanOfSpecifiedUserLoanNotFound_StatusCode404" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativLoanRestServiceTest" time="0.011">
+    <failure message="Status code should be 201  expected:&lt;201&gt; but was:&lt;400&gt;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: Status code should be 201  expected:<201> but was:<400>
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:834)
+	at org.junit.Assert.assertEquals(Assert.java:645)
+	at se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativLoanRestServiceTest.testGetLoanOfSpecifiedUserLoanNotFound_StatusCode404(NegativLoanRestServiceTest.java:474)
+]]></failure>
+    <system-out><![CDATA[Request method:	POST
+Request path:	http://localhost:8080/librarytest-rest/users/
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Multiparts:		<none>
+Headers:		Accept=*/*
+				Content-Type=application/json; charset=UTF-8
+Cookies:		<none>
+Body:
+{
+    "user": {
+        "displayName": "7cdb",
+        "password": "b75f",
+        "role": "LOANER",
+        "firstName": "7cdb",
+        "lastName": "741b",
+        "phone": "4542",
+        "email": "2115",
+        "id": 295
+    }
+}
+]]></system-out>
+  </testcase>
+  <testcase name="testPutLoanWithBookChanged_StatusCode400" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativLoanRestServiceTest" time="0.085">
+    <failure message="Status code should be 201  expected:&lt;201&gt; but was:&lt;400&gt;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: Status code should be 201  expected:<201> but was:<400>
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:834)
+	at org.junit.Assert.assertEquals(Assert.java:645)
+	at se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativLoanRestServiceTest.testPutLoanWithBookChanged_StatusCode400(NegativLoanRestServiceTest.java:376)
+]]></failure>
+    <system-out><![CDATA[Request method:	GET
+Request path:	http://localhost:8080/librarytest-rest/loans
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Multiparts:		<none>
+Headers:		Accept=application/json, application/javascript, text/javascript
+Cookies:		<none>
+Body:			<none>
+HTTP/1.1 200 OK
+Server: Apache-Coyote/1.1
+Content-Type: application/json
+Transfer-Encoding: chunked
+Date: Mon, 19 Jun 2017 07:22:28 GMT
+
+{
+    "loans": {
+        "loan": [
+            {
+                "id": 71,
+                "book": {
+                    "id": 82,
+                    "author": {
+                        "id": 60,
+                        "bio": "0900d5f9-e1f7-4095-891f-2917aff8c773",
+                        "country": "fa6b",
+                        "firstName": "c56f",
+                        "lastName": "f8b5"
+                    },
+                    "description": "96ba",
+                    "isbn": "baab",
+                    "nbrPages": 235,
+                    "publicationDate": "1990-10-15",
+                    "title": "db8e",
+                    "totalNbrCopies": 113
+                },
+                "dateBorrowed": "1997-03-26",
+                "dateDue": "2000-10-02",
+                "user": {
+                    "id": 256,
+                    "displayName": "bfb5",
+                    "email": "e880",
+                    "firstName": "bfb5",
+                    "lastName": 3973,
+                    "password": 7795,
+                    "phone": 4726,
+                    "role": "LOANER"
+                }
+            },
+            {
+                "id": 228,
+                "book": {
+                    "id": 83,
+                    "author": {
+                        "id": 103,
+                        "bio": "e15a662f-48a8-4126-93f8-52dbff63a26b",
+                        "country": "b3eb",
+                        "firstName": "d30a",
+                        "lastName": "1ec7"
+                    },
+                    "description": 9091,
+                    "isbn": "73e9",
+                    "nbrPages": 104,
+                    "publicationDate": "1999-05-15",
+                    "title": 5880,
+                    "totalNbrCopies": 250
+                },
+                "dateBorrowed": "1990-08-15",
+                "dateDue": "1997-06-18",
+                "user": {
+                    "id": 293,
+                    "displayName": "c1fa",
+                    "email": "6cb3",
+                    "firstName": "c1fa",
+                    "lastName": "abe4",
+                    "password": "5cd5",
+                    "phone": "af20",
+                    "role": "LOANER"
+                }
+            },
+            {
+                "id": 290,
+                "book": {
+                    "id": 177,
+                    "author": {
+                        "id": 74,
+                        "bio": "d60fb642-46c4-4081-952b-3802a4e68464",
+                        "country": "26ba",
+                        "firstName": 4088,
+                        "lastName": "80d9"
+                    },
+                    "description": "56a8",
+                    "isbn": "33d2",
+                    "nbrPages": 126,
+                    "publicationDate": "1990-04-21",
+                    "title": "6cd6",
+                    "totalNbrCopies": 195
+                },
+                "dateBorrowed": "1991-02-06",
+                "dateDue": "1994-03-28",
+                "user": {
+                    "id": 179,
+                    "displayName": "bc61",
+                    "email": 5669,
+                    "firstName": "bc61",
+                    "lastName": "16b3",
+                    "password": "c019",
+                    "phone": "412d",
+                    "role": "LOANER"
+                }
+            },
+            {
+                "id": 32,
+                "book": {
+                    "id": 151,
+                    "author": {
+                        "id": 227,
+                        "bio": "6b89f5ac-c871-4ab9-aa39-a87296aa16a7",
+                        "country": "edb6",
+                        "firstName": "0700",
+                        "lastName": "4c1c"
+                    },
+                    "description": "827c",
+                    "isbn": "1f87",
+                    "nbrPages": 160,
+                    "publicationDate": "1997-02-02",
+                    "title": "2f36",
+                    "totalNbrCopies": 84
+                },
+                "dateBorrowed": "1999-02-05",
+                "dateDue": "1990-08-03",
+                "user": {
+                    "id": 147,
+                    "displayName": "a379",
+                    "email": 4501,
+                    "firstName": "a379",
+                    "lastName": "27de",
+                    "password": "0a69",
+                    "phone": 7912,
+                    "role": "LOANER"
+                }
+            },
+            {
+                "id": 229,
+                "book": {
+                    "id": 140,
+                    "author": {
+                        "id": 281,
+                        "bio": "1dc37023-9ea2-47ee-8951-8080d860ee82",
+                        "country": "b93e",
+                        "firstName": "d4a8",
+                        "lastName": "9e28"
+                    },
+                    "description": "3e69",
+                    "isbn": "05e1",
+                    "nbrPages": 216,
+                    "publicationDate": "1993-09-24",
+                    "title": "e9a2",
+                    "totalNbrCopies": 287
+                },
+                "dateBorrowed": "1993-12-01",
+                "dateDue": "1998-11-20",
+                "user": {
+                    "id": 150,
+                    "displayName": "bb52",
+                    "email": 2756,
+                    "firstName": "bb52",
+                    "lastName": "171e",
+                    "password": "783e",
+                    "phone": "eb85",
+                    "role": "LOANER"
+                }
+            },
+            {
+                "id": 58,
+                "book": {
+                    "id": 140,
+                    "author": {
+                        "id": 281,
+                        "bio": "1dc37023-9ea2-47ee-8951-8080d860ee82",
+                        "country": "b93e",
+                        "firstName": "d4a8",
+                        "lastName": "9e28"
+                    },
+                    "description": "3e69",
+                    "isbn": "05e1",
+                    "nbrPages": 216,
+                    "publicationDate": "1993-09-24",
+                    "title": "e9a2",
+                    "totalNbrCopies": 287
+                },
+                "dateBorrowed": "1993-12-01",
+                "dateDue": "1998-11-20",
+                "user": {
+                    "id": 228,
+                    "displayName": "7d11",
+                    "email": "74ac",
+                    "firstName": "7d11",
+                    "lastName": "0301",
+                    "password": "fb73",
+                    "phone": "d266",
+                    "role": "LOANER"
+                }
+            },
+            {
+                "id": 199,
+                "book": {
+                    "id": 128,
+                    "author": {
+                        "id": 209,
+                        "bio": "1d7c39c9-641b-404a-b632-87999ae7bf68",
+                        "country": "e8d3",
+                        "firstName": "33d6",
+                        "lastName": "043c"
+                    },
+                    "description": "355b",
+                    "isbn": "4ee3",
+                    "nbrPages": 135,
+                    "publicationDate": "1995-06-25",
+                    "title": "51c1",
+                    "totalNbrCopies": 178
+                },
+                "dateBorrowed": "1990-08-04",
+                "dateDue": "1994-01-27",
+                "user": {
+                    "id": 65,
+                    "displayName": "d77a",
+                    "email": "4efc",
+                    "firstName": "d77a",
+                    "lastName": 7685,
+                    "password": "f0cd",
+                    "phone": "78a9",
+                    "role": "LOANER"
+                }
+            },
+            {
+                "id": 221,
+                "book": {
+                    "id": 116,
+                    "author": {
+                        "id": 122,
+                        "bio": "75cc95e7-63e8-450e-871c-06be4ecd4365",
+                        "country": "5ba1",
+                        "firstName": "7a73",
+                        "lastName": 4247
+                    },
+                    "description": "95ba",
+                    "isbn": "e3ba",
+                    "nbrPages": 282,
+                    "publicationDate": "1999-04-25",
+                    "title": "c358",
+                    "totalNbrCopies": 130
+                },
+                "dateBorrowed": "1992-09-07",
+                "dateDue": "1997-11-08",
+                "user": {
+                    "id": 279,
+                    "displayName": "ea7c",
+                    "email": "c0e6",
+                    "firstName": "ea7c",
+                    "lastName": "4fce",
+                    "password": "d381",
+                    "phone": "fb7a",
+                    "role": "LOANER"
+                }
+            },
+            {
+                "id": 246,
+                "book": {
+                    "id": 56,
+                    "author": {
+                        "id": 113,
+                        "bio": "6dee66e0-ebdf-401f-8b31-d369a48bea62",
+                        "country": "b5e6",
+                        "firstName": 9892,
+                        "lastName": "d4d6"
+                    },
+                    "description": "d3ea",
+                    "isbn": "f370",
+                    "nbrPages": 161,
+                    "publicationDate": "1999-03-22",
+                    "title": "255e",
+                    "totalNbrCopies": 289
+                },
+                "dateBorrowed": "1994-10-11",
+                "dateDue": "1993-03-14",
+                "user": {
+                    "id": 240,
+                    "displayName": "fa40",
+                    "email": "4bbc",
+                    "firstName": "fa40",
+                    "lastName": "30f0",
+                    "password": "8ec2",
+                    "phone": "4d96",
+                    "role": "LOANER"
+                }
+            },
+            {
+                "id": 142,
+                "book": {
+                    "id": 143,
+                    "author": {
+                        "id": 244,
+                        "bio": "306b7b63-d535-496f-8d7e-e8c604ad1804",
+                        "country": "e9e4",
+                        "firstName": "ea9b",
+                        "lastName": "49d6"
+                    },
+                    "description": "0609",
+                    "isbn": "4f27",
+                    "nbrPages": 207,
+                    "publicationDate": "1999-03-08",
+                    "title": "b55e",
+                    "totalNbrCopies": 62
+                },
+                "dateBorrowed": "1994-01-04",
+                "dateDue": "1999-03-04",
+                "user": {
+                    "id": 122,
+                    "displayName": "e8ac",
+                    "email": "7deb",
+                    "firstName": "e8ac",
+                    "lastName": "27dd",
+                    "password": "04f6",
+                    "phone": 6126,
+                    "role": "LOANER"
+                }
+            },
+            {
+                "id": 245,
+                "book": {
+                    "id": 143,
+                    "author": {
+                        "id": 244,
+                        "bio": "306b7b63-d535-496f-8d7e-e8c604ad1804",
+                        "country": "e9e4",
+                        "firstName": "ea9b",
+                        "lastName": "49d6"
+                    },
+                    "description": "0609",
+                    "isbn": "4f27",
+                    "nbrPages": 207,
+                    "publicationDate": "1999-03-08",
+                    "title": "b55e",
+                    "totalNbrCopies": 62
+                },
+                "dateBorrowed": "1994-01-04",
+                "dateDue": "1999-03-04",
+                "user": {
+                    "id": 282,
+                    "displayName": "c9e7",
+                    "email": "a306",
+                    "firstName": "c9e7",
+                    "lastName": "e623",
+                    "password": "bc9c",
+                    "phone": "fd0f",
+                    "role": "LOANER"
+                }
+            },
+            {
+                "id": 177,
+                "book": {
+                    "id": 275,
+                    "author": {
+                        "id": 134,
+                        "bio": "3a279acd-94f1-4bb6-9d1a-11c35145d6fc",
+                        "country": "01e9",
+                        "firstName": "f3a0",
+                        "lastName": "cc4a"
+                    },
+                    "description": "2e39",
+                    "isbn": "0647",
+                    "nbrPages": 271,
+                    "publicationDate": "1990-07-07",
+                    "title": "251b",
+                    "totalNbrCopies": 96
+                },
+                "dateBorrowed": "1991-03-03",
+                "dateDue": "1997-03-16",
+                "user": {
+                    "id": 186,
+                    "displayName": "08f9",
+                    "email": 8444,
+                    "firstName": "08f9",
+                    "lastName": "4e6d",
+                    "password": "5a74",
+                    "phone": "e409",
+                    "role": "LOANER"
+                }
+            },
+            {
+                "id": 114,
+                "book": {
+                    "id": 103,
+                    "author": {
+                        "id": 251,
+                        "bio": "b022ede7-1fe1-4ba0-90d5-ea153954bca9",
+                        "country": "f74c",
+                        "firstName": 4634,
+                        "lastName": "f4b1"
+                    },
+                    "description": "025a",
+                    "isbn": "30cb",
+                    "nbrPages": 195,
+                    "publicationDate": "1994-01-13",
+                    "title": 9467,
+                    "totalNbrCopies": 81
+                },
+                "dateBorrowed": "1991-03-03",
+                "dateDue": "1997-03-16",
+                "user": {
+                    "id": 186,
+                    "displayName": "08f9",
+                    "email": 8444,
+                    "firstName": "08f9",
+                    "lastName": "4e6d",
+                    "password": "5a74",
+                    "phone": "e409",
+                    "role": "LOANER"
+                }
+            },
+            {
+                "id": 235,
+                "book": {
+                    "id": 200,
+                    "author": {
+                        "id": 53,
+                        "bio": "bb5883ed-35b3-4159-9852-9249ad6d5d71",
+                        "country": "bc4c",
+                        "firstName": 9604,
+                        "lastName": "2d14"
+                    },
+                    "description": "9e19",
+                    "isbn": "fee5",
+                    "nbrPages": 91,
+                    "publicationDate": "1998-12-22",
+                    "title": "2b7b",
+                    "totalNbrCopies": 163
+                },
+                "dateBorrowed": "1998-06-26",
+                "dateDue": "1996-09-01",
+                "user": {
+                    "id": 294,
+                    "displayName": "a441",
+                    "email": "2bb6",
+                    "firstName": "a441",
+                    "lastName": "6e3d",
+                    "password": "5bc5",
+                    "phone": "b6bf",
+                    "role": "LOANER"
+                }
+            },
+            {
+                "id": 33,
+                "book": {
+                    "id": 281,
+                    "author": {
+                        "id": 279,
+                        "bio": "c74b7c8a-4a1b-4f6c-920f-6c18bf9d8751",
+                        "country": 7636,
+                        "firstName": "867f",
+                        "lastName": "e9a5"
+                    },
+                    "description": "6e81",
+                    "isbn": "0871",
+                    "nbrPages": 143,
+                    "publicationDate": "1992-05-07",
+                    "title": "cd60",
+                    "totalNbrCopies": 232
+                },
+                "dateBorrowed": "1994-01-16",
+                "dateDue": "1990-07-20",
+                "user": {
+                    "id": 270,
+                    "displayName": "35de",
+                    "email": "11f9",
+                    "firstName": "35de",
+                    "lastName": "40f3",
+                    "password": "27a4",
+                    "phone": "0d63",
+                    "role": "LOANER"
+                }
+            },
+            {
+                "id": 103,
+                "book": {
+                    "id": 58,
+                    "description": 7899,
+                    "isbn": "591b",
+                    "nbrPages": 59,
+                    "publicationDate": "1994-12-11",
+                    "title": "cb3b",
+                    "totalNbrCopies": 167
+                },
+                "dateBorrowed": "1998-05-25",
+                "dateDue": "1990-07-23",
+                "user": {
+                    "id": 215,
+                    "displayName": "479c",
+                    "email": "9c35",
+                    "firstName": "479c",
+                    "lastName": "bcf5",
+                    "password": "92c1",
+                    "phone": "8a3f",
+                    "role": "LOANER"
+                }
+            },
+            {
+                "id": 188,
+                "book": {
+                    "id": 59,
+                    "author": {
+                        "id": 115,
+                        "bio": "b6d2a554-61f0-4fce-b7d1-a3a14428c75b",
+                        "country": "aeb9",
+                        "firstName": "7f5b",
+                        "lastName": "df09"
+                    },
+                    "description": "122c",
+                    "isbn": "c0b9",
+                    "nbrPages": 282,
+                    "publicationDate": "2000-10-05",
+                    "title": "723a",
+                    "totalNbrCopies": 263
+                },
+                "dateBorrowed": "2000-01-10",
+                "dateDue": "1993-04-19",
+                "user": {
+                    "id": 253,
+                    "displayName": "e90a",
+                    "email": "045d",
+                    "firstName": "e90a",
+                    "lastName": "aff2",
+                    "password": "bd03",
+                    "phone": "ca5b",
+                    "role": "LOANER"
+                }
+            },
+            {
+                "id": 52,
+                "book": {
+                    "id": 271,
+                    "author": {
+                        "id": 58,
+                        "bio": "b9099802-40cb-4ed5-a199-6e7dd8c474b2",
+                        "country": "7d21",
+                        "firstName": "47ee",
+                        "lastName": "39ce"
+                    },
+                    "description": "301e",
+                    "isbn": "1f9d",
+                    "nbrPages": 137,
+                    "publicationDate": "1997-12-29",
+                    "title": "39f2",
+                    "totalNbrCopies": 160
+                },
+                "dateBorrowed": "1990-11-27",
+                "dateDue": "1991-06-25",
+                "user": {
+                    "id": 138,
+                    "displayName": "9f99",
+                    "email": "ea84",
+                    "firstName": "9f99",
+                    "lastName": 3169,
+                    "password": "465b",
+                    "phone": "a515",
+                    "role": "LOANER"
+                }
+            },
+            {
+                "id": 286,
+                "book": {
+                    "id": 115,
+                    "description": "05bf",
+                    "isbn": "c4ba",
+                    "nbrPages": 198,
+                    "publicationDate": "1992-03-10",
+                    "title": "a84f",
+                    "totalNbrCopies": 103
+                },
+                "dateBorrowed": "1991-02-19",
+                "dateDue": "1995-05-26",
+                "user": {
+                    "id": 295,
+                    "displayName": "ea5f",
+                    "email": "ada3",
+                    "firstName": "ea5f",
+                    "lastName": "b4f6",
+                    "password": 9584,
+                    "phone": "b516",
+                    "role": "LOANER"
+                }
+            }
+        ]
+    }
+}
+Request method:	POST
+Request path:	http://localhost:8080/librarytest-rest/books
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Multiparts:		<none>
+Headers:		Accept=*/*
+				Content-Type=application/json; charset=UTF-8
+Cookies:		<none>
+Body:
+{
+    "book": {
+        "id": 172,
+        "description": "21ea",
+        "isbn": "39a4",
+        "nbrPages": 82,
+        "publicationDate": "1997-10-05",
+        "title": "85e0",
+        "totalNbrCopies": 300
+    }
+}
+]]></system-out>
+  </testcase>
+  <testcase name="testPutLoanHadNoDateBorrowedSet_StatusCode400" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativLoanRestServiceTest" time="0">
+    <skipped/>
+  </testcase>
+  <testcase name="testCreateLoanButUserDisplayNameAlreadyExistDB_StatusCode400" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativLoanRestServiceTest" time="0">
+    <skipped/>
+  </testcase>
 </testsuite>

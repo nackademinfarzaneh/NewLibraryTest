@@ -1,4 +1,19 @@
 -------------------------------------------------------------------------------
 Test set: se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativBookRestServiceTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.944 sec - in se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativBookRestServiceTest
+Tests run: 17, Failures: 2, Errors: 0, Skipped: 1, Time elapsed: 0.276 sec <<< FAILURE! - in se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativBookRestServiceTest
+testUpdateBookWithNoAuthorsID_StusCode400(se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativBookRestServiceTest)  Time elapsed: 0.01 sec  <<< FAILURE!
+java.lang.AssertionError: Status code should be 201  expected:<201> but was:<400>
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:834)
+	at org.junit.Assert.assertEquals(Assert.java:645)
+	at se.nackademin.librarytest.librarytestsystem.librarytestsystem.BookRestServiceTest.createBook(BookRestServiceTest.java:264)
+	at se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativBookRestServiceTest.testUpdateBookWithNoAuthorsID_StusCode400(NegativBookRestServiceTest.java:141)
+
+testGetBookByIdNotfound_StatusCode404(se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativBookRestServiceTest)  Time elapsed: 0.01 sec  <<< FAILURE!
+java.lang.AssertionError: Status code should be 404 expected:<404> but was:<200>
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:834)
+	at org.junit.Assert.assertEquals(Assert.java:645)
+	at se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativBookRestServiceTest.testGetBookByIdNotfound_StatusCode404(NegativBookRestServiceTest.java:205)
+

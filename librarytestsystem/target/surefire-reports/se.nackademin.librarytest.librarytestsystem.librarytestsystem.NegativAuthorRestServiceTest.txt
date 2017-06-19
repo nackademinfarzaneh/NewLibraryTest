@@ -1,29 +1,22 @@
 -------------------------------------------------------------------------------
 Test set: se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativAuthorRestServiceTest
 -------------------------------------------------------------------------------
-Tests run: 8, Failures: 4, Errors: 0, Skipped: 0, Time elapsed: 0.659 sec <<< FAILURE! - in se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativAuthorRestServiceTest
-testAuthorsDeleteNotFound_StatusCode404(se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativAuthorRestServiceTest)  Time elapsed: 0.049 sec  <<< FAILURE!
+Tests run: 8, Failures: 3, Errors: 0, Skipped: 0, Time elapsed: 0.249 sec <<< FAILURE! - in se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativAuthorRestServiceTest
+testUpdateAuthorWithNoAuthorsFirstName_StatusCode400(se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativAuthorRestServiceTest)  Time elapsed: 0.019 sec  <<< FAILURE!
+java.lang.AssertionError: Status code should be 201  expected:<201> but was:<400>
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:834)
+	at org.junit.Assert.assertEquals(Assert.java:645)
+	at se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativAuthorRestServiceTest.testUpdateAuthorWithNoAuthorsFirstName_StatusCode400(NegativAuthorRestServiceTest.java:86)
+
+testAuthorsIdExistInDB_StatusCode400(se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativAuthorRestServiceTest)  Time elapsed: 0.022 sec  <<< FAILURE!
 java.lang.AssertionError: Status code should be 201 expected:<201> but was:<400>
 	at org.junit.Assert.fail(Assert.java:88)
 	at org.junit.Assert.failNotEquals(Assert.java:834)
 	at org.junit.Assert.assertEquals(Assert.java:645)
-	at se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativAuthorRestServiceTest.testAuthorsDeleteNotFound_StatusCode404(NegativAuthorRestServiceTest.java:136)
+	at se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativAuthorRestServiceTest.testAuthorsIdExistInDB_StatusCode400(NegativAuthorRestServiceTest.java:36)
 
-testDeleteAuthorWithBookInDB_StatusCode409(se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativAuthorRestServiceTest)  Time elapsed: 0.063 sec  <<< FAILURE!
-java.lang.AssertionError: Status code should be 201 expected:<201> but was:<400>
-	at org.junit.Assert.fail(Assert.java:88)
-	at org.junit.Assert.failNotEquals(Assert.java:834)
-	at org.junit.Assert.assertEquals(Assert.java:645)
-	at se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativAuthorRestServiceTest.testDeleteAuthorWithBookInDB_StatusCode409(NegativAuthorRestServiceTest.java:166)
-
-authorsIdExistInDB_StatusCode400(se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativAuthorRestServiceTest)  Time elapsed: 0.035 sec  <<< FAILURE!
-java.lang.AssertionError: Status code should be 201 expected:<201> but was:<400>
-	at org.junit.Assert.fail(Assert.java:88)
-	at org.junit.Assert.failNotEquals(Assert.java:834)
-	at org.junit.Assert.assertEquals(Assert.java:645)
-	at se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativAuthorRestServiceTest.authorsIdExistInDB_StatusCode400(NegativAuthorRestServiceTest.java:36)
-
-testUpdateAuthorWithNoAuthorsLastName_StatusCode400(se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativAuthorRestServiceTest)  Time elapsed: 0.021 sec  <<< FAILURE!
+testUpdateAuthorWithNoAuthorsLastName_StatusCode400(se.nackademin.librarytest.librarytestsystem.librarytestsystem.NegativAuthorRestServiceTest)  Time elapsed: 0.015 sec  <<< FAILURE!
 java.lang.AssertionError: Status code should be 201  expected:<201> but was:<400>
 	at org.junit.Assert.fail(Assert.java:88)
 	at org.junit.Assert.failNotEquals(Assert.java:834)
