@@ -1,0 +1,447 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="se.nackademin.librarytest.librarytestsystem.librarytestsystem.LoanRestServiceTest" time="0.722" tests="9" errors="0" skipped="1" failures="5">
+  <properties>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="sun.boot.library.path" value="/usr/lib/jvm/java-8-oracle/jre/lib/i386"/>
+    <property name="java.vm.version" value="25.121-b13"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="maven.multiModuleProjectDirectory" value="/home/testautom-nack/NetBeansProjects/librarytest/librarytestsystem"/>
+    <property name="java.vendor.url" value="http://java.oracle.com/"/>
+    <property name="path.separator" value=":"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) Client VM"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="user.country" value="US"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.os.patch.level" value="unknown"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="/home/testautom-nack/NetBeansProjects/librarytest/librarytestsystem"/>
+    <property name="java.runtime.version" value="1.8.0_121-b13"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment"/>
+    <property name="java.endorsed.dirs" value="/usr/lib/jvm/java-8-oracle/jre/lib/endorsed"/>
+    <property name="os.arch" value="i386"/>
+    <property name="java.io.tmpdir" value="/tmp"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="os.name" value="Linux"/>
+    <property name="maven.ext.class.path" value="/home/testautom-nack/netbeans-8.2/java/maven-nblib/netbeans-eventspy.jar"/>
+    <property name="classworlds.conf" value="/usr/share/maven/bin/m2.conf"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="/usr/lib/jvm/java-8-oracle/jre/lib/amd64:/usr/lib/jvm/java-8-oracle/jre/lib/i386::/usr/java/packages/lib/i386:/lib:/usr/lib"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.class.version" value="52.0"/>
+    <property name="sun.management.compiler" value="HotSpot Client Compiler"/>
+    <property name="os.version" value="4.4.0-79-generic"/>
+    <property name="user.home" value="/home/testautom-nack"/>
+    <property name="user.timezone" value="Europe/Stockholm"/>
+    <property name="java.awt.printerjob" value="sun.print.PSPrinterJob"/>
+    <property name="java.specification.version" value="1.8"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="user.name" value="testautom-nack"/>
+    <property name="java.class.path" value="/usr/share/maven/boot/plexus-classworlds-2.x.jar"/>
+    <property name="java.vm.specification.version" value="1.8"/>
+    <property name="sun.arch.data.model" value="32"/>
+    <property name="java.home" value="/usr/lib/jvm/java-8-oracle/jre"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -Dmaven.ext.class.path=/home/testautom-nack/netbeans-8.2/java/maven-nblib/netbeans-eventspy.jar clean install"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.language" value="en"/>
+    <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.version" value="1.8.0_121"/>
+    <property name="java.ext.dirs" value="/usr/lib/jvm/java-8-oracle/jre/lib/ext:/usr/java/packages/lib/ext"/>
+    <property name="securerandom.source" value="file:/dev/./urandom"/>
+    <property name="sun.boot.class.path" value="/usr/lib/jvm/java-8-oracle/jre/lib/resources.jar:/usr/lib/jvm/java-8-oracle/jre/lib/rt.jar:/usr/lib/jvm/java-8-oracle/jre/lib/sunrsasign.jar:/usr/lib/jvm/java-8-oracle/jre/lib/jsse.jar:/usr/lib/jvm/java-8-oracle/jre/lib/jce.jar:/usr/lib/jvm/java-8-oracle/jre/lib/charsets.jar:/usr/lib/jvm/java-8-oracle/jre/lib/jfr.jar:/usr/lib/jvm/java-8-oracle/jre/classes"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="maven.home" value="/usr/share/maven"/>
+    <property name="file.separator" value="/"/>
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="sun.desktop" value="gnome"/>
+    <property name="sun.cpu.isalist" value=""/>
+  </properties>
+  <testcase name="testGetLoanWithSpicifiedID" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.LoanRestServiceTest" time="0.083">
+    <failure message="Status code should be 201  expected:&lt;201&gt; but was:&lt;400&gt;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: Status code should be 201  expected:<201> but was:<400>
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:834)
+	at org.junit.Assert.assertEquals(Assert.java:645)
+	at se.nackademin.librarytest.librarytestsystem.librarytestsystem.BookRestServiceTest.createBook(BookRestServiceTest.java:264)
+	at se.nackademin.librarytest.librarytestsystem.librarytestsystem.LoanRestServiceTest.testGetLoanWithSpicifiedID(LoanRestServiceTest.java:142)
+]]></failure>
+    <system-out><![CDATA[Request method:	POST
+Request path:	http://localhost:8080/librarytest-rest/users/
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Multiparts:		<none>
+Headers:		Accept=*/*
+				Content-Type=application/json; charset=UTF-8
+Cookies:		<none>
+Body:
+{
+    "user": {
+        "displayName": "9ab2",
+        "password": "838b",
+        "role": "LOANER",
+        "firstName": "9ab2",
+        "lastName": "56cb",
+        "phone": "7ab1",
+        "email": "ab79",
+        "id": 298
+    }
+}
+Request method:	POST
+Request path:	http://localhost:8080/librarytest-rest/authors
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Multiparts:		<none>
+Headers:		Accept=*/*
+				Content-Type=application/json; charset=UTF-8
+Cookies:		<none>
+Body:
+{
+    "author": {
+        "id": 110,
+        "firstName": "dc48",
+        "lastName": "5ab7",
+        "country": "7454",
+        "bio": "d99c02d9-ca1c-4dd6-ad79-76526c45c5f5",
+        "authors": [
+            
+        ]
+    }
+}
+]]></system-out>
+  </testcase>
+  <testcase name="testGetAllaLoan" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.LoanRestServiceTest" time="0.052"/>
+  <testcase name="testDeleateLoan" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.LoanRestServiceTest" time="0">
+    <skipped/>
+  </testcase>
+  <testcase name="testUpdateLoanWithNewData" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.LoanRestServiceTest" time="0.256"/>
+  <testcase name="testGetLoanoOfSpecifiedBookBySpecifiedUser" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.LoanRestServiceTest" time="0.158"/>
+  <testcase name="testDeleteWithSpicifiedID" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.LoanRestServiceTest" time="0.047">
+    <failure message="Status code should be 201  expected:&lt;201&gt; but was:&lt;400&gt;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: Status code should be 201  expected:<201> but was:<400>
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:834)
+	at org.junit.Assert.assertEquals(Assert.java:645)
+	at se.nackademin.librarytest.librarytestsystem.librarytestsystem.LoanRestServiceTest.testDeleteWithSpicifiedID(LoanRestServiceTest.java:179)
+]]></failure>
+    <system-out><![CDATA[Request method:	POST
+Request path:	http://localhost:8080/librarytest-rest/users/
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Multiparts:		<none>
+Headers:		Accept=*/*
+				Content-Type=application/json; charset=UTF-8
+Cookies:		<none>
+Body:
+{
+    "user": {
+        "displayName": "9ac1",
+        "password": "f28d",
+        "role": "LOANER",
+        "firstName": "9ac1",
+        "lastName": "55f9",
+        "phone": "3a6b",
+        "email": "25db",
+        "id": 158
+    }
+}
+Request method:	POST
+Request path:	http://localhost:8080/librarytest-rest/authors
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Multiparts:		<none>
+Headers:		Accept=*/*
+				Content-Type=application/json; charset=UTF-8
+Cookies:		<none>
+Body:
+{
+    "author": {
+        "id": 296,
+        "firstName": "a7fa",
+        "lastName": "dc67",
+        "country": "3bc6",
+        "bio": "b73bcbc1-709c-4f43-a748-f080acd0456f",
+        "authors": [
+            
+        ]
+    }
+}
+Request method:	POST
+Request path:	http://localhost:8080/librarytest-rest/books
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Multiparts:		<none>
+Headers:		Accept=*/*
+				Content-Type=application/json; charset=UTF-8
+Cookies:		<none>
+Body:
+{
+    "book": {
+        "id": 82,
+        "description": "9c7d",
+        "isbn": "b406",
+        "nbrPages": 268,
+        "publicationDate": "1992-03-27",
+        "title": "27a0",
+        "totalNbrCopies": 63,
+        "author": {
+            "id": 296,
+            "firstName": "a7fa",
+            "lastName": "dc67",
+            "country": "3bc6",
+            "bio": "b73bcbc1-709c-4f43-a748-f080acd0456f",
+            "authors": [
+                
+            ]
+        }
+    }
+}
+]]></system-out>
+  </testcase>
+  <testcase name="testCreateloan" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.LoanRestServiceTest" time="0.011">
+    <failure message="Status code should be 201  expected:&lt;201&gt; but was:&lt;400&gt;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: Status code should be 201  expected:<201> but was:<400>
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:834)
+	at org.junit.Assert.assertEquals(Assert.java:645)
+	at se.nackademin.librarytest.librarytestsystem.librarytestsystem.LoanRestServiceTest.testCreateloan(LoanRestServiceTest.java:54)
+]]></failure>
+    <system-out><![CDATA[Request method:	POST
+Request path:	http://localhost:8080/librarytest-rest/users/
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Multiparts:		<none>
+Headers:		Accept=*/*
+				Content-Type=application/json; charset=UTF-8
+Cookies:		<none>
+Body:
+{
+    "user": {
+        "displayName": "406e",
+        "password": "0864",
+        "role": "LOANER",
+        "firstName": "406e",
+        "lastName": "e4aa",
+        "phone": "5148",
+        "email": "ef94",
+        "id": 286
+    }
+}
+]]></system-out>
+  </testcase>
+  <testcase name="testGetAllLoansOfTheSpecifiedBook" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.LoanRestServiceTest" time="0.057">
+    <failure message="Status code should be 201  expected:&lt;201&gt; but was:&lt;400&gt;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: Status code should be 201  expected:<201> but was:<400>
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:834)
+	at org.junit.Assert.assertEquals(Assert.java:645)
+	at se.nackademin.librarytest.librarytestsystem.librarytestsystem.BookRestServiceTest.createBook(BookRestServiceTest.java:264)
+	at se.nackademin.librarytest.librarytestsystem.librarytestsystem.LoanRestServiceTest.testGetAllLoansOfTheSpecifiedBook(LoanRestServiceTest.java:271)
+]]></failure>
+    <system-out><![CDATA[Request method:	POST
+Request path:	http://localhost:8080/librarytest-rest/users/
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Multiparts:		<none>
+Headers:		Accept=*/*
+				Content-Type=application/json; charset=UTF-8
+Cookies:		<none>
+Body:
+{
+    "user": {
+        "displayName": "70f0",
+        "password": "0153",
+        "role": "LOANER",
+        "firstName": "70f0",
+        "lastName": "7435",
+        "phone": "c3b0",
+        "email": "7f31",
+        "id": 105
+    }
+}
+Request method:	POST
+Request path:	http://localhost:8080/librarytest-rest/users/
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Multiparts:		<none>
+Headers:		Accept=*/*
+				Content-Type=application/json; charset=UTF-8
+Cookies:		<none>
+Body:
+{
+    "user": {
+        "displayName": "f928",
+        "password": "9d11",
+        "role": "LOANER",
+        "firstName": "f928",
+        "lastName": "4627",
+        "phone": "0da3",
+        "email": "187d",
+        "id": 88
+    }
+}
+Request method:	POST
+Request path:	http://localhost:8080/librarytest-rest/authors
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Multiparts:		<none>
+Headers:		Accept=*/*
+				Content-Type=application/json; charset=UTF-8
+Cookies:		<none>
+Body:
+{
+    "author": {
+        "id": 124,
+        "firstName": "54a9",
+        "lastName": "b3b9",
+        "country": "f1f8",
+        "bio": "e9392a1f-f011-4192-b5a3-d966fa3787ed",
+        "authors": [
+            
+        ]
+    }
+}
+]]></system-out>
+  </testcase>
+  <testcase name="testGetAllLoansOfTheSpecifiedUser" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.LoanRestServiceTest" time="0.058">
+    <failure message="Status code should be 201  expected:&lt;201&gt; but was:&lt;400&gt;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: Status code should be 201  expected:<201> but was:<400>
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:834)
+	at org.junit.Assert.assertEquals(Assert.java:645)
+	at se.nackademin.librarytest.librarytestsystem.librarytestsystem.BookRestServiceTest.createBook(BookRestServiceTest.java:264)
+	at se.nackademin.librarytest.librarytestsystem.librarytestsystem.LoanRestServiceTest.testGetAllLoansOfTheSpecifiedUser(LoanRestServiceTest.java:216)
+]]></failure>
+    <system-out><![CDATA[Request method:	POST
+Request path:	http://localhost:8080/librarytest-rest/users/
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Multiparts:		<none>
+Headers:		Accept=*/*
+				Content-Type=application/json; charset=UTF-8
+Cookies:		<none>
+Body:
+{
+    "user": {
+        "displayName": "7272",
+        "password": "d6ba",
+        "role": "LOANER",
+        "firstName": "7272",
+        "lastName": "0035",
+        "phone": "f302",
+        "email": "cfd7",
+        "id": 96
+    }
+}
+Request method:	POST
+Request path:	http://localhost:8080/librarytest-rest/authors
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Multiparts:		<none>
+Headers:		Accept=*/*
+				Content-Type=application/json; charset=UTF-8
+Cookies:		<none>
+Body:
+{
+    "author": {
+        "id": 278,
+        "firstName": "247a",
+        "lastName": "908b",
+        "country": "3d4c",
+        "bio": "7e11c112-05ea-4d98-b3ec-4e6e5b52f70b",
+        "authors": [
+            
+        ]
+    }
+}
+Request method:	POST
+Request path:	http://localhost:8080/librarytest-rest/books
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Multiparts:		<none>
+Headers:		Accept=*/*
+				Content-Type=application/json; charset=UTF-8
+Cookies:		<none>
+Body:
+{
+    "book": {
+        "id": 184,
+        "description": "a36c",
+        "isbn": "19c6",
+        "nbrPages": 54,
+        "publicationDate": "1991-12-07",
+        "title": "4785",
+        "totalNbrCopies": 278,
+        "author": {
+            "id": 278,
+            "firstName": "247a",
+            "lastName": "908b",
+            "country": "3d4c",
+            "bio": "7e11c112-05ea-4d98-b3ec-4e6e5b52f70b",
+            "authors": [
+                
+            ]
+        }
+    }
+}
+Request method:	POST
+Request path:	http://localhost:8080/librarytest-rest/authors
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Multiparts:		<none>
+Headers:		Accept=*/*
+				Content-Type=application/json; charset=UTF-8
+Cookies:		<none>
+Body:
+{
+    "author": {
+        "id": 255,
+        "firstName": "2fcb",
+        "lastName": "dba5",
+        "country": "765e",
+        "bio": "25cb0e88-e03b-47b4-80ec-d2c88473fa67",
+        "authors": [
+            
+        ]
+    }
+}
+]]></system-out>
+  </testcase>
+</testsuite>

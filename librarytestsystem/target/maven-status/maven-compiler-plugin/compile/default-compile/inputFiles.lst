@@ -1,0 +1,15 @@
+/home/testautom-nack/NetBeansProjects/librarytest/librarytestsystem/src/main/java/se/nackademin/librarytest/librarytestsystem/librarytestsystem/LoanRestTestClient.java
+/home/testautom-nack/NetBeansProjects/librarytest/librarytestsystem/src/main/java/se/nackademin/librarytest/librarytestsystem/model/SingleLoan.java
+/home/testautom-nack/NetBeansProjects/librarytest/librarytestsystem/src/main/java/se/nackademin/librarytest/librarytestsystem/librarytestsystem/BookRestTestClient.java
+/home/testautom-nack/NetBeansProjects/librarytest/librarytestsystem/src/main/java/se/nackademin/librarytest/librarytestsystem/model/SingleBook.java
+/home/testautom-nack/NetBeansProjects/librarytest/librarytestsystem/src/main/java/se/nackademin/librarytest/librarytestsystem/model/Loan.java
+/home/testautom-nack/NetBeansProjects/librarytest/librarytestsystem/src/main/java/se/nackademin/librarytest/librarytestsystem/model/SingleAuthor.java
+/home/testautom-nack/NetBeansProjects/librarytest/librarytestsystem/src/main/java/se/nackademin/librarytest/librarytestsystem/model/Authors.java
+/home/testautom-nack/NetBeansProjects/librarytest/librarytestsystem/src/main/java/se/nackademin/librarytest/librarytestsystem/model/Users.java
+/home/testautom-nack/NetBeansProjects/librarytest/librarytestsystem/src/main/java/se/nackademin/librarytest/librarytestsystem/model/Loans.java
+/home/testautom-nack/NetBeansProjects/librarytest/librarytestsystem/src/main/java/se/nackademin/librarytest/librarytestsystem/model/User.java
+/home/testautom-nack/NetBeansProjects/librarytest/librarytestsystem/src/main/java/se/nackademin/librarytest/librarytestsystem/model/Book.java
+/home/testautom-nack/NetBeansProjects/librarytest/librarytestsystem/src/main/java/se/nackademin/librarytest/librarytestsystem/librarytestsystem/AuthorRestTestClient.java
+/home/testautom-nack/NetBeansProjects/librarytest/librarytestsystem/src/main/java/se/nackademin/librarytest/librarytestsystem/librarytestsystem/UserRestTestClient.java
+/home/testautom-nack/NetBeansProjects/librarytest/librarytestsystem/src/main/java/se/nackademin/librarytest/librarytestsystem/model/Author.java
+/home/testautom-nack/NetBeansProjects/librarytest/librarytestsystem/src/main/java/se/nackademin/librarytest/librarytestsystem/model/SingleUser.java

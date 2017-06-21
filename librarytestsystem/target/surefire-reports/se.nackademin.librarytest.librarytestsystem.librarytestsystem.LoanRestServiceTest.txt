@@ -1,0 +1,42 @@
+-------------------------------------------------------------------------------
+Test set: se.nackademin.librarytest.librarytestsystem.librarytestsystem.LoanRestServiceTest
+-------------------------------------------------------------------------------
+Tests run: 9, Failures: 5, Errors: 0, Skipped: 1, Time elapsed: 0.729 sec <<< FAILURE! - in se.nackademin.librarytest.librarytestsystem.librarytestsystem.LoanRestServiceTest
+testGetLoanWithSpicifiedID(se.nackademin.librarytest.librarytestsystem.librarytestsystem.LoanRestServiceTest)  Time elapsed: 0.083 sec  <<< FAILURE!
+java.lang.AssertionError: Status code should be 201  expected:<201> but was:<400>
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:834)
+	at org.junit.Assert.assertEquals(Assert.java:645)
+	at se.nackademin.librarytest.librarytestsystem.librarytestsystem.BookRestServiceTest.createBook(BookRestServiceTest.java:264)
+	at se.nackademin.librarytest.librarytestsystem.librarytestsystem.LoanRestServiceTest.testGetLoanWithSpicifiedID(LoanRestServiceTest.java:142)
+
+testDeleteWithSpicifiedID(se.nackademin.librarytest.librarytestsystem.librarytestsystem.LoanRestServiceTest)  Time elapsed: 0.047 sec  <<< FAILURE!
+java.lang.AssertionError: Status code should be 201  expected:<201> but was:<400>
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:834)
+	at org.junit.Assert.assertEquals(Assert.java:645)
+	at se.nackademin.librarytest.librarytestsystem.librarytestsystem.LoanRestServiceTest.testDeleteWithSpicifiedID(LoanRestServiceTest.java:179)
+
+testCreateloan(se.nackademin.librarytest.librarytestsystem.librarytestsystem.LoanRestServiceTest)  Time elapsed: 0.011 sec  <<< FAILURE!
+java.lang.AssertionError: Status code should be 201  expected:<201> but was:<400>
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:834)
+	at org.junit.Assert.assertEquals(Assert.java:645)
+	at se.nackademin.librarytest.librarytestsystem.librarytestsystem.LoanRestServiceTest.testCreateloan(LoanRestServiceTest.java:54)
+
+testGetAllLoansOfTheSpecifiedBook(se.nackademin.librarytest.librarytestsystem.librarytestsystem.LoanRestServiceTest)  Time elapsed: 0.057 sec  <<< FAILURE!
+java.lang.AssertionError: Status code should be 201  expected:<201> but was:<400>
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:834)
+	at org.junit.Assert.assertEquals(Assert.java:645)
+	at se.nackademin.librarytest.librarytestsystem.librarytestsystem.BookRestServiceTest.createBook(BookRestServiceTest.java:264)
+	at se.nackademin.librarytest.librarytestsystem.librarytestsystem.LoanRestServiceTest.testGetAllLoansOfTheSpecifiedBook(LoanRestServiceTest.java:271)
+
+testGetAllLoansOfTheSpecifiedUser(se.nackademin.librarytest.librarytestsystem.librarytestsystem.LoanRestServiceTest)  Time elapsed: 0.058 sec  <<< FAILURE!
+java.lang.AssertionError: Status code should be 201  expected:<201> but was:<400>
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:834)
+	at org.junit.Assert.assertEquals(Assert.java:645)
+	at se.nackademin.librarytest.librarytestsystem.librarytestsystem.BookRestServiceTest.createBook(BookRestServiceTest.java:264)
+	at se.nackademin.librarytest.librarytestsystem.librarytestsystem.LoanRestServiceTest.testGetAllLoansOfTheSpecifiedUser(LoanRestServiceTest.java:216)
+

@@ -1,0 +1,16 @@
+se/nackademin/librarytest/librarytestsystem/model/Authors.class
+se/nackademin/librarytest/librarytestsystem/librarytestsystem/UserRestTestClient.class
+se/nackademin/librarytest/librarytestsystem/model/SingleUser.class
+se/nackademin/librarytest/librarytestsystem/model/Loan.class
+se/nackademin/librarytest/librarytestsystem/model/SingleBook.class
+se/nackademin/librarytest/librarytestsystem/model/User.class
+se/nackademin/librarytest/librarytestsystem/model/Author.class
+se/nackademin/librarytest/librarytestsystem/librarytestsystem/BookRestTestClient.class
+se/nackademin/librarytest/librarytestsystem/librarytestsystem/AuthorRestTestClient.class
+se/nackademin/librarytest/librarytestsystem/model/Loans.class
+se/nackademin/librarytest/librarytestsystem/model/Book.class
+se/nackademin/librarytest/librarytestsystem/model/SingleLoan.class
+se/nackademin/librarytest/librarytestsystem/librarytestsystem/LoanRestTestClient.class
+se/nackademin/librarytest/librarytestsystem/model/User$Role.class
+se/nackademin/librarytest/librarytestsystem/model/SingleAuthor.class
+se/nackademin/librarytest/librarytestsystem/model/Users.class

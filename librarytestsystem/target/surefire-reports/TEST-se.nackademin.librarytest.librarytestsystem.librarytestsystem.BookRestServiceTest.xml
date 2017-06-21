@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="se.nackademin.librarytest.librarytestsystem.librarytestsystem.BookRestServiceTest" time="2.3" tests="10" errors="0" skipped="3" failures="2">
+  <properties>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="sun.boot.library.path" value="/usr/lib/jvm/java-8-oracle/jre/lib/i386"/>
+    <property name="java.vm.version" value="25.121-b13"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="maven.multiModuleProjectDirectory" value="/home/testautom-nack/NetBeansProjects/librarytest/librarytestsystem"/>
+    <property name="java.vendor.url" value="http://java.oracle.com/"/>
+    <property name="path.separator" value=":"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) Client VM"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="user.country" value="US"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.os.patch.level" value="unknown"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="/home/testautom-nack/NetBeansProjects/librarytest/librarytestsystem"/>
+    <property name="java.runtime.version" value="1.8.0_121-b13"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment"/>
+    <property name="java.endorsed.dirs" value="/usr/lib/jvm/java-8-oracle/jre/lib/endorsed"/>
+    <property name="os.arch" value="i386"/>
+    <property name="java.io.tmpdir" value="/tmp"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="os.name" value="Linux"/>
+    <property name="maven.ext.class.path" value="/home/testautom-nack/netbeans-8.2/java/maven-nblib/netbeans-eventspy.jar"/>
+    <property name="classworlds.conf" value="/usr/share/maven/bin/m2.conf"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="/usr/lib/jvm/java-8-oracle/jre/lib/amd64:/usr/lib/jvm/java-8-oracle/jre/lib/i386::/usr/java/packages/lib/i386:/lib:/usr/lib"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.class.version" value="52.0"/>
+    <property name="sun.management.compiler" value="HotSpot Client Compiler"/>
+    <property name="os.version" value="4.4.0-79-generic"/>
+    <property name="user.home" value="/home/testautom-nack"/>
+    <property name="user.timezone" value="Europe/Stockholm"/>
+    <property name="java.awt.printerjob" value="sun.print.PSPrinterJob"/>
+    <property name="java.specification.version" value="1.8"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="user.name" value="testautom-nack"/>
+    <property name="java.class.path" value="/usr/share/maven/boot/plexus-classworlds-2.x.jar"/>
+    <property name="java.vm.specification.version" value="1.8"/>
+    <property name="sun.arch.data.model" value="32"/>
+    <property name="java.home" value="/usr/lib/jvm/java-8-oracle/jre"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -Dmaven.ext.class.path=/home/testautom-nack/netbeans-8.2/java/maven-nblib/netbeans-eventspy.jar clean install"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.language" value="en"/>
+    <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.version" value="1.8.0_121"/>
+    <property name="java.ext.dirs" value="/usr/lib/jvm/java-8-oracle/jre/lib/ext:/usr/java/packages/lib/ext"/>
+    <property name="securerandom.source" value="file:/dev/./urandom"/>
+    <property name="sun.boot.class.path" value="/usr/lib/jvm/java-8-oracle/jre/lib/resources.jar:/usr/lib/jvm/java-8-oracle/jre/lib/rt.jar:/usr/lib/jvm/java-8-oracle/jre/lib/sunrsasign.jar:/usr/lib/jvm/java-8-oracle/jre/lib/jsse.jar:/usr/lib/jvm/java-8-oracle/jre/lib/jce.jar:/usr/lib/jvm/java-8-oracle/jre/lib/charsets.jar:/usr/lib/jvm/java-8-oracle/jre/lib/jfr.jar:/usr/lib/jvm/java-8-oracle/jre/classes"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="maven.home" value="/usr/share/maven"/>
+    <property name="file.separator" value="/"/>
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="sun.desktop" value="gnome"/>
+    <property name="sun.cpu.isalist" value=""/>
+  </properties>
+  <testcase name="testgetAuthorsOfSpecifiedBook" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.BookRestServiceTest" time="1.813"/>
+  <testcase name="testDeleteBookById" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.BookRestServiceTest" time="0.136">
+    <failure message="Status code should be 201  expected:&lt;201&gt; but was:&lt;400&gt;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: Status code should be 201  expected:<201> but was:<400>
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:834)
+	at org.junit.Assert.assertEquals(Assert.java:645)
+	at se.nackademin.librarytest.librarytestsystem.librarytestsystem.BookRestServiceTest.createBook(BookRestServiceTest.java:264)
+	at se.nackademin.librarytest.librarytestsystem.librarytestsystem.BookRestServiceTest.testDeleteBookById(BookRestServiceTest.java:131)
+]]></failure>
+    <system-out><![CDATA[Request method:	POST
+Request path:	http://localhost:8080/librarytest-rest/authors
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Multiparts:		<none>
+Headers:		Accept=*/*
+				Content-Type=application/json; charset=UTF-8
+Cookies:		<none>
+Body:
+{
+    "author": {
+        "id": 269,
+        "firstName": "ca85",
+        "lastName": "4961",
+        "country": "b192",
+        "bio": "98370b6f-c6ba-4f63-8114-b4d2c6b6f30d",
+        "authors": [
+            
+        ]
+    }
+}
+]]></system-out>
+  </testcase>
+  <testcase name="testGetAllBooks" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.BookRestServiceTest" time="0.112"/>
+  <testcase name="testUpdateBook" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.BookRestServiceTest" time="0.131"/>
+  <testcase name="testGetBookById" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.BookRestServiceTest" time="0.036"/>
+  <testcase name="testgetAllBooksBySpecifiedAuthor" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.BookRestServiceTest" time="0.04"/>
+  <testcase name="testCreateBook" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.BookRestServiceTest" time="0.032">
+    <failure message="Status code should be 201  expected:&lt;201&gt; but was:&lt;400&gt;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: Status code should be 201  expected:<201> but was:<400>
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:834)
+	at org.junit.Assert.assertEquals(Assert.java:645)
+	at se.nackademin.librarytest.librarytestsystem.librarytestsystem.BookRestServiceTest.createBook(BookRestServiceTest.java:264)
+	at se.nackademin.librarytest.librarytestsystem.librarytestsystem.BookRestServiceTest.testCreateBook(BookRestServiceTest.java:61)
+]]></failure>
+    <system-out><![CDATA[Request method:	POST
+Request path:	http://localhost:8080/librarytest-rest/authors
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Multiparts:		<none>
+Headers:		Accept=*/*
+				Content-Type=application/json; charset=UTF-8
+Cookies:		<none>
+Body:
+{
+    "author": {
+        "id": 234,
+        "firstName": "6603",
+        "lastName": "50a3",
+        "country": "39bf",
+        "bio": "05503038-4c34-45f8-ba72-df64c92bf716",
+        "authors": [
+            
+        ]
+    }
+}
+]]></system-out>
+  </testcase>
+  <testcase name="testDeleteBook" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.BookRestServiceTest" time="0">
+    <skipped/>
+  </testcase>
+  <testcase name="testAddAuthorToSpecifiedBook" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.BookRestServiceTest" time="0">
+    <skipped/>
+  </testcase>
+  <testcase name="testUppdateAuthorListOfSpecifiedBook" classname="se.nackademin.librarytest.librarytestsystem.librarytestsystem.BookRestServiceTest" time="0">
+    <skipped/>
+  </testcase>
+</testsuite>
