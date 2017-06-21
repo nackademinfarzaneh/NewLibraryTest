@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: se.nackademin.librarytest.SelenideTest
 -------------------------------------------------------------------------------
-Tests run: 12, Failures: 5, Errors: 0, Skipped: 3, Time elapsed: 91.126 sec <<< FAILURE! - in se.nackademin.librarytest.SelenideTest
-testAddNewBook(se.nackademin.librarytest.SelenideTest)  Time elapsed: 17.108 sec  <<< FAILURE!
+Tests run: 12, Failures: 5, Errors: 0, Skipped: 3, Time elapsed: 87.917 sec <<< FAILURE! - in se.nackademin.librarytest.SelenideTest
+testAddNewBook(se.nackademin.librarytest.SelenideTest)  Time elapsed: 17.152 sec  <<< FAILURE!
 com.codeborne.selenide.ex.ElementNotFound: Element not found {td.v-grid-cell:nth-child(1) > a:nth-child(1)}
 Expected: visible
 	at sun.reflect.GeneratedConstructorAccessor10.newInstance(Unknown Source)
@@ -27,15 +27,10 @@ Expected: visible
 	at com.sun.proxy.$Proxy8.click(Unknown Source)
 	at se.nackademin.librarytest.pages.BrowseBooksPage.clickFirstResultTitle(BrowseBooksPage.java:18)
 	at se.nackademin.librarytest.helpers.BookHelper.fetchBook(BookHelper.java:71)
-	at se.nackademin.librarytest.SelenideTest.testAddNewBook(SelenideTest.java:181)
+	at se.nackademin.librarytest.SelenideTest.testAddNewBook(SelenideTest.java:179)
 
-testLogin(se.nackademin.librarytest.SelenideTest)  Time elapsed: 9.065 sec  <<< FAILURE!
-org.junit.ComparisonFailure: Username should be shown in profile expected:<[7d5c41c3-326b-4747-accc-26ff8bccd607]> but was:<[admin]>
-	at org.junit.Assert.assertEquals(Assert.java:115)
-	at se.nackademin.librarytest.SelenideTest.testLogin(SelenideTest.java:107)
-
-tesTable(se.nackademin.librarytest.SelenideTest)  Time elapsed: 11.298 sec  <<< FAILURE!
-com.codeborne.selenide.ex.ElementNotFound: Element not found {.v-grid-tablewrapper}
+testLogin(se.nackademin.librarytest.SelenideTest)  Time elapsed: 12.752 sec  <<< FAILURE!
+com.codeborne.selenide.ex.ElementNotFound: Element not found {#gwt-uid-5}
 Expected: exist
 	at sun.reflect.GeneratedConstructorAccessor10.newInstance(Unknown Source)
 	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
@@ -49,18 +44,44 @@ Expected: exist
 	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:355)
 	at com.codeborne.selenide.impl.WebElementSelector.findElement(WebElementSelector.java:28)
 	at com.codeborne.selenide.impl.ElementFinder.getWebElement(ElementFinder.java:56)
-	at com.codeborne.selenide.impl.SelenideElementProxy.dispatchAndRetry(SelenideElementProxy.java:85)
+	at com.codeborne.selenide.commands.GetText.execute(GetText.java:13)
+	at com.codeborne.selenide.commands.GetText.execute(GetText.java:8)
+	at com.codeborne.selenide.commands.Commands.execute(Commands.java:136)
+	at com.codeborne.selenide.impl.SelenideElementProxy.dispatchAndRetry(SelenideElementProxy.java:82)
 	at com.codeborne.selenide.impl.SelenideElementProxy.invoke(SelenideElementProxy.java:58)
-	at com.sun.proxy.$Proxy8.findElements(Unknown Source)
-	at com.codeborne.selenide.impl.WebElementSelector.findElements(WebElementSelector.java:37)
-	at com.codeborne.selenide.impl.BySelectorCollection.getActualElements(BySelectorCollection.java:28)
-	at com.codeborne.selenide.ElementsCollection.getActualElements(ElementsCollection.java:169)
-	at com.codeborne.selenide.ElementsCollection.size(ElementsCollection.java:253)
-	at se.nackademin.librarytest.helpers.Table.getRowCount(Table.java:15)
-	at se.nackademin.librarytest.helpers.Table.searchAndClick(Table.java:40)
-	at se.nackademin.librarytest.SelenideTest.tesTable(SelenideTest.java:75)
+	at com.sun.proxy.$Proxy8.getText(Unknown Source)
+	at se.nackademin.librarytest.pages.UserProfilePage.getUserName(UserProfilePage.java:49)
+	at se.nackademin.librarytest.SelenideTest.testLogin(SelenideTest.java:104)
 
-testChangePublishDateBook(se.nackademin.librarytest.SelenideTest)  Time elapsed: 7.822 sec  <<< FAILURE!
+tesTable(se.nackademin.librarytest.SelenideTest)  Time elapsed: 4.752 sec  <<< FAILURE!
+com.codeborne.selenide.ex.ElementNotFound: Element not found {#side-menu-link-add-user}
+Expected: visible
+	at sun.reflect.GeneratedConstructorAccessor10.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:206)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:158)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:678)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:363)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByCssSelector(RemoteWebDriver.java:492)
+	at org.openqa.selenium.By$ByCssSelector.findElement(By.java:430)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:355)
+	at com.codeborne.selenide.impl.WebElementSelector.findElement(WebElementSelector.java:28)
+	at com.codeborne.selenide.impl.ElementFinder.getWebElement(ElementFinder.java:56)
+	at com.codeborne.selenide.impl.WebElementSource.checkCondition(WebElementSource.java:44)
+	at com.codeborne.selenide.impl.WebElementSource.findAndAssertElementIsVisible(WebElementSource.java:72)
+	at com.codeborne.selenide.commands.Click.execute(Click.java:14)
+	at com.codeborne.selenide.commands.Click.execute(Click.java:11)
+	at com.codeborne.selenide.commands.Commands.execute(Commands.java:136)
+	at com.codeborne.selenide.impl.SelenideElementProxy.dispatchAndRetry(SelenideElementProxy.java:82)
+	at com.codeborne.selenide.impl.SelenideElementProxy.invoke(SelenideElementProxy.java:58)
+	at com.sun.proxy.$Proxy8.click(Unknown Source)
+	at se.nackademin.librarytest.pages.PageBase.clickButton(PageBase.java:22)
+	at se.nackademin.librarytest.pages.MenuPage.navigateToAddUser(MenuPage.java:38)
+	at se.nackademin.librarytest.helpers.UserHelper.createNewUser(UserHelper.java:16)
+	at se.nackademin.librarytest.SelenideTest.tesTable(SelenideTest.java:62)
+
+testChangePublishDateBook(se.nackademin.librarytest.SelenideTest)  Time elapsed: 7.738 sec  <<< FAILURE!
 com.codeborne.selenide.ex.ElementNotFound: Element not found {#gwt-uid-3}
 Expected: exist
 	at sun.reflect.GeneratedConstructorAccessor10.newInstance(Unknown Source)
@@ -80,9 +101,9 @@ Expected: exist
 	at com.sun.proxy.$Proxy8.clear(Unknown Source)
 	at se.nackademin.librarytest.pages.BrowseBooksPage.setTitleFiled(BrowseBooksPage.java:23)
 	at se.nackademin.librarytest.helpers.BookHelper.fetchBook(BookHelper.java:68)
-	at se.nackademin.librarytest.SelenideTest.testChangePublishDateBook(SelenideTest.java:204)
+	at se.nackademin.librarytest.SelenideTest.testChangePublishDateBook(SelenideTest.java:202)
 
-testBorrowBook(se.nackademin.librarytest.SelenideTest)  Time elapsed: 10.965 sec  <<< FAILURE!
+testBorrowBook(se.nackademin.librarytest.SelenideTest)  Time elapsed: 10.807 sec  <<< FAILURE!
 com.codeborne.selenide.ex.ElementNotFound: Element not found {td.v-grid-cell:nth-child(1) > a:nth-child(1)}
 Expected: visible
 	at sun.reflect.GeneratedConstructorAccessor10.newInstance(Unknown Source)
@@ -107,5 +128,5 @@ Expected: visible
 	at com.sun.proxy.$Proxy8.click(Unknown Source)
 	at se.nackademin.librarytest.pages.BrowseBooksPage.clickFirstResultTitle(BrowseBooksPage.java:18)
 	at se.nackademin.librarytest.helpers.BookHelper.fetchBook(BookHelper.java:71)
-	at se.nackademin.librarytest.SelenideTest.testBorrowBook(SelenideTest.java:230)
+	at se.nackademin.librarytest.SelenideTest.testBorrowBook(SelenideTest.java:228)
 
