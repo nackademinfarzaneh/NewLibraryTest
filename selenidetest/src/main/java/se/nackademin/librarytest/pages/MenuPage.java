@@ -14,6 +14,9 @@ public class MenuPage extends PageBase {
     @FindBy(css = "#side-menu-link-sign-in")
     SelenideElement signIn;
 
+    @FindBy(css = " #side-menu-link-sign-out") 
+    SelenideElement signOut;
+
     @FindBy(css = "#side-menu-link-my-profile")
     SelenideElement myProfile;
 
@@ -37,8 +40,8 @@ public class MenuPage extends PageBase {
 
         clickButton("Add user", addUser);
     }
-    
-        public void navigateToAddBook() {
+
+    public void navigateToAddBook() {
 
         clickButton("Add book", addBook);
     }
@@ -46,6 +49,11 @@ public class MenuPage extends PageBase {
     public void navigateToSignIn() {
 
         clickButton("Sign in", signIn);
+    }
+
+    public void navigateToSignOut() {
+
+        clickButton("Sign out", signOut);
     }
 
     public void navigateToMyProfile() {

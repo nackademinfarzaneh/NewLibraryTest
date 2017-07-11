@@ -10,7 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import se.nackademin.librarytest.model.Book;
 import se.nackademin.librarytest.pages.AddBookPage;
-import se.nackademin.librarytest.pages.BookPage;
+import se.nackademin.librarytest.pages.ViewBookPage;
 import se.nackademin.librarytest.pages.ConfirmDialogPage;
 import se.nackademin.librarytest.pages.BrowseBooksPage;
 import se.nackademin.librarytest.pages.EditBookPage;
@@ -70,7 +70,7 @@ public class BookHelper {
 
         browseBooksPage.clickFirstResultTitle();
 
-        BookPage bookPage = page(BookPage.class);
+        ViewBookPage bookPage = page(ViewBookPage.class);
         Book book = new Book();
 
         book.setTitleBook(bookPage.getTitle());
@@ -95,7 +95,7 @@ public class BookHelper {
 
         book.getDatePublishedBook();
 
-        BookPage bookPage = page(BookPage.class);
+        ViewBookPage bookPage = page(ViewBookPage.class);
         EditBookPage editBookPage = page(EditBookPage.class);
         bookPage.clickEditBookButton();
 
@@ -116,7 +116,7 @@ public class BookHelper {
       //  book.getNbrAvailableBook();
 
         BrowseBooksPage browseBooksPage = page(BrowseBooksPage.class);
-        BookPage bookPage = page(BookPage.class);
+        ViewBookPage bookPage = page(ViewBookPage.class);
 
         bookPage.clickBorrowBookButton();
 
@@ -143,7 +143,7 @@ public class BookHelper {
         
 
         BrowseBooksPage browseBooksPage = page(BrowseBooksPage.class);
-        BookPage bookPage = page(BookPage.class);
+        ViewBookPage bookPage = page(ViewBookPage.class);
 
         bookPage.clickReturnBookButton();
 

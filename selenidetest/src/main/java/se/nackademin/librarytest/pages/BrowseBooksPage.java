@@ -3,7 +3,7 @@ package se.nackademin.librarytest.pages;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.support.FindBy;
 
-public class BrowseBooksPage {
+public class BrowseBooksPage extends MenuPage {
 
     @FindBy(css = "#gwt-uid-3")
     SelenideElement titleFiled;
@@ -22,6 +22,10 @@ public class BrowseBooksPage {
 
         titleFiled.clear();
         titleFiled.sendKeys(title);
+    }
+
+    public String getTitleFiled() {
+        return titleFiled.getText();
     }
 
     public void clickSearchBooksButton() {

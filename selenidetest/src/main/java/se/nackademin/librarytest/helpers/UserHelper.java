@@ -4,6 +4,7 @@ import static com.codeborne.selenide.Selenide.page;
 import se.nackademin.librarytest.pages.AddUserPage;
 import se.nackademin.librarytest.pages.MenuPage;
 import se.nackademin.librarytest.pages.SignInPage;
+import se.nackademin.librarytest.pages.SignOutPage;
 
 public class UserHelper {
 
@@ -39,6 +40,13 @@ public class UserHelper {
         signInpage.setUserName(username);
         signInpage.setPassWordFiled(password);
         signInpage.clickLogIn();
+    }
+        public static void logOutAsUser() {
+
+        SignOutPage signOutPage = page(SignOutPage.class);        
+        menuPage.navigateToSignOut();     
+        signOutPage.clickLogOut();
+        
     }
 
 }

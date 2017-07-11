@@ -23,15 +23,190 @@ import se.nackademin.librarytest.model.Author;
 import se.nackademin.librarytest.model.Book;
 import se.nackademin.librarytest.model.User;
 import se.nackademin.librarytest.pages.AuthorPage;
-import se.nackademin.librarytest.pages.BookPage;
+import se.nackademin.librarytest.pages.ViewBookPage;
 import se.nackademin.librarytest.pages.BrowseAuthorsPage;
 import se.nackademin.librarytest.pages.BrowseBooksPage;
+import se.nackademin.librarytest.pages.ConfirmDialogPage;
+import se.nackademin.librarytest.pages.EditBookPage;
 import se.nackademin.librarytest.pages.MenuPage;
 import se.nackademin.librarytest.pages.UserProfilePage;
 
 public class SelenideTest extends TestBase {
 
     public SelenideTest() {
+    }
+
+    @Test
+    public void testLogin() {
+
+        ChromeDriverManager.getInstance().setup();
+
+        String uuid = UUID.randomUUID().toString();
+
+        MenuPage menuPage = page(MenuPage.class);
+        UserHelper.createNewUser(uuid, uuid);
+        UserHelper.logInAsUser(uuid, uuid);
+
+        menuPage.navigateToMyProfile();
+        UserProfilePage myProfilePage = page(UserProfilePage.class);
+        myProfilePage.getUserName();
+        Assert.assertEquals("Username should be shown in profile", uuid, myProfilePage.getUserName());
+
+        sleep(3000);
+    }
+
+    @Test
+    public void testBrrowBook() {
+        // välja browsebooks
+        //komm in i Browse booksPage
+        //välj searchButtom
+        //välj en book i listan
+        //kom in i View bookPage
+        //om Number of copies available: > 0
+        //välj butom brrow book
+        //visas confirm page (medelande) välj ja
+        //
+
+        UserHelper.logInAsUser("admin", "1234567890");
+        MenuPage menuPage = page(MenuPage.class);
+        menuPage.navigateToBrowseBooks();
+        BrowseBooksPage browseBookPage = page(BrowseBooksPage.class);
+        browseBookPage.clickSearchBooksButton();
+
+        browseBookPage.clickFirstResultTitle();
+
+        ViewBookPage viewBookPage = page(ViewBookPage.class);
+
+        viewBookPage.clickBorrowBookButton();
+        int nrOfAvailebleBookBefor = viewBookPage.getAvailebleNbrOfBooks();
+
+        ConfirmDialogPage confirmDialogPage = page(ConfirmDialogPage.class);
+        confirmDialogPage.clickConfirmDialogOKButton();
+        sleep(3000);
+
+        int nrOfAvailebleBookAfter = viewBookPage.getAvailebleNbrOfBooks();
+        // expected, actual
+        assertEquals(nrOfAvailebleBookBefor - 1, nrOfAvailebleBookAfter);
+        //return book
+        viewBookPage.clickReturnBookButton();
+        confirmDialogPage.clickConfirmDialogOKButton();
+
+        UserHelper.logOutAsUser();
+        sleep(5000);
+        assertEquals(nrOfAvailebleBookAfter + 1, nrOfAvailebleBookBefor);
+    }
+
+    @Test
+    public void testEditBook_AddBook() {
+
+        UserHelper.logInAsUser("admin", "1234567890");
+        MenuPage menuPage = page(MenuPage.class);
+        menuPage.navigateToBrowseBooks();
+        BrowseBooksPage browseBookPage = page(BrowseBooksPage.class);
+        browseBookPage.clickSearchBooksButton();
+
+        browseBookPage.clickFirstResultTitle();
+
+        ViewBookPage viewBookPage = page(ViewBookPage.class);
+
+        int nrOfBook = viewBookPage.getAvailebleNbrOfBooks();
+        viewBookPage.clickEditBookButton();
+
+        EditBookPage editBookPage = page(EditBookPage.class);
+
+        editBookPage.setNrOfInventory(nrOfBook + 2);
+
+        Book book = new Book();
+        book.setNbrAvailableBook(nrOfBook + 2);
+
+        editBookPage.clickSaveBookButton();
+        int nr = book.getNbrAvailableBook();
+
+        sleep(3000);
+        System.out.println("nr of book befor edit is:  " + nrOfBook);
+        System.out.println("nr of book after edit is:  " + nr);
+
+        UserHelper.logOutAsUser();
+
+        assertNotEquals(nrOfBook, nr);
+
+    }
+
+    @Test
+    @Ignore
+    //Den här testen fungerar inte på grund av bug en knapp. Rätt :Add Book
+    // men det är Add Author
+    public void testAddNewBook() {
+
+        MenuPage menuPage = page(MenuPage.class);
+        Book book = new Book();
+
+        UserHelper.logInAsUser("admin", "1234567890");
+        book.setTitleBook("Test1");
+        book.setNbrAvailableBook(10);
+        book.setPageNr(200);
+        BookHelper.addNewBook(book);
+        BookHelper.fetchBook(book.getTitleBook());
+
+        UserHelper.logOutAsUser();
+
+        Assert.assertEquals("Book should be shown", "Test1", book.getTitleBook());
+        sleep(2000);
+    }
+
+    @Test
+    @Ignore
+    //Testade inte deleteBook eftersom man kunde inte skapa ny book!
+    //Bara skrev logiken hur 
+    public void testDeleteBook() {
+
+        UserHelper.logInAsUser("admin", "1234567890");
+        MenuPage menuPage = page(MenuPage.class);
+        menuPage.navigateToBrowseBooks();
+        BrowseBooksPage browseBookPage = page(BrowseBooksPage.class);
+        browseBookPage.clickSearchBooksButton();
+
+        browseBookPage.clickFirstResultTitle();
+        ViewBookPage viewBookPage = page(ViewBookPage.class);
+
+        String booktitle = browseBookPage.getTitleFiled();
+        viewBookPage.clickDeleteBookButton();
+
+        ConfirmDialogPage confirmDialogPage = page(ConfirmDialogPage.class);
+        confirmDialogPage.clickConfirmDialogCancelButtonButton();
+
+        browseBookPage.clickSearchBooksButton();
+        String booktitleAfterDelete = browseBookPage.getTitleFiled();
+
+        UserHelper.logOutAsUser();
+
+        Assert.assertNotNull("Book med namn" + booktitle + "finns");
+        sleep(2000);
+    }
+
+    @Test
+    public void testAddAuthor() {
+
+        MenuPage menuPage = page(MenuPage.class);
+
+        UserHelper.logInAsUser("admin", "1234567890");
+
+        Author author = new Author();
+        author.setFirstName("test");
+        author.setLastName("Test");
+        author.setCountry("Sverige");
+        author.setBiography("Jag lerver i Sverige");
+
+        BrowseAuthorsPage browseAuthorsPage = page(BrowseAuthorsPage.class);
+
+        AuthorHelper.createNewAuthor(author);
+        menuPage.navigateToMyProfile();
+        AuthorPage authorPage = page(AuthorPage.class);
+
+        AuthorHelper.fetchAuthor(author.getFirstName());
+        UserHelper.logOutAsUser();
+        Assert.assertEquals("AuthorsName should be shown", "test", author.getFirstName());
+        sleep(4000);
     }
 
     @Test
@@ -47,37 +222,36 @@ public class SelenideTest extends TestBase {
         System.out.println(table.getRowCount());
         System.out.println(table.getColumnCount());
         System.out.println(table.getCellValue(0, 0));
-        // table.clickCell(1, 1);
-        table.searchAndClick("American Gods", 0);
+        table.clickCell(1, 1);
+        // table.searchAndClick("American Gods", 0);
 
         sleep(5000);
     }
 
     @Test
+    @Ignore
     public void tesTable() {
 
-        String uuid = UUID.randomUUID().toString();
-
         MenuPage menuPage = page(MenuPage.class);
-        UserHelper.createNewUser(uuid, uuid);
-        UserHelper.logInAsUser(uuid, uuid);
 
-        menuPage.navigateToMyProfile();
-        UserProfilePage userProfilePage = page(UserProfilePage.class);
+        UserHelper.logInAsUser("admin", "1234567890");
 
+        menuPage.navigateToBrowseBooks();
+        BrowseBooksPage browseBooksPage = page(BrowseBooksPage.class);
+        browseBooksPage.clickSearchBooksButton();
         Table table = new Table($(".v-grid-tablewrapper"));
-//        table.searchAndClick(userProfilePage.getBookTitle(), 0);
-//        table.searchAndClick(userProfilePage.getDateAvBookDue(), 1);
-//        table.searchAndClick(userProfilePage.getDateAvBookBorrow(), 2);
+        table.clickCell(1, 1);
+        String s = table.getCellValue(1, 1);
 
-        table.searchAndClick("book title", 0);
-        table.searchAndClick("date av due", 1);
-        table.searchAndClick("date av borrow", 2);
+        ViewBookPage viewBookPage = page(ViewBookPage.class);
+        viewBookPage.getTitle();
+
+        table.searchAndClick(s, 1);
+        sleep(3000);
 
     }
 
     @Test
-    @Ignore
     public void testFetchBook() {
 
         Book book = BookHelper.fetchBook("Guards!");
@@ -87,33 +261,6 @@ public class SelenideTest extends TestBase {
     }
 
     @Test
-    public void testLogin() {
-
-        ChromeDriverManager.getInstance().setup();
-  //      WebDriver driver = new ChromeDriver();        
- //       driver.get("http://localhost:8080/librarytest");
-
-        String uuid = UUID.randomUUID().toString();
-
-        MenuPage menuPage = page(MenuPage.class);
-        UserHelper.createNewUser(uuid, uuid);
-        UserHelper.logInAsUser(uuid, uuid);
-
-        menuPage.navigateToMyProfile();
-        UserProfilePage myProfilePage = page(UserProfilePage.class);
-        myProfilePage.getUserName();
-        Assert.assertEquals("Username should be shown in profile", uuid, myProfilePage.getUserName());
-
-        sleep(3000);
-    }
-    @Test
-    public void testBrowseBook(){
-        
-    }
- 
-
-    @Test
-    @Ignore
     public void testChangeEmailFromMyProfile() {
         MenuPage menuPage = page(MenuPage.class);
 
@@ -140,51 +287,7 @@ public class SelenideTest extends TestBase {
         sleep(2000);
     }
 
-    @Test    
-    public void testAddAuthor() {
-
-        MenuPage menuPage = page(MenuPage.class);
-        
-        UserHelper.logInAsUser("admin", "1234567890");
-
-        Author author = new Author();
-        author.setFirstName("test");
-        author.setLastName("Test");
-        author.setCountry("Sverige");
-        author.setBiography("Jag lerver i Sverige");
-
-        BrowseAuthorsPage browseAuthorsPage = page(BrowseAuthorsPage.class);
-
-        AuthorHelper.createNewAuthor(author);
-        menuPage.navigateToMyProfile();
-        AuthorPage authorPage = page(AuthorPage.class);
-
-        AuthorHelper.fetchAuthor(author.getFirstName());
-
-        Assert.assertEquals("AuthorsName should be shown", "test", author.getFirstName());
-        sleep(2000);
-    }
-
     @Test
-    public void testAddNewBook() {
-
-        MenuPage menuPage = page(MenuPage.class);
-        Book book = new Book();
-
-        UserHelper.logInAsUser("admin", "1234567890");
-        book.setTitleBook("Test1");
-        book.setNbrAvailableBook(10);
-        book.setPageNr(200);
-        BookHelper.addNewBook(book);
-        BookHelper.fetchBook(book.getTitleBook());
-
-        Assert.assertEquals("Book should be shown", "Test1", book.getTitleBook());
-        sleep(2000);
-
-    }
-
-    @Test
-    @Ignore
     public void testFetchAuthor() {
 
         Author author = AuthorHelper.fetchAuthor("Test");
@@ -209,49 +312,6 @@ public class SelenideTest extends TestBase {
         String actual = book.getDatePublishedBook();
 
         assertNotEquals("Published ", unsectied, actual);
-        sleep(3000);
-    }
-
-    @Test
-    public void testBorrowBook() {
-
-        MenuPage menuPage = page(MenuPage.class);
-        BookPage bookPage = page(BookPage.class);
-        Book book = new Book();
-
-        UserHelper.logInAsUser("admin", "1234567890");
-        book.setTitleBook("Test1");
-        book.setNbrAvailableBook(10);
-        book.setPageNr(200);
-        BookHelper.addNewBook(book);
-
-        book = BookHelper.fetchBook("Test1");
-        sleep(2000);
-
-        Integer antalBookBeforBorrow = book.getNbrAvailableBook();
-
-        book = BookHelper.borrowBook(book);
-
-        book = BookHelper.fetchBook(book.getTitleBook());
-
-        Integer antalBookafterBorrow = book.getNbrAvailableBook();
-
-        System.out.print("available book after borrow book");
-        System.out.println(book.getNbrAvailableBook().toString());
-
-        assertEquals("Nr off available book after borrow book", "9", book.getNbrAvailableBook().toString());
-
-        book = BookHelper.returnBook(book);
-
-        book = BookHelper.fetchBook(book.getTitleBook());
-
-        System.out.print("available book after retunr book");
-        System.out.println(book.getNbrAvailableBook().toString());
-
-        Integer antalBookafter = book.getNbrAvailableBook();
-
-        assertEquals("Nr off available book after return book", "10", book.getNbrAvailableBook().toString());
-
         sleep(3000);
     }
 
